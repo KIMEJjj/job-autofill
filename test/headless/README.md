@@ -7,6 +7,8 @@
 - 증명사진 첨부: `node test/headless/cdp.mjs "$PWD" http://127.0.0.1:8765/test/photo.html 9369 test/headless/photo.js` → photo 2, 서류 칸 0
 - 검색형 목록 칸(Ashby Location): `NOINJECT=1 node test/headless/cdp.mjs "$PWD" http://127.0.0.1:8765/test/ashby-location.html 9374 test/headless/ashby-location.js` → `"1/0"`, 값 `Seoul, South Korea`
 - 전체 자동 시험: `test/headless/all.sh` (위 항목 + 양식 4종 + 이력서 + 팝업·설정 화면 열림까지 한 번에, 하나라도 다르면 exit 1)
+- 실제 확장 검사: `node test/headless/real-ext.mjs <확장폴더> [Greenhouse 공고 주소…]` — 시험용 크롬에 확장을 그대로 올리고(CDP `Extensions.loadUnpacked`) 실제 툴바 버튼(`Extensions.triggerAction`)으로 팝업을 열어 설정 저장·칸 알려 주기·채우기·선택 목록을 가짜 정보로 확인(제출 안 함, all.sh 7번, `GH_URLS`로 공고 주소 전달). 팝업을 일반 탭으로 열면 보안 검사 때문에 선택 목록이 동작하지 않음
+- 거주 국가·이메일 받기 질문: `test/residence.html` + `residence.js` (all.sh 1f)
 - 양식 파일 채우기: `python3 test/docfill/make_templates.py && node test/headless/docfill-test.mjs "$PWD" && python3 test/docfill/verify.py test/docfill/out/resume_채움.* test/docfill/out/shapes_채움.docx` (변형 구조 shapes.docx 포함, `FILES=`로 파일 지정, 수원대 실제 양식은 `test/docfill/_local/`, 배포 제외)
 - 이력서 내보내기: `resume-test.mjs <확장폴더>` → test/docfill/out/cv.docx·cv.pdf·cv_en.*
 - Greenhouse 선택 목록(react-select): `rs-test.mjs <확장폴더> <지원서 URL>` (`RSDEBUG=1`, `ONLY=city`)
