@@ -1,0 +1,1 @@
+(async()=>{const r=await window.__pubFill(window.SAMPLE,{});const v=id=>document.getElementById(id).value;const x=[...document.querySelectorAll('[name=trans_1]')].find(x=>x.checked);return r.filled+"/"+r.check+" s1="+v('s1')+" a0="+v('a0')+" t1="+(x?x.value:'-')})()

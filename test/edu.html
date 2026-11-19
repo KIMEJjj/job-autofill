@@ -1,0 +1,17 @@
+<!doctype html><meta charset="utf-8"><title>단계별 학력</title>
+<h3 class="tit">학력사항</h3>
+<div class="blk"><h4>고등학교</h4>
+<div class="row"><div class="th">졸업구분</div><div class="td">
+<label><input type="radio" name="highschool.graduationTypeCode" value="1">졸업</label><label><input type="radio" name="highschool.graduationTypeCode" value="2">졸업예정</label><label><input type="radio" name="highschool.graduationTypeCode" value="5">검정고시</label></div></div>
+<div class="row" id="hsMore" style="display:none"><div class="th">학교명</div><div class="td"><input name="highschool.schoolName"></div><div class="th">입학일</div><div class="td"><input name="highschool.entranceDate" placeholder="입학일"></div><div class="th">졸업년월</div><div class="td"><input name="highschool.graduationDate" placeholder="YYYY.MM"></div></div></div>
+<div class="blk"><h4>대학교</h4>
+<div class="row"><div class="th">학위구분</div><div class="td"><label><input type="radio" name="college[0].degreeTypeCode" value="A">전문학사</label><label><input type="radio" name="college[0].degreeTypeCode" value="B">학사</label></div></div>
+<div class="row"><div class="th">학교명</div><div class="td"><input name="college[0].schoolName"></div><div class="th">전공</div><div class="td"><input name="college[0].majorName"></div></div>
+<div class="row"><div class="th">재학기간</div><div class="td"><div><input name="college[0].startDate" placeholder="YYYY.MM"></div> ~ <div><input name="college[0].endDate" placeholder="YYYY.MM"></div></div></div>
+<div class="row"><div class="th">졸업구분</div><div class="td"><label><input type="radio" name="college[0].graduationTypeCode" value="1">졸업</label><label><input type="radio" name="college[0].graduationTypeCode" value="2">졸업예정</label></div></div></div>
+<div class="blk"><h4>대학원</h4>
+<div class="row"><div class="th">학위구분</div><div class="td"><label><input type="radio" name="graduateSchool[0].degreeTypeCode" value="M">석사</label><label><input type="radio" name="graduateSchool[0].degreeTypeCode" value="D">박사</label></div></div></div>
+<h3 class="tit">경력사항</h3><div class="row"><div class="th">고용형태</div><div class="td"><select name="career[0].careerCriteriaCodeSn"><option value="">선택</option><option>정규직</option><option>인턴</option></select></div></div>
+<script>document.querySelectorAll('[name="highschool.graduationTypeCode"]').forEach(r=>r.addEventListener('change',()=>{document.getElementById('hsMore').style.display='';}));</script>
+<script src="../schema.js"></script><script src="../alias.js"></script><script src="../qnet.js"></script><script src="../fill.js"></script><script src="sample.js"></script>
+<script>window.SAMPLE.career[0].type='인턴';</script>

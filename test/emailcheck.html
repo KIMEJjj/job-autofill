@@ -1,0 +1,11 @@
+<!doctype html><meta charset="utf-8"><title>이메일 검사</title>
+<table><tr><th>이메일</th><td><input name="eid">@<input name="edom"><select name="esel"><option value="">직접입력</option><option>naver.com</option><option>gmail.com</option></select></td></tr>
+<tr><th>휴대폰</th><td><input name="p1" maxlength="3">-<input name="p2" maxlength="4">-<input name="p3" maxlength="4"></td></tr></table>
+<script>
+window.ALERTS=[];
+const chk=()=>{ const id=document.querySelector('[name=eid]').value, d=document.querySelector('[name=edom]').value; if(id && !/^[^@]+@[^@]+\.[a-z]+$/.test(id+'@'+d)) ALERTS.push('이메일을 이메일 양식에 맞게 입력하세요.'); };
+document.querySelector('[name=eid]').addEventListener('blur',chk); document.querySelector('[name=eid]').addEventListener('change',chk);
+const pchk=()=>{ const v=['p1','p2','p3'].map(n=>document.querySelector(`[name=${n}]`).value); if(v[0]&&(!v[1]||!v[2])) ALERTS.push('휴대폰 번호를 확인하세요'); };
+document.querySelector('[name=p1]').addEventListener('blur',pchk);
+</script>
+<script src="../schema.js"></script><script src="../alias.js"></script><script src="../qnet.js"></script><script src="../fill.js"></script><script src="sample.js"></script>

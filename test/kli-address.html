@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="ko">
+<head><meta charset="utf-8"><title>KLI 우편번호 검색 재현 시험</title></head>
+<body>
+  <button id="postcode-tab" type="button">우편번호</button>
+  <label>주소 <input name="currentAddress.address" type="text"></label>
+  <label>상세 주소 <input name="currentAddress.detailAddress" type="text"></label>
+  <section id="postcode-dialog">
+    <input name="postcodify_test" type="text" placeholder="검색 키워드">
+    <button id="search" class="search_button" type="button">검색</button>
+    <div id="results"></div>
+    <label>기본주소 <input name="modalAddress" type="text"></label>
+    <label>상세주소 <input name="modalDetail" type="text" placeholder="상세주소를 입력하세요"></label>
+  </section>
+  <button id="save" type="button">저장</button>
+  <button id="cancel" type="button">취소</button>
+  <div id="confirm-dialog" style="display:none">
+    <p>저장하시겠습니까?</p>
+    <button id="confirm-yes" type="button">확인</button>
+    <button id="confirm-no" type="button">취소</button>
+  </div>
+  <script src="../schema.js"></script>
+  <script src="../alias.js"></script>
+  <script src="../qnet.js"></script>
+  <script src="sample.js"></script>
+  <script>
+    const params = new URLSearchParams(location.search);
+    const dialog = document.getElementById('postcode-dialog');
+    const saveBtn = document.getElementById('save');
+    if (params.has('closed')) dialog.style.display = 'none';
+    if (params.has('slow')) saveBtn.disabled = true;
+    document.getElementById('postcode-tab').addEventListener('click', () => { dialog.style.display = 'block'; });
+    if (params.has('prefilled')) {
+      document.querySelector('[name="currentAddress.address"]').value = window.SAMPLE.address1;
+    }
+  </script>
+  <script>
+    document.getElementById('search').addEventListener('click', () => {
+      window.__searchedQuery = document.querySelector('[name="postcodify_test"]').value;
+      const params = new URLSearchParams(location.search);
+      const entries = params.has('multiple')
+        ? [{ address: window.SAMPLE.address1 + ' 1', zip: window.SAMPLE.zip }, { address: window.SAMPLE.address1 + ' 2', zip: window.SAMPLE.zip }]
+        : [{ address: window.SAMPLE.address1, zip: params.has('wrongzip') ? '99999' : window.SAMPLE.zip }];
+      const rows = entries.map(entry => {
+        const row = document.createElement('div');
+        row.className = 'postcodify_search_result';
+        const code = document.createElement('div');
+        code.className = 'code5';
+        code.textContent = entry.zip;
+        const address = document.createElement('div');
+        address.className = 'address';
+        const selector = document.createElement('a');
+        selector.href = '#';
+        selector.className = 'selector';
+        selector.textContent = entry.address;
+        selector.addEventListener('click', event => {
+          event.preventDefault();
+          document.querySelector('[name="modalAddress"]').value = entry.address;
+          if (params.has('slow')) setTimeout(() => { saveBtn.disabled = false; }, 400);
+        });
+        address.append(selector);
+        row.append(code, address);
+        return row;
+      });
+      document.getElementById('results').replaceChildren(...rows);
+    });
+    document.getElementById('save').addEventListener('click', () => {
+      window.__savedModalDetail = document.querySelector('[name="modalDetail"]').value;
+      document.getElementById('confirm-dialog').style.display = 'block';
+    });
+    document.getElementById('confirm-yes').addEventListener('click', () => {
+      window.__confirmedSave = true;
+      document.querySelector('[name="currentAddress.address"]').value = document.querySelector('[name="modalAddress"]').value;
+      document.querySelector('[name="currentAddress.detailAddress"]').value = document.querySelector('[name="modalDetail"]').value;
+      document.getElementById('confirm-dialog').style.display = 'none';
+    });
+    document.getElementById('confirm-no').addEventListener('click', () => {
+      document.getElementById('confirm-dialog').style.display = 'none';
+    });
+  </script>
+  <script src="../fill.js"></script>
+</body>
+</html>

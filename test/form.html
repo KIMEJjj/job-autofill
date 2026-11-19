@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><title>가짜 지원서</title>
+<style>body{font:13px sans-serif;margin:20px} table{border-collapse:collapse;margin-bottom:14px;width:900px} th,td{border:1px solid #ccc;padding:4px 6px} th{background:#f2f2f2;text-align:left;width:130px}</style>
+</head><body>
+<h3 class="tit">인적사항</h3>
+<table>
+<tr><th>성명 *</th><td><input name="kor_nm"></td><th>영문성명</th><td><input name="eng_nm"></td></tr>
+<tr><th>생년월일</th><td><input name="birth" maxlength="8" placeholder="예) 19990101"></td>
+<th>성별</th><td><label><input type="radio" name="sex" value="M">남</label><label><input type="radio" name="sex" value="F">여</label></td></tr>
+<tr><th>휴대폰</th><td><select name="hp1"><option value="">선택</option><option>010</option><option>011</option></select>-<input name="hp2" maxlength="4" size="4">-<input name="hp3" maxlength="4" size="4"></td>
+<th>비상연락처</th><td><input name="emer" placeholder="010-0000-0000"></td></tr>
+<tr><th>E-mail</th><td colspan="3"><input name="mail_id">@<input name="mail_dom"><select name="mail_sel"><option value="">선택</option><option value="naver.com">naver.com</option><option value="gmail.com">gmail.com</option><option value="direct">직접입력</option></select></td></tr>
+<tr><th>E-mail 확인</th><td colspan="3"><input name="mail_id2">@<input name="mail_dom2"><select name="mail_sel2"><option value="">선택</option><option value="naver.com">naver.com</option><option value="gmail.com">gmail.com</option></select></td></tr>
+<tr><th>주소</th><td colspan="3"><input name="zip" readonly size="6"> <button type="button">우편번호 검색</button><br><input name="addr1" readonly size="40"> <input name="addr2" size="30" placeholder="상세주소"></td></tr>
+<tr><th>주민등록번호</th><td><input name="jumin"></td><th>휴대폰 인증번호</th><td><input name="auth"></td></tr>
+</table>
+<h3 class="tit">병역사항</h3>
+<table><tr><th>병역구분</th><td><select name="mil"><option value="">선택</option><option value="1">군필</option><option value="2">미필</option><option value="3">면제</option></select></td>
+<th>군별</th><td><select name="mil_kind"><option value="">선택</option><option>육군</option><option>해군</option><option>공군</option></select></td></tr>
+<tr><th>계급</th><td><input name="rank"></td><th>복무기간</th><td>입대일 <input name="mil_s" type="date"> ~ 전역일 <input name="mil_e" type="date"></td></tr>
+</table>
+<h3 class="tit">보훈 / 장애</h3>
+<table><tr><th>보훈대상 여부</th><td><label><input type="radio" name="bohun" value="N">비대상</label><label><input type="radio" name="bohun" value="Y">대상</label></td>
+<th>장애여부</th><td><select name="dis"><option value="">선택</option><option>비대상</option><option>대상</option></select></td></tr></table>
+<h3 class="tit">학력사항</h3>
+<table><thead><tr><th>학교구분</th><th>학교명</th><th>전공</th><th>입학년월</th><th>졸업년월</th><th>졸업구분</th><th>평점</th><th>만점</th></tr></thead>
+<tbody>
+<tr><td><select name="e_lv1"><option value="">선택</option><option>고등학교</option><option>대학교</option></select></td><td><input name="e_sc1"></td><td><input name="e_mj1"></td><td><input name="e_s1" maxlength="6" placeholder="YYYYMM"></td><td><input name="e_e1" maxlength="6"></td><td><select name="e_st1"><option value="">선택</option><option>졸업</option><option>졸업예정</option></select></td><td><input name="e_g1" size="4"></td><td><select name="e_m1"><option value="">-</option><option>4.0</option><option>4.3</option><option>4.5</option></select></td></tr>
+<tr><td><select name="e_lv2"><option value="">선택</option><option>고등학교</option><option>대학교</option></select></td><td><input name="e_sc2"></td><td><input name="e_mj2"></td><td><input name="e_s2" maxlength="6"></td><td><input name="e_e2" maxlength="6"></td><td><select name="e_st2"><option value="">선택</option><option>졸업</option><option>졸업예정</option></select></td><td><input name="e_g2" size="4"></td><td><select name="e_m2"><option value="">-</option><option>4.0</option><option>4.3</option><option>4.5</option></select></td></tr>
+</tbody></table>
+<h3 class="tit">자격사항</h3>
+<table><thead><tr><th>자격증명</th><th>발급기관</th><th>취득일</th><th>자격번호</th></tr></thead><tbody>
+<tr><td><input name="c_n1"></td><td><input name="c_i1"></td><td><input name="c_d1" placeholder="YYYY.MM.DD"></td><td><input name="c_no1"></td></tr>
+<tr><td><input name="c_n2"></td><td><input name="c_i2"></td><td><input name="c_d2" placeholder="YYYY.MM.DD"></td><td><input name="c_no2"></td></tr>
+<tr><td><input name="c_n3"></td><td><input name="c_i3"></td><td><input name="c_d3" placeholder="YYYY.MM.DD"></td><td><input name="c_no3"></td></tr>
+</tbody></table>
+<h3 class="tit">외국어</h3>
+<table><thead><tr><th>시험명</th><th>점수</th><th>응시일</th></tr></thead><tbody>
+<tr><td><select name="l_t1"><option value="">선택</option><option>TOEIC</option><option>TOEFL</option><option>OPIc</option></select></td><td><input name="l_s1"></td><td><input name="l_d1" maxlength="8"></td></tr>
+</tbody></table>
+<h3 class="tit">경력사항</h3>
+<table><thead><tr><th>회사명</th><th>부서</th><th>직위</th><th>근무시작</th><th>근무종료</th><th>담당업무</th></tr></thead><tbody>
+<tr><td><input name="w_c1"></td><td><input name="w_d1"></td><td><input name="w_p1"></td><td><input name="w_s1" type="date"></td><td><input name="w_e1" type="date"></td><td><textarea name="w_t1"></textarea></td></tr>
+</tbody></table>
+<h3 class="tit">자기소개서</h3>
+<table><tr><th>지원동기</th><td><textarea name="q1" rows="3" cols="80"></textarea></td></tr></table>
+<script src="../schema.js"></script><script src="../alias.js"></script><script src="../qnet.js"></script><script src="../fill.js"></script><script src="sample.js"></script>
+</body></html>

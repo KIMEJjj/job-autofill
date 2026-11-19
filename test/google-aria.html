@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><title>Google Forms ARIA 회귀 시험</title></head>
+<body>
+  <div role="listitem">
+    <div role="heading">새 질문: 선호 업무 방식</div>
+    <div role="radiogroup" aria-labelledby="q1">
+      <div id="q1" hidden>선호 업무 방식</div>
+      <div role="radio" aria-checked="false">대면</div>
+      <div role="radio" aria-checked="false">원격</div>
+    </div>
+  </div>
+  <div role="listitem">
+    <div role="heading">새 질문: 추가 연락 방법</div>
+    <div role="listbox" tabindex="0">
+      <div role="option" data-value="call">전화</div>
+      <div role="option" data-value="email">이메일</div>
+    </div>
+  </div>
+  <div role="listitem">
+    <div role="heading">주민등록번호 확인</div>
+    <div role="radiogroup">
+      <div role="radio" aria-checked="false">확인</div>
+      <div role="radio" aria-checked="false">미확인</div>
+    </div>
+  </div>
+  <script src="../schema.js"></script>
+  <script src="../alias.js"></script>
+  <script src="../qnet.js"></script>
+  <script src="../fill.js"></script>
+  <script src="sample.js"></script>
+</body></html>

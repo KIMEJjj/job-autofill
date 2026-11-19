@@ -1,0 +1,13 @@
+<!doctype html><meta charset="utf-8"><title>KEI 병역</title>
+<h3 class="tit">병역사항</h3>
+<div class="row"><div class="th">병역구분</div><div class="td">
+<label><input type="radio" name="military.militaryTypeCode" value="1">비대상</label><label><input type="radio" name="military.militaryTypeCode" value="2">군필</label><label><input type="radio" name="military.militaryTypeCode" value="3">미필</label></div></div>
+<div class="row"><div class="th">군별</div><div class="td"><select name="military.militaryBranchCode"><option value="">선택</option><option>육군</option><option>해군</option></select></div></div>
+<div class="row"><div class="th">병과</div><div class="td"><input name="military.militaryRole" placeholder="병과를 입력하세요."></div></div>
+<div class="row"><div class="th">계급</div><div class="td"><select name="military.militaryPositionCode"><option value="">선택</option><option>이병</option><option>병장</option></select></div>
+<div class="th">복무기간</div><div class="td"><div><input name="military.militaryStartDate" placeholder="시작일" readonly></div> ~ <div><input name="military.militaryEndDate" placeholder="종료일" readonly></div></div></div>
+<div class="row"><div class="th">제대구분</div><div class="td"><select name="military.militaryDischargeCode"><option value="">선택</option><option>만기제대</option><option>의병제대</option></select></div></div>
+<div class="row"><div class="th">국적</div><div class="td"><select name="nationality"><option value="">선택</option><option>대한민국</option><option>미국</option></select></div></div>
+<div class="q"><p>1. 청년(만 15세 이상 만 34세 이하) 여부</p><select name="pi0"><option value="">답변을 선택하세요.</option><option>예</option><option>아니오</option></select></div>
+<script src="../schema.js"></script><script src="../alias.js"></script><script src="../qnet.js"></script><script src="../fill.js"></script><script src="sample.js"></script>
+<script>Object.assign(window.SAMPLE,{militarySpecialty:'보병',militaryDischarge:'만기제대',nationality:'대한민국',youth:'대상'});</script>

@@ -1,0 +1,1 @@
+(async()=>{const r=await window.__pubFill(window.SAMPLE,{});await new Promise(r=>setTimeout(r,500));const v=n=>document.querySelector('[name="'+n+'"]').value;return "s="+v('military.militaryStartDate')+" e="+v('military.militaryEndDate')+" hs="+v('highschool.entranceDate')+" he="+v('highschool.graduationDate')})()

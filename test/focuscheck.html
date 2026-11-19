@@ -1,0 +1,11 @@
+<!doctype html><meta charset="utf-8"><title>커서가 들어올 때만 검사(코스트코 recruiter 첫 화면 구조)</title>
+<div><label for="name">성명</label><input type="text" name="name" id="name"><span id="nameRegMsg"></span></div>
+<div><label for="email">이메일</label><input type="email" name="email" id="email" placeholder="이메일을 입력해주세요."><span id="emailRegMsg"></span></div>
+<div><label for="bd">생년월일</label><input type="text" id="bd" name="birthDate" placeholder="YYYY.MM.DD"></div>
+<script>
+window.keyData={};window.pickerOpened=0;
+function watch(id,key,re){let iv;const el=document.getElementById(id);el.addEventListener('focus',()=>{iv=setInterval(()=>{keyData[key]=re.test(el.value);document.getElementById(id+'RegMsg').textContent=keyData[key]?'ok':'특수문자를 입력할 수 없습니다.';},100);});el.addEventListener('blur',()=>clearInterval(iv));}
+watch('name','checkName',/^[가-힣A-Za-z]+$/);watch('email','checkEmail',/^\S+@\S+\.\S+$/);
+document.getElementById('bd').addEventListener('focus',()=>{pickerOpened++;});
+</script>
+<script src="../schema.js"></script><script src="../alias.js"></script><script src="../qnet.js"></script><script src="../fill.js"></script><script src="sample.js"></script>

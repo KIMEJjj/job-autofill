@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ko">
+<head><meta charset="utf-8"><title>Postcodify 공개 DOM 재현</title></head>
+<body>
+  <label>주소 <input name="currentAddress.address" type="text"></label>
+  <label>상세 주소 <input name="currentAddress.detailAddress" type="text"></label>
+  <section id="postcode-dialog">
+    <div id="postcodify"></div>
+    <label>기본주소 <input name="modalAddress" type="text"></label>
+    <label>상세주소 <input name="modalDetail" type="text" placeholder="상세주소를 입력하세요"></label>
+    <button id="save" type="button">저장</button>
+    <button id="cancel" type="button">취소</button>
+  </section>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+  <script src="https://cdn.poesis.kr/post/search.min.js"></script>
+  <script>
+    $('#postcodify').postcodify({
+      insertPostcode5: '#modalZip',
+      insertAddress: '[name="modalAddress"]',
+      insertDetails: '[name="modalDetail"]'
+    });
+    document.getElementById('save').addEventListener('click', () => {
+      document.querySelector('[name="currentAddress.address"]').value = document.querySelector('[name="modalAddress"]').value;
+      document.querySelector('[name="currentAddress.detailAddress"]').value = document.querySelector('[name="modalDetail"]').value;
+    });
+  </script>
+  <script src="../schema.js"></script>
+  <script src="../alias.js"></script>
+  <script src="../qnet.js"></script>
+  <script src="sample.js"></script>
+  <script src="../fill.js"></script>
+</body>
+</html>

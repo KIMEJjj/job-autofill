@@ -1,0 +1,191 @@
+[
+  {
+    "site": "musinsa",
+    "url": "https://musinsa.career.greetinghr.com/ko/o/245221/apply",
+    "status": "진단",
+    "title": "[AI Agent 전형] Product Engineer (Service Platform)",
+    "files": [
+      "[ ] 파일 업로드",
+      "[ ] 파일 URL 파일 업로드"
+    ],
+    "photo": 0,
+    "filled": 4,
+    "check": 3,
+    "total": 8,
+    "recognized": 8,
+    "excluded": 0,
+    "unknown": []
+  },
+  {
+    "site": "yanolja",
+    "url": "",
+    "status": "공고 없음"
+  },
+  {
+    "site": "kurly",
+    "url": "",
+    "status": "공고 없음"
+  },
+  {
+    "site": "myrealtrip",
+    "url": "https://myrealtrip.career.greetinghr.com/ko/o/242937/apply",
+    "status": "진단",
+    "title": "T&A 일본 사업개발 매니저",
+    "files": [
+      "[ ] 파일 URL 파일 업로드",
+      "[ ] 파일 URL 파일 업로드",
+      "[ ] 파일 URL 파일 업로드"
+    ],
+    "photo": 0,
+    "filled": 4,
+    "check": 2,
+    "total": 8,
+    "recognized": 8,
+    "excluded": 0,
+    "unknown": []
+  },
+  {
+    "site": "socar",
+    "url": "",
+    "status": "공고 없음"
+  },
+  {
+    "site": "class101",
+    "url": "",
+    "status": "공고 없음"
+  },
+  {
+    "site": "watcha",
+    "url": "",
+    "status": "공고 없음"
+  },
+  {
+    "site": "ably",
+    "url": "",
+    "status": "공고 없음"
+  },
+  {
+    "site": "kakaostyle",
+    "url": "",
+    "status": "공고 없음"
+  },
+  {
+    "site": "lunit",
+    "url": "",
+    "status": "공고 없음"
+  },
+  {
+    "site": "wadiz",
+    "url": "https://wadiz.career.greetinghr.com/ko/o/243077/apply",
+    "status": "오류",
+    "title": "[WBG 2027-1기] 영업PD",
+    "error": "{\"text\":\"send-timeout Runtime.evaluate\"}"
+  },
+  {
+    "site": "dunamu",
+    "url": "",
+    "status": "공고 없음"
+  },
+  {
+    "site": "daangn",
+    "url": "",
+    "status": "공고 없음"
+  },
+  {
+    "site": "banksalad",
+    "url": "",
+    "status": "공고 없음"
+  },
+  {
+    "site": "3o3",
+    "url": "",
+    "status": "공고 없음"
+  },
+  {
+    "site": "hecto",
+    "url": "",
+    "status": "공고 없음"
+  },
+  {
+    "site": "kmong",
+    "url": "https://kmong.career.greetinghr.com/ko/o/213626/apply",
+    "status": "진단",
+    "title": "개인정보 보호 담당자 (8년 이상)",
+    "files": [
+      "[ ] 파일 업로드",
+      "[ ] 파일 URL 파일 업로드"
+    ],
+    "photo": 0,
+    "filled": 3,
+    "check": 1,
+    "total": 4,
+    "recognized": 4,
+    "excluded": 0,
+    "unknown": []
+  },
+  {
+    "site": "spoonradio",
+    "url": "",
+    "status": "공고 없음"
+  },
+  {
+    "site": "fastcampus",
+    "url": "",
+    "status": "공고 없음"
+  },
+  {
+    "site": "day1company",
+    "url": "",
+    "status": "공고 없음"
+  },
+  {
+    "site": "greenlabs",
+    "url": "",
+    "status": "공고 없음"
+  },
+  {
+    "site": "inflearn",
+    "url": "",
+    "status": "공고 없음"
+  },
+  {
+    "site": "wanted",
+    "url": "",
+    "status": "공고 없음"
+  },
+  {
+    "site": "bithumb",
+    "url": "",
+    "status": "공고 없음"
+  },
+  {
+    "site": "gangnamunni",
+    "url": "",
+    "status": "공고 없음"
+  },
+  {
+    "site": "mathpresso",
+    "url": "",
+    "status": "공고 없음"
+  },
+  {
+    "site": "zigbang",
+    "url": "",
+    "status": "공고 없음"
+  },
+  {
+    "site": "tumblbug",
+    "url": "",
+    "status": "공고 없음"
+  },
+  {
+    "site": "sendbird",
+    "url": "",
+    "status": "공고 없음"
+  },
+  {
+    "site": "ohou",
+    "url": "",
+    "status": "공고 없음"
+  }
+]

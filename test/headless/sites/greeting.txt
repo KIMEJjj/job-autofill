@@ -1,0 +1,45 @@
+# 공개 지원서 진단 목록. 그리팅은 하위 주소, 그 외는 지원서 또는 공고 목록 전체 주소.
+# 그리팅(greetinghr)
+hr-suprema
+cesco
+wisol
+descentekorea
+gccompany
+daangnservice
+mirae-n
+isanghanmarketing
+wrtn
+linkareer
+enf-recruit
+realworld
+aimed
+xcena
+applydongasocio
+featuring
+dongkuk
+phcgroup
+haatz
+megastudyedu
+pulmuone
+ininbody
+nice
+jusung
+pharmaresearch_hr
+hansung
+mitsui
+sment
+kleannara
+shinwon
+idfn
+autocrypt
+# 나인하이어 채용 홈
+https://ksm.ninehire.site
+https://modetour.ninehire.site
+https://akis.ninehire.site
+# Greenhouse 공고 목록 (쿠팡 내부 채용은 로그인 벽)
+https://job-boards.greenhouse.io/casetify
+https://job-boards.greenhouse.io/coupanginternal
+musinsa
+myrealtrip
+wadiz
+kmong

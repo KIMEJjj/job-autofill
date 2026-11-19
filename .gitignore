@@ -1,0 +1,23 @@
+# 공개 저장소에서 빼는 것 (내 컴퓨터에는 그대로 남음)
+
+# 배포 zip은 깃허브 Release에 올림
+dist/
+
+# 발표 자료·작업 기록(개인 지원 이력 포함)·AI 인수인계 문서
+발표자료/
+작업기록.md
+인수인계.md
+
+# 실제 회사 양식 파일(저작권)과 시험 결과물
+test/docfill/_local/
+test/docfill/out/
+test/headless/report-old/
+
+# 빌드된 실행 파일(소스 pubfill-keychain.swift만 공개)
+native/pubfill-keychain
+
+# macOS
+.DS_Store
+
+# 이 컴퓨터 전용 AI 작업 규칙(로컬 경로·개인 작업 기록). 공개용 안내는 AGENTS.md
+AGENTS.local.md

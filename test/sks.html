@@ -1,0 +1,14 @@
+<!doctype html><meta charset="utf-8"><title>SK 학교</title>
+<h3 class="tit">학력사항</h3>
+<div class="blk"><h4>고등학교</h4>
+<div class="row"><div class="th">졸업구분</div><div class="td"><label><input type="radio" name="highschool.graduationTypeCode" value="1">졸업</label><label><input type="radio" name="highschool.graduationTypeCode" value="2">졸업예정</label></div></div>
+<div class="row"><div class="th">학교관련</div><div class="td">
+ <div><span>* 학교명</span> <input type="search" placeholder='키워드 입력 후 "Enter"로 검색'> <button type="button">학교검색</button></div>
+ <div><span>* 학교소재지</span><select name="highschool.locationCode"><option value="">학교소재지</option><option value="11">서울</option><option value="41">경기</option></select>
+ <span>* 계열</span><select name="highschool.highschoolCategoryCode"><option value="">계열</option><option value="A">인문계</option><option value="B">자연계</option><option value="C">실업계</option></select>
+ <span>주간/야간</span><label><input type="radio" name="highschool.dayOrNight" value="D">주간</label><label><input type="radio" name="highschool.dayOrNight" value="N">야간</label></div>
+</div></div>
+<div class="row"><div class="th">입학일</div><div class="td"><input name="highschool.entranceDate" placeholder="입학일"></div><div class="th">졸업일</div><div class="td"><input name="highschool.graduationDate" placeholder="졸업일"></div></div></div>
+<script>window.SEARCHED=[]; document.querySelector('input[type=search]').addEventListener('keydown',e=>{ if(e.key==='Enter') SEARCHED.push(e.target.value); });</script>
+<script src="../schema.js"></script><script src="../alias.js"></script><script src="../qnet.js"></script><script src="../fill.js"></script><script src="sample.js"></script>
+<script>Object.assign(window.SAMPLE.education[0],{region:'서울',track:'인문계',dayNight:'주간'});</script>

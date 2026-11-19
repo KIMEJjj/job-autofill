@@ -1,0 +1,33 @@
+<!doctype html><meta charset="utf-8"><title>사진 첨부 시험</title>
+<!-- 증명사진 자동 첨부 시험: 사진 칸 2곳만 채워지고 서류 칸 4곳은 비어 있어야 함(실제 지원서처럼 사진 미리보기 표시) -->
+<style>
+  body { font: 15px -apple-system, "Apple SD Gothic Neo", sans-serif; color: #1d2329; background: #f4f6f9; margin: 0; }
+  .wrap { max-width: 760px; margin: 28px auto; background: #fff; border: 1px solid #dde1e6; border-radius: 12px; padding: 22px 28px; }
+  h1 { font-size: 20px; margin: 0 0 16px; } h2 { font-size: 15px; margin: 18px 0 8px; color: #445; }
+  .row { display: flex; align-items: center; gap: 12px; padding: 9px 0; border-top: 1px solid #eef0f3; }
+  .row > span:first-child { width: 150px; color: #556; }
+  .prev { width: 60px; height: 80px; border: 1px dashed #b8c2d6; border-radius: 6px; background: #fafbff center/cover no-repeat; display: flex; align-items: center; justify-content: center; color: #99a; font-size: 11px; }
+  .btn { display: inline-block; border: 1px solid #c9d1dc; border-radius: 6px; padding: 5px 12px; background: #fff; cursor: pointer; }
+  input#nm { padding: 6px 8px; border: 1px solid #c9d1dc; border-radius: 6px; }
+</style>
+<div class="wrap"><h1>입사지원서 (시험 페이지)</h1>
+<form>
+  <h2>인적사항</h2>
+  <div class="row"><span>성명</span><input id="nm"></div>
+  <div class="row"><span><label for="ph1">증명사진</label></span><div class="prev" data-for="ph1">사진</div><input type="file" id="ph1" accept="image/*"></div>
+  <div class="row upload"><span>사진 등록 (3x4)</span><div class="prev" data-for="profilePhoto">사진</div><label class="btn">파일 선택<input type="file" name="profilePhoto" hidden></label></div>
+  <h2>제출 서류</h2>
+  <div class="row"><span><label for="d1">자격증 사본</label></span><input type="file" id="d1" accept="image/*,.pdf"></div>
+  <div class="row"><span><label for="d2">재직증명서</label></span><input type="file" id="d2"></div>
+  <div class="row"><span><label for="d3">포트폴리오</label></span><input type="file" id="d3"></div>
+  <div class="row"><span><label for="d4">사진 (PDF만)</label></span><input type="file" id="d4" accept=".pdf"></div>
+</form></div>
+<script>
+window.__changes = [];
+document.addEventListener('change', e => {
+  if (e.target.type !== 'file') return;
+  const k = e.target.id || e.target.name; window.__changes.push(k);
+  const p = document.querySelector(`.prev[data-for="${k}"]`), f = e.target.files[0];
+  if (p && f) { p.style.backgroundImage = `url(${URL.createObjectURL(f)})`; p.textContent = ''; }
+});
+</script>

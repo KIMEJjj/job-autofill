@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>Touch ID 지원 확인</title>
+<style>
+  body { font: 15px/1.6 -apple-system, "Apple SD Gothic Neo", sans-serif; max-width: 640px; margin: 60px auto; padding: 0 20px; color: #1d2329; background: #f6f7f9; }
+  h1 { font-size: 20px; }
+  p { color: #555b63; }
+  button { font: inherit; padding: 10px 18px; border-radius: 8px; border: 1px solid #1f5eff; background: #1f5eff; color: #fff; cursor: pointer; margin-right: 8px; }
+  button:disabled { opacity: .4; cursor: default; }
+  pre { background: #fff; border: 1px solid #dde1e6; border-radius: 8px; padding: 14px; white-space: pre-wrap; min-height: 80px; }
+</style>
+</head>
+<body>
+<h1>Touch ID 잠금 해제 지원 확인</h1>
+<p>이 화면은 시험만 합니다. 내 정보나 잠금 암호에는 손대지 않고, 결과에는 “되는지 / 안 되는지”만 나옵니다.</p>
+<p>① 버튼을 누르면 macOS가 Touch ID(또는 Mac 암호)를 묻습니다. 끝나면 ②를 눌러 한 번 더 지문을 대 주세요.</p>
+<button id="reg">① 시험용 등록</button>
+<button id="use" disabled>② 시험용 잠금 해제</button>
+<pre id="out">대기 중</pre>
+<script src="touchid-test.js"></script>
+</body>
+</html>

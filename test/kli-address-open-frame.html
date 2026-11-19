@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ko">
+<head><meta charset="utf-8"><title>KLI 우편번호 탭 → 프레임 시험</title></head>
+<body>
+  <label>주소 <input name="currentAddress.address" type="text"></label>
+  <label>상세 주소 <input name="currentAddress.detailAddress" type="text"></label>
+  <input name="postcodify_hidden" type="text" style="display:none">
+  <button id="postcode-tab" type="button">우편번호</button>
+  <script src="../schema.js"></script>
+  <script src="../alias.js"></script>
+  <script src="../qnet.js"></script>
+  <script src="sample.js"></script>
+  <script src="../fill.js"></script>
+  <script>
+    document.getElementById('postcode-tab').addEventListener('click', () => {
+      const frame = document.createElement('iframe');
+      frame.src = 'kli-address-frame-content.html';
+      frame.title = 'Postcodify 검색';
+      document.body.append(frame);
+    });
+  </script>
+</body>
+</html>

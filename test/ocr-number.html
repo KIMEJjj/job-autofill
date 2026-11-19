@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><title>DataQ 자격번호 OCR 시험</title></head>
+<body>
+  <p>가짜 OCR 글자 데이터 — 실제 자격증 정보 아님</p>
+  <script src="../alias.js"></script>
+  <script src="../qnet.js"></script>
+  <script src="../ocr.js"></script>
+  <script>
+    function line(words, y) {
+      let x = 10;
+      const lineWords = words.map(text => {
+        const width = Math.max(20, text.length * 16);
+        const word = { text, bbox: { x0: x, x1: x + width, y0: y, y1: y + 25 } };
+        x += width + 8;
+        return word;
+      });
+      return { text: words.join(' '), bbox: { x0: 10, x1: x, y0: y, y1: y + 25 }, words: lineWords };
+    }
+    function parseCard(title, prefix, digits) {
+      const lines = [
+        line(['자격번호:', prefix + '-', digits.slice(0, 3), digits.slice(3, 6), digits.slice(6)], 60),
+        line(['자격종목:', ...title.split(' ')], 130),
+        line(['합격연월일:', '2024년', '06월', '01일'], 200),
+        line(['한국데이터산업진흥원'], 270)
+      ];
+      return PubOCR.parse({ blocks: [{ paragraphs: [{ lines }] }] }, 600);
+    }
+    const dataq = [
+      ['빅데이터분석기사', 'BAE'],
+      ['데이터분석 전문가', 'ADP'],
+      ['데이터분석 준전문가', 'ADSP'],
+      ['SQL 전문가', 'SQLP'],
+      ['SQL 개발자', 'SQLD'],
+      ['데이터아키텍처 전문가', 'DAP'],
+      ['데이터아키텍처 준전문가', 'DASP']
+    ];
+    window.RESULT = dataq.map(([title, prefix], i) =>
+      parseCard(title, prefix, String(123 + i).padStart(9, '0'))
+    );
+  </script>
+</body></html>

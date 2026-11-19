@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>내 정보 설정 - 지원서 자동입력</title>
+<style>
+  :root { --bg:#f6f7f9; --card:#fff; --line:#dde1e6; --text:#1d2329; --muted:#66707a; --accent:#1f5eff; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font:14px/1.5 -apple-system, "Apple SD Gothic Neo", sans-serif; }
+  header { position:sticky; top:0; z-index:2; background:var(--card); border-bottom:1px solid var(--line); padding:12px 24px; display:flex; gap:12px; align-items:center; }
+  header h1 { font-size:17px; margin:0; flex:1; }
+  main { max-width:920px; margin:0 auto; padding:20px 24px 80px; }
+  .note { color:var(--muted); font-size:13px; margin:0 0 16px; }
+  section { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:16px 18px; margin-bottom:16px; }
+  section h2 { font-size:15px; margin:0 0 12px; display:flex; justify-content:space-between; align-items:center; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(200px, 1fr)); gap:10px 14px; }
+  label { display:flex; flex-direction:column; gap:3px; font-size:12px; color:var(--muted); }
+  input, select { font:inherit; color:var(--text); padding:6px 8px; border:1px solid var(--line); border-radius:6px; background:#fff; }
+  .row { border:1px dashed var(--line); border-radius:8px; padding:10px; margin-bottom:10px; position:relative; }
+  .row .del { position:absolute; top:6px; right:6px; }
+  button { font:inherit; border:1px solid var(--line); background:#fff; border-radius:6px; padding:6px 12px; cursor:pointer; }
+  button.primary { background:var(--accent); color:#fff; border-color:var(--accent); }
+  button.small { padding:2px 8px; font-size:12px; }
+  #status { color:#0a7a3c; font-size:13px; min-width:90px; }
+  #gate { max-width:420px; margin:80px auto; background:var(--card); border:1px solid var(--line); border-radius:12px; padding:24px; }
+  #gate h2 { margin:0 0 6px; font-size:17px; }
+  #gate p { color:var(--muted); font-size:13px; margin:0 0 14px; }
+  #gate input { width:100%; margin-bottom:10px; padding:9px 10px; }
+  #gate button { width:100%; padding:9px; }
+  #gateMsg { color:#c0392b; font-size:13px; min-height:18px; margin-top:8px; }
+  .hidden { display:none !important; }
+  .drop { border:2px dashed #b8c2d6; border-radius:12px; background:#fafbff; padding:22px 18px; margin:0 0 10px; text-align:center; cursor:pointer; outline:none; transition:border-color .15s, background .15s; }
+  .drop:hover { border-color:#8fa3c9; }
+  .drop:focus { border-color:var(--accent); border-style:solid; background:#f0f4ff; }
+  .drop.over { border-color:var(--accent); border-style:solid; background:#e8efff; }
+  .drop.busy { opacity:.75; }
+  .drop-ic { font-size:28px; line-height:1; margin-bottom:6px; }
+  .drop-t { font-size:15px; font-weight:700; color:var(--text); }
+  .drop-s { font-size:13px; color:var(--muted); margin:4px 0 10px; }
+  .drop-m { font-size:12px; color:var(--muted); margin-left:8px; }
+  .drop-thumbs { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-top:10px; }
+  .drop-thumbs img { height:56px; border-radius:6px; border:1px solid var(--line); }
+</style>
+</head>
+<body>
+<div id="gate" class="hidden">
+  <h2 id="gateTitle">잠금 해제</h2>
+  <p id="gateDesc"></p>
+  <input type="password" id="pass1" placeholder="잠금 암호" autocomplete="new-password">
+  <input type="password" id="pass2" placeholder="잠금 암호 다시 입력" autocomplete="new-password">
+  <button class="primary" id="gateBtn">확인</button>
+  <button id="gateKc" class="hidden" style="width:100%;padding:9px;margin-top:8px;background:#111418;color:#fff;border-color:#111418;">🔑 Touch ID · 키체인으로 잠금 해제</button>
+  <div id="gateMsg"></div>
+</div>
+<div id="app" class="hidden">
+<header>
+  <h1>내 정보 설정 🔒</h1>
+  <span id="status"></span>
+  <button id="export">암호화 백업 저장</button>
+  <button id="importBtn">백업 불러오기</button>
+  <input type="file" id="importFile" accept=".json" hidden>
+  <button id="changePass">잠금 암호 변경</button>
+  <button id="kcToggle" title="잠금 열쇠를 Mac 키체인에 보관하고 Touch ID 또는 Mac 암호로 엽니다">🔑 키체인</button>
+  <button id="lock">잠그기</button>
+  <button class="primary" id="save">저장</button>
+</header>
+<main>
+  <p class="note">내 정보는 잠금 암호로 전부 암호화(AES-256)되어 이 크롬 안에만 저장되며 인터넷으로 보내지 않습니다. 잠금 암호는 어디에도 저장하지 않으므로 잊어버리면 복구할 수 없습니다. 크롬을 닫으면 다시 잠깁니다. 비워 둔 항목은 지원서에서 건너뜁니다.</p>
+  <div id="form"></div>
+</main>
+</div>
+<script src="../../test/chrome-stub.js"></script><script src="../../schema.js"></script>
+<script src="../../vault.js"></script>
+<script src="../../lib/tesseract.min.js"></script>
+<script src="../../alias.js"></script>
+<script src="../../qnet.js"></script>
+<script src="../../ocr.js"></script>
+<script src="../../options.js"></script>
+<script>window.SAMPLE_PROFILE={name:'홍길동',nameEn:'HONG GILDONG',birth:'1999-03-07',gender:'남',phone:'010-1234-5678',email:'test@example.com',zip:'04524',address1:'서울특별시 중구 을지로 00',address2:'101동 1001호',military:'군필',veteran:'비대상',disability:'비대상',
+education:[{level:'대학교',school:'OO대학교',major:'경영학과',start:'2018-03',end:'2025-02',status:'졸업',gpa:'3.85',gpaMax:'4.5'}],
+certificates:[{name:'컴퓨터활용능력',grade:'1급',issuer:'대한상공회의소',date:'2023-08-11',number:'23-K9-000000'}],languages:[{test:'TOEIC',score:'900',date:'2024-06-10'}]};
+window.addEventListener("load",async()=>{await new Promise(r=>setTimeout(r,200)); showGate('create'); });</script></body>
+</html>

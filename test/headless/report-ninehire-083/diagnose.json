@@ -1,0 +1,147 @@
+[
+  {
+    "site": "https://akis.ninehire.site/",
+    "url": "https://akis.ninehire.site/job_posting/rHmT8DII/apply",
+    "status": "진단",
+    "title": "[애경그룹] AK아이에스 SAP CO 모듈 운영 경력 모집 | AK아이에스",
+    "files": [],
+    "photo": 0,
+    "filled": 16,
+    "check": 3,
+    "total": 25,
+    "recognized": 21,
+    "excluded": 0,
+    "unknown": [
+      "1999.03.07 | 날짜 선택 [input:text] ",
+      "선택해주세요. |  [dropdown] "
+    ]
+  },
+  {
+    "site": "https://synergyjobs.ninehire.site/",
+    "url": "",
+    "status": "공고 없음"
+  },
+  {
+    "site": "https://piaspace.ninehire.site/recruit",
+    "url": "https://piaspace.ninehire.site/job_posting/xPXCTTyB/apply",
+    "status": "진단",
+    "title": "(3년이상) 기업브랜드·조직문화 매니저 | 피아스페이스",
+    "files": [],
+    "photo": 0,
+    "filled": 4,
+    "check": 1,
+    "total": 5,
+    "recognized": 5,
+    "excluded": 0,
+    "unknown": []
+  },
+  {
+    "site": "https://3nfm2i2z.ninehire.site/",
+    "url": "https://3nfm2i2z.ninehire.site/job_posting/CFIeNL0F/apply",
+    "status": "진단",
+    "title": "[티맥스소프트] 메인프레임 현대화 글로벌 기술지원 인재 모집 (일본어 또는 영어 가능자) | 티맥스소프트",
+    "files": [],
+    "photo": 0,
+    "filled": 15,
+    "check": 2,
+    "total": 25,
+    "recognized": 18,
+    "excluded": 1,
+    "unknown": [
+      "1999.03.07 | 날짜 선택 [input:text] "
+    ]
+  },
+  {
+    "site": "https://yj7d26b6.ninehire.site/",
+    "url": "",
+    "status": "공고 없음"
+  },
+  {
+    "site": "https://muhayu.ninehire.site/job_posting",
+    "url": "https://muhayu.ninehire.site/job_posting/ogeApYEI/apply",
+    "status": "진단",
+    "title": "[장애인 채용/계약직/재택 근무] 데이터 검수 및 회귀테스트 담당자 | 주식회사 무하유",
+    "files": [],
+    "photo": 0,
+    "filled": 3,
+    "check": 1,
+    "total": 4,
+    "recognized": 4,
+    "excluded": 0,
+    "unknown": []
+  },
+  {
+    "site": "https://ug6h08u8.ninehire.site/",
+    "url": "https://ug6h08u8.ninehire.site/job_posting/V0qPXYRi/apply",
+    "status": "진단",
+    "title": "[넵튠] 퍼포먼스마케팅사업실 광고 운영1팀 채용 | 넵튠",
+    "files": [],
+    "photo": 0,
+    "filled": 3,
+    "check": 1,
+    "total": 4,
+    "recognized": 4,
+    "excluded": 0,
+    "unknown": []
+  },
+  {
+    "site": "https://tonymoly.ninehire.site/recruit",
+    "url": "https://tonymoly.ninehire.site/job_posting/lEJU8vU3/apply",
+    "status": "진단",
+    "title": "토니모리 인재풀 등록 | (주)토니모리",
+    "files": [],
+    "photo": 0,
+    "filled": 9,
+    "check": 1,
+    "total": 29,
+    "recognized": 12,
+    "excluded": 0,
+    "unknown": [
+      "국내 영업 [input:radio] ",
+      "해외 영업 [input:radio] ",
+      "E-Commerce [input:radio] ",
+      "교육 [input:radio] ",
+      "개발/운영 [input:radio] ",
+      "BM(기초파트) [input:radio] ",
+      "BM(색조파트) [input:radio] ",
+      "디자인(브랜드 컨텐츠) [input:radio] ",
+      "VMD [input:radio] ",
+      "패키지디자인 [input:radio] ",
+      "재무/세무 [input:radio] ",
+      "인사 [input:radio] ",
+      "총무 [input:radio] ",
+      "품질(QA,QC) [input:radio] ",
+      "물류 [input:radio] ",
+      "기타(이력서 제목에 지원직무 기재) [input:radio] ",
+      "경력 있음 [input:radio] "
+    ]
+  },
+  {
+    "site": "https://menuit.ninehire.site/",
+    "url": "https://menuit.ninehire.site/job_posting/wj6XIaS5/apply",
+    "status": "진단",
+    "title": "(주)메뉴잇 하드웨어 기술지원 책임자 | 메뉴잇",
+    "files": [],
+    "photo": 0,
+    "filled": 3,
+    "check": 2,
+    "total": 6,
+    "recognized": 5,
+    "excluded": 0,
+    "unknown": []
+  },
+  {
+    "site": "https://bespinglobalrecruit.ninehire.site/",
+    "url": "https://bespinglobalrecruit.ninehire.site/job_posting/wlJNCWPw/apply",
+    "status": "진단",
+    "title": "경영기획팀 담당자 영입 (사원, 대리급)",
+    "files": [],
+    "photo": 0,
+    "filled": 0,
+    "check": 0,
+    "total": 0,
+    "recognized": 0,
+    "excluded": 0,
+    "unknown": []
+  }
+]

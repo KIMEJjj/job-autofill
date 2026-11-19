@@ -1,0 +1,1 @@
+(async()=>{const r=await window.__pubFill(window.SAMPLE,{});const v=id=>document.getElementById(id).value;const rad=n=>{const x=[...document.querySelectorAll('[name='+n+']')].find(x=>x.checked);return x?x.value:'-'};return r.filled+"/"+r.check+" t0="+rad('trans_0')+" t1="+rad('trans_1')+" d0="+v('d0')+" d1="+v('d1')+" a2="+v("a2")+" a3="+v("a3")+" s2="+v("s2")+" s3="+v("s3")})()

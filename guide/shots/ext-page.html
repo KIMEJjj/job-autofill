@@ -1,0 +1,31 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><style>
+body{margin:0;font:15px -apple-system,"Apple SD Gothic Neo",sans-serif;background:#f1f3f4;color:#202124}
+.bar{height:44px;background:#dee1e6;display:flex;align-items:center;padding:0 14px;gap:10px}
+.url{flex:1;background:#fff;border-radius:16px;height:30px;display:flex;align-items:center;padding:0 14px;color:#3c4043}
+.head{background:#fff;display:flex;align-items:center;padding:14px 22px;border-bottom:1px solid #e0e0e0}
+.head h1{font-size:22px;font-weight:400;margin:0 0 0 10px;flex:1}
+.toggle{display:flex;align-items:center;gap:8px;position:relative}
+.sw{width:36px;height:16px;border-radius:8px;background:#8ab4f8;position:relative}.sw::after{content:"";position:absolute;right:-2px;top:-3px;width:22px;height:22px;border-radius:50%;background:#1a73e8}
+.tools{background:#fff;display:flex;gap:12px;padding:12px 22px;border-bottom:1px solid #e0e0e0}
+.btn{border:1px solid #dadce0;border-radius:4px;padding:8px 14px;color:#1a73e8;position:relative;background:#fff}
+.card{background:#fff;margin:22px;border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,.2);padding:18px 20px;width:420px;display:flex;gap:14px}
+.ic{width:40px;height:40px;border-radius:6px;background:#5f6368;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700}
+.badge{position:absolute;width:28px;height:28px;border-radius:50%;background:#e8590c;color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 4px rgba(232,89,12,.25)}
+.ring{outline:3px solid #e8590c;outline-offset:3px;border-radius:6px}
+.note{position:absolute;background:#e8590c;color:#fff;font-size:13px;padding:4px 10px;border-radius:12px;white-space:nowrap}
+</style></head><body>
+<div class="bar"><span>←</span><span>→</span><span>⟳</span><div class="url"><b style="margin-right:6px">①</b>chrome://extensions</div></div>
+<div class="head"><span>☰</span><h1>확장 프로그램</h1>
+  <div class="toggle ring"><span>개발자 모드</span><div class="sw"></div>
+    <div class="badge" style="left:-40px;top:-2px">②</div></div></div>
+<div class="tools">
+  <div class="btn ring">압축해제된 확장 프로그램을 로드합니다.<div class="badge" style="right:-14px;top:-16px">③</div></div>
+  <div class="btn">확장 프로그램 압축</div><div class="btn">업데이트</div>
+</div>
+<div style="position:relative">
+<div class="card ring"><div class="ic">지</div><div><div style="font-size:16px">지원서 자동입력 <span style="color:#5f6368">0.4.9</span></div>
+<div style="color:#5f6368;font-size:13px;margin-top:6px">내 정보를 이 브라우저에만 저장하고, 지원서 화면의 칸을 채웁니다.</div>
+<div style="margin-top:12px;display:flex;gap:10px"><div class="btn">세부정보</div><div class="btn">삭제</div></div></div></div>
+<div class="note" style="left:470px;top:60px">④ 이 카드가 생기면 설치 완료</div>
+</div>
+</body></html>

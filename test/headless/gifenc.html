@@ -1,0 +1,101 @@
+<!doctype html><meta charset="utf-8"><title>gif encoder</title>
+<script>
+// 시연 GIF 만들기(외부 프로그램 없이): 장면 PNG들을 받아 공통 256색 팔레트(중앙값 자르기)로 줄이고,
+// 앞 장면과 달라진 영역만 LZW로 담아 반복 재생 GIF를 만듭니다.
+// 사용: await makeGif([{ src: 'data:image/png;base64,...', delay: 80 }, ...], 폭) → base64
+async function loadFrame(src, width) {
+  const img = new Image(); img.src = src; await img.decode();
+  const w = width, h = Math.round(img.height * width / img.width);
+  const c = new OffscreenCanvas(w, h), x = c.getContext('2d');
+  x.imageSmoothingEnabled = true; x.imageSmoothingQuality = 'high';
+  x.drawImage(img, 0, 0, w, h);
+  return { w, h, data: x.getImageData(0, 0, w, h).data };
+}
+// 팔레트: 색당 6비트로 히스토그램 → 가장 많이 쓰인 64색(배경·카드·테두리 같은 단색)은 그대로 고정,
+// 나머지 192색은 중앙값 자르기. 옅은 회색·흰색이 한 색으로 뭉개지지 않게 함
+const KEY = (r, g, b) => ((r >> 2) << 12) | ((g >> 2) << 6) | (b >> 2);
+function buildPalette(frames) {
+  const hist = new Uint32Array(262144);
+  for (const f of frames) { const d = f.data; for (let i = 0; i < d.length; i += 4) hist[KEY(d[i], d[i + 1], d[i + 2])]++; }
+  const cols = []; for (let k = 0; k < 262144; k++) if (hist[k]) cols.push(k);
+  cols.sort((a, b) => hist[b] - hist[a]);
+  const FIX = Math.min(64, cols.length);
+  const ctr = k => [((k >> 12) << 2) | 2, (((k >> 6) & 63) << 2) | 2, ((k & 63) << 2) | 2];
+  const pal = cols.slice(0, FIX).map(ctr);
+  const ch = (k, c) => c === 0 ? k >> 12 : c === 1 ? (k >> 6) & 63 : k & 63;
+  let boxes = cols.length > FIX ? [cols.slice(FIX)] : [];
+  while (boxes.length && boxes.length < 256 - FIX) {
+    let bi = -1, best = -1, bc = 0;
+    boxes.forEach((b, i) => { if (b.length < 2) return; let score = 0, cc = 0; for (let c = 0; c < 3; c++) { let lo = 63, hi = 0; for (const k of b) { const v = ch(k, c); if (v < lo) lo = v; if (v > hi) hi = v; } if (hi - lo > score) { score = hi - lo; cc = c; } } let n = 0; for (const k of b) n += hist[k]; const s = score * Math.log2(1 + n); if (s > best) { best = s; bi = i; bc = cc; } });
+    if (bi < 0 || best <= 0) break;
+    const b = boxes[bi].sort((p, q) => ch(p, bc) - ch(q, bc));
+    let tot = 0; for (const k of b) tot += hist[k]; let acc = 0, cut = 1;
+    for (let i = 0; i < b.length - 1; i++) { acc += hist[b[i]]; if (acc >= tot / 2) { cut = i + 1; break; } }
+    boxes.splice(bi, 1, b.slice(0, cut), b.slice(cut));
+  }
+  for (const b of boxes) { let r = 0, g = 0, bl = 0, n = 0; for (const k of b) { const w = hist[k], c = ctr(k); r += c[0] * w; g += c[1] * w; bl += c[2] * w; n += w; } pal.push([Math.round(r / n), Math.round(g / n), Math.round(bl / n)]); }
+  while (pal.length < 256) pal.push([0, 0, 0]);
+  // 6비트 색 → 가장 가까운 팔레트 번호(쓰인 색만 계산)
+  const lut = new Uint8Array(262144);
+  const near = (r, g, b) => { let bi = 0, bd = 1e9; for (let i = 0; i < 256; i++) { const dr = r - pal[i][0], dg = g - pal[i][1], db = b - pal[i][2]; const d = dr * dr * 2 + dg * dg * 4 + db * db * 3; if (d < bd) { bd = d; bi = i; } } return bi; };
+  const done = new Uint8Array(262144);
+  const get = k => { if (!done[k]) { const c = ctr(k); lut[k] = near(c[0], c[1], c[2]); done[k] = 1; } return lut[k]; };
+  return { pal, get };
+}
+function lzw(indices, minCode) {
+  const out = []; let cur = 0, bits = 0;
+  const put = (code, size) => { cur |= code << bits; bits += size; while (bits >= 8) { out.push(cur & 255); cur >>= 8; bits -= 8; } };
+  const clear = 1 << minCode, eoi = clear + 1;
+  let size = minCode + 1, next = eoi + 1, dict = new Map();
+  put(clear, size);
+  let prefix = indices[0];
+  for (let i = 1; i < indices.length; i++) {
+    const k = indices[i], key = prefix * 256 + k;
+    const hit = dict.get(key);
+    if (hit !== undefined) { prefix = hit; continue; }
+    put(prefix, size);
+    if (next < 4096) { dict.set(key, next++); if (next > (1 << size) && size < 12) size++; }
+    else { put(clear, size); dict = new Map(); size = minCode + 1; next = eoi + 1; }
+    prefix = k;
+  }
+  put(prefix, size);
+  if (next === (1 << size) && size < 12) size++; // 해독기와 같은 시점에 코드 길이 늘림
+  put(eoi, size); if (bits) out.push(cur & 255);
+  return out;
+}
+async function makeGif(list, width) {
+  // 팔레트는 표본 장면(최대 24장)으로, 인코딩은 장면을 하나씩 읽어서(메모리 절약)
+  const step = Math.max(1, Math.ceil(list.length / 24)), sample = [];
+  for (let i = 0; i < list.length; i += step) sample.push(await loadFrame(list[i].src, width));
+  const { pal, get } = buildPalette(sample);
+  const W = sample[0].w, H = sample[0].h, bytes = []; sample.length = 0;
+  const u16 = v => [v & 255, v >> 8];
+  bytes.push(...[...'GIF89a'].map(c => c.charCodeAt(0)), ...u16(W), ...u16(H), 0xF7, 0, 0);
+  for (const [r, g, b] of pal) bytes.push(r, g, b);
+  bytes.push(0x21, 0xFF, 11, ...[...'NETSCAPE2.0'].map(c => c.charCodeAt(0)), 3, 1, 0, 0, 0); // 반복 재생
+  let prev = null;
+  for (const item of list) {
+    const f = { ...(await loadFrame(item.src, width)), delay: item.delay };
+    const idx = new Uint8Array(W * H), d = f.data;
+    for (let p = 0, i = 0; p < idx.length; p++, i += 4) idx[p] = get(KEY(d[i], d[i + 1], d[i + 2]));
+    // 앞 장면과 달라진 영역만
+    let x0 = 0, y0 = 0, x1 = W - 1, y1 = H - 1;
+    if (prev) {
+      x0 = W; y0 = H; x1 = -1; y1 = -1;
+      for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) { const p = y * W + x; if (idx[p] !== prev[p]) { if (x < x0) x0 = x; if (x > x1) x1 = x; if (y < y0) y0 = y; if (y > y1) y1 = y; } }
+      if (x1 < 0) { x0 = 0; y0 = 0; x1 = 0; y1 = 0; }
+    }
+    const w = x1 - x0 + 1, h = y1 - y0 + 1, sub = new Uint8Array(w * h);
+    for (let y = 0; y < h; y++) sub.set(idx.subarray((y0 + y) * W + x0, (y0 + y) * W + x0 + w), y * w);
+    bytes.push(0x21, 0xF9, 4, 0x04, ...u16(Math.round(f.delay / 10)), 0, 0); // 지속 시간, 그대로 두기
+    bytes.push(0x2C, ...u16(x0), ...u16(y0), ...u16(w), ...u16(h), 0);
+    bytes.push(8); const data = lzw(sub, 8);
+    for (let i = 0; i < data.length; i += 255) { const blk = data.slice(i, i + 255); bytes.push(blk.length, ...blk); }
+    bytes.push(0);
+    prev = idx;
+  }
+  bytes.push(0x3B);
+  let s = ''; const u8 = new Uint8Array(bytes); for (let i = 0; i < u8.length; i += 0x8000) s += String.fromCharCode(...u8.subarray(i, i + 0x8000));
+  return btoa(s);
+}
+</script>

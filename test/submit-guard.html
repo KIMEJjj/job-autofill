@@ -1,0 +1,14 @@
+<!doctype html><meta charset="utf-8"><title>원칙 시험: 제출하지 않음 · 민감 칸 비움</title>
+<form id="f" action="javascript:void(0)">
+<table border="1">
+<tr><th>성명</th><td><input name="name" id="name"></td></tr>
+<tr><th>주민등록번호</th><td><input name="rrn" id="rrn"></td></tr>
+<tr><th>비밀번호</th><td><input type="password" name="pw" id="pw"></td></tr>
+<tr><th>인증번호</th><td><input name="authNo" id="auth"></td></tr>
+<tr><th>자기소개서</th><td><textarea name="intro" id="intro"></textarea></td></tr>
+</table>
+<button type="submit">제출</button> <input type="submit" value="지원서 제출">
+<button type="button" class="send" onclick="window.__clicks++">최종 제출</button> <a href="javascript:;" class="send" onclick="window.__clicks++">제출하기</a>
+</form>
+<script>window.__clicks=0;window.__submits=0;document.getElementById('f').addEventListener('submit',e=>{e.preventDefault();window.__submits++;});</script>
+<script src="../schema.js"></script><script src="../alias.js"></script><script src="../qnet.js"></script><script src="../fill.js"></script><script src="sample.js"></script>

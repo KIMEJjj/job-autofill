@@ -1,0 +1,1 @@
+(async()=>{window.SAMPLE.rrn='000000-0000000';const r=await window.__pubFill(window.SAMPLE,{});await new Promise(r=>setTimeout(r,800));const v=id=>document.getElementById(id).value;return "name="+v('name')+" submits="+window.__submits+" clicks="+window.__clicks+" rrn="+v('rrn')+" pw="+v('pw')+" auth="+v('auth')+" intro="+v('intro')})()

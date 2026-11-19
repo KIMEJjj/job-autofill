@@ -1,0 +1,13 @@
+# 아래 파일을 바꾸는 수정 제안은 저장소 관리자의 승인이 있어야 합쳐집니다(브랜치 보호에서 "Require review from Code Owners"를 켜야 동작).
+# 개인정보 원칙·암호화·권한·검사 기준을 지키기 위한 목록입니다.
+/vault.js                @KIMEJjj
+/manifest.json           @KIMEJjj
+/background.js           @KIMEJjj
+/lib/                    @KIMEJjj
+/native/                 @KIMEJjj
+/AGENTS.md               @KIMEJjj
+/SECURITY.md             @KIMEJjj
+/LICENSE                 @KIMEJjj
+/test/guard.py           @KIMEJjj
+/test/headless/all.sh    @KIMEJjj
+/.github/                @KIMEJjj

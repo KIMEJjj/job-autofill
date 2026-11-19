@@ -1,0 +1,18 @@
+<!doctype html><meta charset="utf-8"><title>버튼형 선택지</title>
+<style>.btnRadio input{position:absolute;opacity:0;width:0;height:0}.btnRadio label{display:inline-block;padding:8px 20px;border:1px solid #ccc}.btnRadio input:checked+label{border-color:#1f5eff;color:#1f5eff}
+.hid input{display:none}.tg button.on{border-color:#1f5eff;color:#1f5eff}</style>
+<div class="row"><div class="span per20"><span class="req">*</span> 장애여부</div>
+ <div class="span per80"><strong>[장애여부]</strong><p>서류전형 합격자 대상 관련 증빙서류의 온라인 제출을 별도 안내드릴 예정이며</p>
+  <div class="btnRadio"><input type="radio" name="disYn" id="d1" value="N"><label for="d1">비대상</label><input type="radio" name="disYn" id="d2" value="Y"><label for="d2">대상</label>
+  <select name="disLevel"><option value="">장애정도</option><option>심한</option></select></div></div></div>
+<div class="row"><div class="span per20">보훈여부</div>
+ <div class="span per80"><strong>[보훈여부]</strong>
+  <div class="btnRadio hid"><label><input type="radio" name="vetYn" value="N"><span>비대상</span></label><label><input type="radio" name="vetYn" value="Y"><span>대상</span></label>
+  <input type="text" name="vetNo" placeholder="보훈번호"></div></div></div>
+<div class="row"><div class="span per20">병역사항</div>
+ <div class="span per80"><div class="tg"><button type="button">군필</button><button type="button">미필</button><button type="button">면제</button><button type="button">비대상</button></div></div></div>
+<div class="row"><div class="span per20">성별</div><div class="span per80"><div class="tg"><button type="button" class="on">남</button><button type="button">여</button></div></div></div>
+<form><div><span>제출</span><div><button>저장</button><button>제출하기</button></div></div></form>
+<script>document.querySelectorAll('.tg button').forEach(b=>b.addEventListener('click',()=>{b.parentElement.querySelectorAll('button').forEach(x=>x.classList.remove('on'));b.classList.add('on');window.clicked=(window.clicked||[]).concat(b.textContent)}));
+document.querySelector('form').addEventListener('submit',e=>{e.preventDefault();window.SUBMITTED=true});</script>
+<script src="../schema.js"></script><script src="../alias.js"></script><script src="../qnet.js"></script><script src="../fill.js"></script><script src="sample.js"></script>

@@ -1,0 +1,1 @@
+(async()=>{window.SAMPLE.address1='서울 중구 을지로2가 199-15';window.SAMPLE.zip='';const r=await window.__pubFill(window.SAMPLE,{});await new Promise(r=>setTimeout(r,500));const v=id=>document.getElementById(id).value;return "z="+v('zipHidden')+" a="+v('addr')+" reason="+(r.addressSearchReason||'')})()

@@ -1,0 +1,48 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Ashby Location 검색형 칸 시험</title>
+<!-- Ashby 지원서의 Location 칸: 글자를 넣으면 목록이 뜨고, 목록에서 'Seoul, South Korea'를 골라야 저장됨 -->
+<style>
+  body { font: 15px -apple-system, "Apple SD Gothic Neo", sans-serif; margin: 30px; }
+  .entry { max-width: 520px; }
+  label { display: block; font-weight: 600; margin-bottom: 6px; }
+  input { width: 100%; box-sizing: border-box; padding: 9px 11px; font: inherit; border: 1px solid #ccd2da; border-radius: 8px; }
+  #loc-list { position: absolute; width: 480px; background: #fff; border: 1px solid #ccd2da; border-radius: 8px; margin-top: 4px; }
+  #loc-list [role=option] { padding: 8px 11px; cursor: pointer; }
+  #loc-list [role=option]:hover { background: #f1f5ff; }
+</style>
+<h1>지원서</h1>
+<div class="entry" data-field-path="_systemfield_location">
+  <label for="loc">Location</label>
+  <div><input id="loc" type="text" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-haspopup="listbox" placeholder="Start typing..."></div>
+</div>
+<script>
+  const inp = document.getElementById('loc');
+  const CITIES = ['Seoul, South Korea', 'Seoulasso, Ségou, Mali', 'Busan, South Korea'];
+  let box = null;
+  function closeBox() {
+    if (box) { box.remove(); box = null; }
+    inp.setAttribute('aria-expanded', 'false');
+  }
+  inp.addEventListener('input', () => {
+    closeBox();
+    const q = inp.value.trim().toLowerCase();
+    if (!q) return;
+    const hits = CITIES.filter(c => c.toLowerCase().startsWith(q));
+    if (!hits.length) return;
+    box = document.createElement('div');
+    box.id = 'loc-list';
+    box.setAttribute('role', 'listbox');
+    hits.forEach(c => {
+      const o = document.createElement('div');
+      o.setAttribute('role', 'option');
+      o.textContent = c;
+      o.onclick = () => { inp.value = c; closeBox(); inp.dispatchEvent(new Event('change', { bubbles: true })); };
+      box.appendChild(o);
+    });
+    document.body.appendChild(box);
+    inp.setAttribute('aria-controls', 'loc-list');
+    inp.setAttribute('aria-expanded', 'true');
+  });
+</script>
+<script src="../schema.js"></script><script src="../alias.js"></script><script src="../qnet.js"></script><script src="../fill.js"></script><script src="sample.js"></script>

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><title>자격증 사진 읽기 시험</title>
+<style>body{font-family:sans-serif;margin:20px} canvas{border:1px solid #ccc;max-width:100%} pre{background:#f4f4f4;padding:10px}</style></head>
+<body>
+<p>가짜 자격증 이미지 (실제 개인정보 아님)</p>
+<canvas id="c" width="1400" height="1000"></canvas>
+<pre id="out">대기</pre>
+<script>window.PUBOCR_BASE = '../';</script>
+<script src="../lib/tesseract.min.js"></script>
+<script src="../alias.js"></script><script src="../qnet.js"></script>
+<script src="../ocr.js"></script>
+<script>
+const c = document.getElementById('c'), g = c.getContext('2d');
+g.fillStyle = '#f2efe6'; g.fillRect(0, 0, c.width, c.height);
+function card(x, y, w, h, lines) {
+  g.fillStyle = '#ffffff'; g.fillRect(x, y, w, h); g.strokeStyle = '#8a7a50'; g.lineWidth = 4; g.strokeRect(x, y, w, h);
+  g.fillStyle = '#222';
+  lines.forEach(([t, size, dy, bold]) => { g.font = `${bold ? 'bold ' : ''}${size}px "Apple SD Gothic Neo", sans-serif`; g.fillText(t, x + 40, y + dy); });
+}
+// 나란히 놓인 자격증 카드 2장
+card(40, 40, 620, 440, [['자 격 증', 30, 70, true], ['한국사능력검정시험', 40, 150, true], ['1급', 34, 205, true], ['인증번호: 66-001234', 28, 280], ['합격일: 2024년 2월 20일', 28, 330], ['국사편찬위원회', 30, 410, true]]);
+card(730, 40, 620, 440, [['국가기술자격증', 30, 70, true], ['컴퓨터활용능력 1급', 40, 150, true], ['자격번호: 23K9012345', 28, 280], ['합격일자: 2023.08.11', 28, 330], ['대한상공회의소', 30, 410, true]]);
+// 아래 목록 (마이페이지 캡처 같은 형태)
+g.fillStyle = '#ffffff'; g.fillRect(40, 540, 1310, 400);
+g.fillStyle = '#222'; g.font = 'bold 30px "Apple SD Gothic Neo", sans-serif'; g.fillText('보유 자격 목록', 70, 595);
+g.font = '28px "Apple SD Gothic Neo", sans-serif';
+g.fillText('TOEIC        Total 900        시험일 2024.06.10        등록번호 1234567', 70, 690);
+g.fillText('정보처리기사        자격번호 24201011234X        취득일 2024.09.01', 70, 790);
+
+window.run = async () => {
+  const blob = await new Promise(r => c.toBlob(r, 'image/png'));
+  const t0 = performance.now();
+  const res = await PubOCR.readImages([new File([blob], 'fake.png', { type: 'image/png' })], p => { document.getElementById('out').textContent = JSON.stringify(p); });
+  window.RESULT = { ms: Math.round(performance.now() - t0), res };
+  document.getElementById('out').textContent = JSON.stringify(window.RESULT, null, 1);
+  return window.RESULT;
+};
+</script>
+</body></html>

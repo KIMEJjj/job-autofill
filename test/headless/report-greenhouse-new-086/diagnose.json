@@ -1,0 +1,72 @@
+[
+  {
+    "site": "https://job-boards.greenhouse.io/notion",
+    "url": "",
+    "status": "공고 없음"
+  },
+  {
+    "site": "https://job-boards.greenhouse.io/figma",
+    "url": "https://boards.greenhouse.io/figma/jobs/6225172004",
+    "status": "진단",
+    "title": "Job Application for Senior Solutions Consultant (Seoul, South Korea) at Figma",
+    "files": [
+      "[ ] Attach Attach Dropbox Google Drive Enter {.pdf,.doc,.docx,.txt,.rtf}"
+    ],
+    "photo": 0,
+    "filled": 8,
+    "check": 9,
+    "total": 19,
+    "recognized": 12,
+    "excluded": 0,
+    "unknown": [
+      "Pronouns | Pronouns [input:text] question_20293997004",
+      "From where do you intend to work? * | From where do you inte [input:text] question_20294002004",
+      "Select... [input:text] ",
+      "Have you ever worked for Figma before, as an employee or a c [input:text] question_20294004004",
+      "Select... [input:text] "
+    ]
+  },
+  {
+    "site": "https://job-boards.greenhouse.io/discord",
+    "url": "https://job-boards.greenhouse.io/discord/jobs/8299493002",
+    "status": "진단",
+    "title": "Job Application for Senior Data Engineer, Ads at Discord",
+    "files": [
+      "[ ] Attach Attach Dropbox Google Drive Enter {.pdf,.doc,.docx,.txt,.rtf}",
+      "[ ] Attach Attach Dropbox Google Drive Enter {.pdf,.doc,.docx,.txt,.rtf}"
+    ],
+    "photo": 0,
+    "filled": 9,
+    "check": 18,
+    "total": 29,
+    "recognized": 12,
+    "excluded": 0,
+    "unknown": [
+      "Are you legally authorized to work in the United States for  [input:text] question_34308088002",
+      "Select... [input:text] ",
+      "Are you currently located in the US?* | Are you currently lo [input:text] question_34308089002",
+      "Select... [input:text] ",
+      "Gender* | Gender* [input:text] 4033064002",
+      "Select... [input:text] ",
+      "Race and Ethnicity* | Race and Ethnicity* [input:text] 4033065002",
+      "Select... [input:text] ",
+      "Veteran Status* | Veteran Status* [input:text] 4033066002",
+      "Select... [input:text] ",
+      "Disability Status* | Disability Status* [input:text] 4033067002",
+      "Select... [input:text] ",
+      "Gender Identity (optional) | Gender Identity (optional) [input:text] 4033068002",
+      "Race or Ethnicity (optional) | Race or Ethnicity (optional) [input:text] 4033069002",
+      "I consider myself a member of the LGBTQ+ community. (optiona [input:text] 4033070002"
+    ]
+  },
+  {
+    "site": "https://job-boards.greenhouse.io/databricks",
+    "url": "",
+    "status": "공고 없음"
+  },
+  {
+    "site": "https://job-boards.greenhouse.io/stripe",
+    "url": "",
+    "status": "공고 없음"
+  }
+]

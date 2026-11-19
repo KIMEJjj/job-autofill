@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><title>검색형 자격증 줄 매칭</title></head>
+<body>
+  <h3 class="tit">자격사항</h3>
+  <div class="cert-row">
+    <label>자격증명</label>
+    <span class="selected-cert">빅데이터분석기사 <button type="button">×</button></span>
+    <input type="search" aria-label="자격증검색" placeholder="키워드 입력 후 Enter">
+    <label for="issuer">발급기관</label><input id="issuer" name="license[0].organization">
+    <label for="number">등록번호</label><input id="number" name="license[0].registNumber">
+    <label for="date">취득일</label><input id="date" name="license[0].acquireDate">
+  </div>
+  <script src="../schema.js"></script>
+  <script src="../alias.js"></script>
+  <script src="../qnet.js"></script>
+  <script src="../fill.js"></script>
+  <script>
+    window.PROFILE = { certificates: [
+      { name: '컴퓨터활용능력 1급', issuer: '가짜 발급기관 A', number: 'FAKE-111', date: '2020-01-02' },
+      { name: '빅데이터분석기사', issuer: '가짜 발급기관 B', number: 'FAKE-222', date: '2024-05-06' }
+    ] };
+  </script>
+</body></html>

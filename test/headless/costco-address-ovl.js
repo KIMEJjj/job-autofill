@@ -1,0 +1,1 @@
+(async()=>{const r=await window.__pubFill(window.SAMPLE,{});await new Promise(r=>setTimeout(r,500));const v=id=>document.getElementById(id).value;return "z="+v('zipHidden')+" a="+v('addr')+" d="+v('det')+" open="+document.getElementById('zipLayer').classList.contains('on')+" alerts="+(window.__alerts||[]).length+" reason="+(r.addressSearchReason||'')})()

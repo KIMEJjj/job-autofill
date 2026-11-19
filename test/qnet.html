@@ -1,0 +1,19 @@
+<!doctype html><meta charset="utf-8"><title>Q-Net 표 형식</title>
+<canvas id="c" width="1960" height="620"></canvas><pre id="out"></pre>
+<script>window.PUBOCR_BASE='../';</script>
+<script src="../lib/tesseract.min.js"></script><script src="../alias.js"></script><script src="../qnet.js"></script><script src="../ocr.js"></script>
+<script>
+// 가짜 값 (실제 자격증 아님)
+const c=document.getElementById('c'),g=c.getContext('2d');
+g.fillStyle='#f1f2f6';g.fillRect(0,0,1960,620);g.fillStyle='#fff';g.fillRect(12,34,1948,570);
+g.fillStyle='#e1e4ec';g.fillRect(12,34,1948,145);
+const cols=[[12,340],[340,1330],[1330,1658],[1658,1960]];
+g.strokeStyle='#cfd2d8';g.lineWidth=2;cols.forEach(([a])=>{g.beginPath();g.moveTo(a,34);g.lineTo(a,604);g.stroke()});
+[179,320,462,604].forEach(y=>{g.beginPath();g.moveTo(12,y);g.lineTo(1960,y);g.stroke()});
+g.fillStyle='#222';g.textAlign='center';
+const cell=(i,y,t,b)=>{g.font=`${b?'bold ':''}36px "Apple SD Gothic Neo", sans-serif`;g.fillText(t,(cols[i][0]+cols[i][1])/2,y)};
+['자격증번호','자격명','필기합격일자','최종합격일자'].forEach((t,i)=>cell(i,118,t,1));
+[['24201000001A','사무자동화산업기사(검정형)','2024.03.02','2024.06.14'],['25201000002B','사회조사분석사2급(검정형)','2025.03.08','2025.06.20'],['25402000003C','웹디자인개발기능사(검정형)','2025.07.01','2025.09.05']]
+.forEach((r,k)=>r.forEach((t,i)=>cell(i,262+k*142,t)));
+window.run=async()=>{const blob=await new Promise(r=>c.toBlob(r,'image/png'));const res=await PubOCR.readImages([new File([blob],'q.png',{type:'image/png'})]);document.getElementById('out').textContent=JSON.stringify(res,null,1);return res;};
+</script>

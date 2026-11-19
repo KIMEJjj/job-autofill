@@ -1,0 +1,6 @@
+<!doctype html><meta charset="utf-8"><title>속성으로 연·월 형식을 알려 주는 날짜 칸(코스트코 복무기간)</title>
+<h3>병역사항</h3>
+<table border="1"><tr><th>병역구분</th><td><label><input type="radio" name="military.militaryTypeCode" value="1">비대상</label><label><input type="radio" name="military.militaryTypeCode" value="2">군필</label></td></tr>
+<tr><th>복무기간</th><td><input type="text" data-dates="military.militaryDate:YM" name="military.militaryStartDate" class="text date start" title="시작일" readonly> ~ <input type="text" data-dates="military.militaryDate:END" data-rel-target="military" name="military.militaryEndDate" class="text date end" title="종료일" readonly></td></tr></table>
+<h3>학력사항</h3><table border="1"><tr><th>학교명</th><td><input name="highschool.schoolName"></td><th>재학기간</th><td><input type="text" data-dates="highschoolDate:YM  highschool graduationCriteriaDate" name="highschool.entranceDate" title="입학일" class="text date start" placeholder="입학일" data-rel-target="highschool" readonly> ~ <input type="text" data-dates="highschoolDate:END  highschool graduationCriteriaDate" name="highschool.graduationDate" title="졸업일" class="text date end" placeholder="졸업일" data-rel-target="highschool" readonly></td></tr></table>
+<script src="../schema.js"></script><script src="../alias.js"></script><script src="../qnet.js"></script><script src="../fill.js"></script><script src="sample.js"></script>

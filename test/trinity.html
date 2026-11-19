@@ -1,0 +1,50 @@
+<!doctype html><meta charset=utf-8><title>트리니티항공형 버튼 묶음</title><body>
+<!-- 실제 구조 참고: button[type=button] 안에 <p>글자</p>, 버튼마다 한 겹 감쌈 / 숨은 라디오가 같은 묶음 안에 있는 경우 -->
+<div><span>병역</span>
+ <div class="seg"><div><button type="button"><p>비대상</p></button></div><div><button type="button"><p>군필</p></button></div><div><button type="button"><p>미필</p></button></div><div><button type="button"><p>면제</p></button></div><div><button type="button"><p>복무중</p></button></div></div></div>
+<div><span>장애여부</span>
+ <div class="seg"><input type="radio" name="h" style="display:none"><button type="button"><p>비대상</p></button><button type="button"><p>대상</p></button></div></div>
+<div><span>보훈여부</span>
+ <div class="seg"><div><button type="button"><p>비대상</p></button></div><div><button type="button"><p>대상</p></button></div></div></div>
+<div><span>국적</span><div class="dd"><button type="button" id="nat"><p>국적을 선택해주세요.</p><svg width="20" height="20"></svg></button></div></div>
+<div><span>군별</span><div class="dd"><button type="button" id="br"><p>군별을 선택해주세요.</p><svg width="20" height="20"></svg></button></div></div>
+<div><span>특기</span><input type="text" name="etcGroupResumeItemAnswers.specialAbility" placeholder="특기를 입력해주세요."></div>
+<script>
+function dd(id, opts){ const b=document.getElementById(id); b.onclick=()=>{ let u=document.getElementById(id+'-list'); if(u){u.remove();return;} u=document.createElement('ul'); u.id=id+'-list'; u.style='position:absolute;background:#fff'; opts.forEach(o=>{const li=document.createElement('li'); const bt=document.createElement('button'); bt.type='button'; bt.textContent=o; bt.onclick=()=>{b.querySelector('p').textContent=o; u.remove();}; li.appendChild(bt); u.appendChild(li);}); document.body.appendChild(u); }; }
+dd('nat',['대한민국','미국','일본','중국']); dd('br',['육군','해군','공군','해병']);
+</script>
+<div><span>병역</span><div class="dd"><button type="button" id="rk"><p>계급을 선택해주세요.</p><svg width="20" height="20"></svg></button></div></div>
+<div><span>병역</span><div><span class="cal"><svg width="16" height="16"></svg><input placeholder="입대일" id="ms"></span> - <span class="cal"><svg width="16" height="16"></svg><input placeholder="" id="me"></span><div class="seg2"><div><button type="button" class="mo">18 개월</button></div><div><button type="button" class="mo">21 개월</button></div><div><button type="button" class="mo">24 개월</button></div></div><p>복무기간을 입력해주세요.</p></div></div>
+<script>document.querySelectorAll('.mo').forEach(b=>b.onclick=()=>{document.querySelectorAll('.mo').forEach(x=>x.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true'); const st=document.getElementById('ms').value.match(/(\d{4})\.(\d{2})\.(\d{2})/); if(st){ const n=parseInt(b.textContent); const d=new Date(+st[1],+st[2]-1,+st[3]); d.setMonth(d.getMonth()+n); d.setDate(d.getDate()-1); const me=document.getElementById('me'); me.value=d.getFullYear()+'.'+String(d.getMonth()+1).padStart(2,'0')+'.'+String(d.getDate()).padStart(2,'0'); me.dataset.ok=''; } });</script>
+<script>
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') document.querySelectorAll('._picker-wrap').forEach(p=>p.remove()); });
+// 연도(15개씩, 이전·다음) → 월 → 일 달력. 확정 값은 data-ok에 기록
+function cal(inp){ let pop=null, base=2015, Y=0, Mo=0;
+ const close=()=>{pop&&pop.remove();pop=null};
+ const yearView=()=>{pop.className='_picker-wrap'; pop.innerHTML='<div class="_header"><div class="pv"><svg width="24" height="24"></svg></div><span class="hy">2026</span><span>.11</span><div class="nx"><svg width="24" height="24"></svg></div></div>'; const g=document.createElement('div'); g.className='_year-wrap'; for(let y=base;y<base+15;y++){const b=document.createElement('button');b.type='button';b.textContent=y;b.onclick=()=>{Y=y;monthView()};g.appendChild(b);} pop.appendChild(g); pop.querySelector('.pv').onclick=()=>{base-=15;yearView()}; pop.querySelector('.nx').onclick=()=>{base+=15;yearView()}; };
+ const monthView=()=>{pop.innerHTML='<div class="_header"><div class="pv"><svg width="24" height="24"></svg></div><span class="hy">'+Y+'</span><span>.04</span><div class="nx"><svg width="24" height="24"></svg></div></div>'; pop.querySelector('.hy').onclick=()=>{ base=Y-((Y-2015)%15+15)%15; yearView(); }; for(let m=1;m<=12;m++){const b=document.createElement('button');b.type='button';b.textContent=String(m).padStart(2,'0')+'월';b.onclick=()=>{Mo=m;dayView()};pop.appendChild(b);} };
+ const dayView=()=>{pop.innerHTML='<div class="_header"><div class="pv"><svg width="24" height="24"></svg></div><span class="hy">'+Y+'</span><span>.'+String(Mo).padStart(2,'0')+'</span><div class="nx"><svg width="24" height="24"></svg></div></div>'; pop.querySelector('.hy').onclick=()=>{ base=Y-((Y-2015)%15+15)%15; yearView(); }; for(const d of [29,30,31]){const b=document.createElement('button');b.type='button';b.textContent=d;b.className='prev';pop.appendChild(b);} for(let d=1;d<=31;d++){const b=document.createElement('button');b.type='button';b.textContent=d;b.onclick=()=>{inp.value=Y+'.'+String(Mo).padStart(2,'0')+'.'+String(d).padStart(2,'0'); inp.dataset.ok='1'; if(!window.keepOpen) close();};pop.appendChild(b);} };
+ inp.addEventListener('click',()=>{ if(pop && document.body.contains(pop)) return; pop=document.createElement('div'); pop.className='_picker-wrap'; pop.style='position:absolute;background:#fff;border:1px solid #333;z-index:9'; document.body.appendChild(pop); const mm=(inp.value||'').match(/^(\d{4})\.(\d{2})/); if(mm){ Y=+mm[1]; Mo=+mm[2]; dayView(); } else yearView(); });
+ inp.addEventListener('input',()=>{ inp.dataset.ok=''; });
+}
+cal(document.getElementById('ms')); cal(document.getElementById('me'));
+</script>
+<div id="addrRow"><span>현주소</span><div><button type="button" id="openAddr">주소입력</button><input disabled placeholder="우편번호" id="z"><input disabled placeholder="주소" id="a"></div>
+<input placeholder="상세 주소를 입력해주세요." id="d"></div>
+<div><span>주민등록지</span><div><button type="button">주소입력</button><input disabled placeholder="우편번호"><input disabled placeholder="주소"></div></div>
+<div id="modal" style="display:none;position:fixed;top:20px;left:20px;background:#fff;border:1px solid #000;padding:10px">
+ <b>주소입력</b><input id="q" placeholder="예: 반포대로 201, 국립중앙도서관, 삼성동 25"><button type="button" id="go">검색</button>
+ <ul id="res"></ul><div><span>기본주소</span><span id="base"></span></div><div><span>상세주소</span><input id="md" placeholder="상세주소를 입력하세요."></div><button type="button" id="cancel">취소</button><button type="button" id="ok" disabled>확인</button></div>
+<script>
+document.addEventListener('input',e=>{if(e.target.id==='md') document.getElementById('ok').disabled=!(e.target.value&&document.getElementById('base').textContent);});
+dd('rk',['이병','일병','상병','병장','하사']);
+let picked=null; const M=document.getElementById('modal');
+document.getElementById('openAddr').onclick=()=>{M.style.display='block';};
+document.getElementById('go').onclick=()=>{ const q=document.getElementById('q').value; const r=document.getElementById('res'); r.innerHTML=''; if(!q) return;
+  setTimeout(()=>{ [['04524','서울특별시 중구 을지로 79'],['04525','서울특별시 중구 을지로 81']].forEach(([z,a])=>{ const li=document.createElement('li'); li.innerHTML='<div><span>도로명</span><p>'+a+' (을지로2가)</p></div><div><span>지번</span><p>서울특별시 중구 을지로2가 100</p></div>'; li.querySelector('p').onclick=()=>{picked=[z,a]; document.getElementById('base').textContent=a; document.getElementById('ok').disabled=!document.getElementById('md').value;}; r.appendChild(li); }); },300); };
+document.getElementById('ok').onclick=()=>{ document.getElementById('z').value=picked[0]; document.getElementById('a').value=picked[1]; document.getElementById('d').value=document.getElementById('md').value; M.style.display='none'; };
+document.getElementById('cancel').onclick=()=>{M.style.display='none'};
+</script>
+<script>document.querySelectorAll('.seg button').forEach(b=>b.onclick=()=>{b.closest('.seg').querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true')});</script>
+<script src="../schema.js"></script><script src="../alias.js"></script><script src="../qnet.js"></script><script src="../fill.js"></script><script src="sample.js"></script>
+</body>

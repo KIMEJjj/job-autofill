@@ -1,0 +1,9 @@
+# 2026-11-19 검색으로 찾은 추가 후보. A-4 결과에서 공고가 확인된 회사만 남김.
+gintlab
+deepauto-ai
+elyssia
+echomarketing
+hanamts
+parnas
+sase
+rsquare

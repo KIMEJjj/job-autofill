@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "지원서 자동입력",
+  "version": "0.5.98",
+  "description": "내 정보는 브라우저에 암호화 저장됩니다. 일반 자동입력은 외부 전송하지 않으며, Postcodify 주소 검색은 검색어를 주소 서비스에 전달합니다.",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage",
+    "clipboardWrite",
+    "debugger",
+    "nativeMessaging"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "지원서 자동입력"
+  },
+  "options_page": "options.html",
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'"
+  },
+  "background": {
+    "service_worker": "background.js"
+  }
+}

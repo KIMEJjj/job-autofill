@@ -1,0 +1,1 @@
+(async()=>{const r=await window.__pubFill(window.SAMPLE,{});await new Promise(r=>setTimeout(r,1000));return r.filled+"/"+r.check+" name="+keyData.checkName+" email="+keyData.checkEmail+" picker="+pickerOpened})()

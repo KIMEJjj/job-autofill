@@ -1,0 +1,59 @@
+name: 안 되는 사이트 알리기
+description: 이 사이트에서 칸이 안 채워지거나 잘못 채워질 때
+title: "[사이트] "
+labels: ["사이트 대응"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **실제 개인정보(이름·연락처·주민번호·주소·캡처 속 개인정보)를 적지 마세요.** 이 글은 누구나 볼 수 있습니다.
+        팝업의 **칸 목록 복사 (값 제외)**는 칸 이름과 구조만 복사하므로 그대로 붙여 넣어도 됩니다.
+  - type: input
+    id: url
+    attributes:
+      label: 지원서 주소(URL)
+      description: 회사 채용 사이트의 지원서 화면 주소
+      placeholder: https://회사.recruiter.co.kr/app/applicant/...
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: 확장 버전
+      description: 팝업 칸 목록 첫 줄 또는 chrome://extensions 에 보이는 버전
+      placeholder: "0.5.97"
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: 안 된 항목과 증상
+      description: 예) 복무기간 종료일에서 "예시와 같이 입력해주세요" 알림, 주소 검색 창이 열리기만 하고 고르지 못함
+    validations:
+      required: true
+  - type: textarea
+    id: scan
+    attributes:
+      label: 칸 목록 복사 결과 (값 제외)
+      description: 팝업 → 칸 목록 복사 (값 제외) → 여기에 붙여 넣기
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: popup
+    attributes:
+      label: 팝업에 나온 문구 (있으면)
+      description: "예) 자동 검색 상태: 검색 결과 2줄 중 내 주소와 같은 줄을 찾지 못했습니다."
+  - type: textarea
+    id: html
+    attributes:
+      label: 문제 칸의 HTML 한 줄 (있으면)
+      description: 칸에서 오른쪽 클릭 → 검사 → <input …> 한 줄 복사. value="…" 안의 값은 지우고 붙여 넣으세요.
+      render: html
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: 확인
+      options:
+        - label: 실제 개인정보를 적거나 첨부하지 않았습니다.
+          required: true

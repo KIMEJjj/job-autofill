@@ -1,0 +1,31 @@
+<!doctype html><meta charset="utf-8"><title>recruiter 예전 화면 우편번호 찾기(코스트코 구조)</title>
+<style>.layer{display:none;position:fixed;left:40px;top:40px;width:600px;background:#fff;border:1px solid #888;padding:16px}.on{display:block}</style>
+<table border="1"><tr><th>주소</th><td><span>현주소</span>
+<div class="zipRow"><a href="javascript:;" id="zipBtn" class="btn">우편번호</a> <span id="zipTxt"></span><input type="hidden" name="currentAddress.zipCode" id="zipHidden"></div>
+<div><input type="text" name="currentAddress.address" id="addr" readonly> <input type="text" name="currentAddress.detailAddress" id="det" readonly></div>
+</td></tr></table>
+<div class="layer" id="zipLayer"><h2>우편번호 찾기</h2>
+<div><input type="text" id="q" placeholder="예 : 반포대교로 201, 국립중앙도서관, 삼성동 25"><button type="button" id="go">검색</button></div>
+<ul id="res"></ul>
+<dl><dt>기본주소</dt><dd id="base">-</dd><dt>상세주소</dt><dd><input type="text" id="md" placeholder="상세주소를 입력하세요"></dd></dl>
+<div><button type="button" id="save">저장</button><button type="button" id="cancel">취소</button></div></div>
+<div class="layer" id="cf"><p>저장하시겠습니까?</p><button type="button" id="cfOk">확인</button><button type="button" id="cfNo">취소</button></div>
+<script>
+const $=id=>document.getElementById(id);let picked=null;
+$('zipBtn').onclick=()=>$('zipLayer').classList.add('on');
+// ?multi=1: 결과 2줄, 글자를 a > span(도로명) + em(지번)으로 나눔(태그 차이·구주소 비교 시험)
+const MULTI=/multi=1/.test(location.search);
+const ROWS=MULTI?[['04523','서울특별시 중구 을지로 77','을지로2가 199-10'],['04524','서울특별시 중구 을지로 79','을지로2가 199-15']]:[['04524','서울특별시 중구 을지로 79','을지로2가 199-15']];
+$('go').onclick=()=>{setTimeout(()=>{$('res').innerHTML='';if(!$('q').value)return;for(const [z,road,jb] of ROWS){const li=document.createElement('li');const a=document.createElement('a');a.href='javascript:;';if(MULTI){a.innerHTML='<span>'+road+'</span> <em>('+jb+')</em>';}else a.textContent=road+'  ('+jb+')';a.onclick=()=>{picked={zip:z,addr:road};if(window.__setBase)__setBase(z+'  '+road);else $('base').textContent=z+'  '+road;};li.appendChild(a);$('res').appendChild(li);}},300);};
+// ?ovl=1: 상세주소 안내 글자를 칸 위 label로 겹치고(placeholder 없음), 커서가 머무는 동안에만 검사(100ms)해 통과해야 저장
+const OVL=/ovl=1/.test(location.search);let mdOk=!OVL,iv=null;
+if(OVL){/* 기본주소: label + 옆 div 안에 글자 span과 숨은 칸 */const dl=$('base').closest('dl');const box=document.createElement('div');box.innerHTML='<div class="row"><label class="span per15 title">기본주소</label><div class="span per85"><span id="baseTxt">-</span><input type="hidden" id="baseZip"></div></div>';dl.parentElement.insertBefore(box,dl);$('base').remove();dl.querySelector('dt').remove();
+window.__setBase=(t)=>{$('baseTxt').textContent=t;};}
+if(OVL){const md=$('md');md.removeAttribute('placeholder');md.name='';const l=document.createElement('label');l.className='span per15 title';l.textContent='상세주소';md.parentElement.parentElement.insertBefore(l,md.parentElement);
+md.addEventListener('focus',()=>{iv=setInterval(()=>{mdOk=md.value.trim().length>0;},100);});md.addEventListener('blur',()=>clearInterval(iv));}
+$('save').onclick=()=>{if(!picked){alert('주소를 선택하세요');return;}if(!mdOk){window.__alerts=(window.__alerts||[]).concat('상세주소를 입력하세요');return;}$('cf').classList.add('on');};
+$('cfNo').onclick=()=>$('cf').classList.remove('on');
+$('cfOk').onclick=()=>{$('cf').classList.remove('on');$('zipLayer').classList.remove('on');$('zipTxt').textContent=picked.zip;$('zipHidden').value=picked.zip;$('addr').value=picked.addr;$('det').value=$('md').value;};
+$('cancel').onclick=()=>$('zipLayer').classList.remove('on');
+</script>
+<script src="../schema.js"></script><script src="../alias.js"></script><script src="../qnet.js"></script><script src="../fill.js"></script><script src="sample.js"></script>

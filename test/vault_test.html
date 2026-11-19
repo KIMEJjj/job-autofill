@@ -1,0 +1,26 @@
+<!doctype html><meta charset="utf-8"><title>vault test</title><pre id="o"></pre>
+<script src="chrome-stub.js"></script><script src="../vault.js"></script>
+<script>
+(async()=>{ const L=[]; const ok=(n,c)=>L.push((c?'PASS ':'FAIL ')+n);
+ const P={name:'홍길동',phone:'010-1234-5678',education:[{school:'테스트대학교'}]};
+ await chrome.storage.local.set({profile:P});
+ ok('legacy 상태', await PubVault.state()==='legacy');
+ await PubVault.create('testpass123');
+ const raw=JSON.stringify(chrome.storage.local._m);
+ ok('평문 profile 삭제', !('profile' in chrome.storage.local._m));
+ ok('저장소에 평문 없음', !raw.includes('홍길동') && !raw.includes('010-1234') && !raw.includes('테스트대학교'));
+ ok('잠금 암호 저장 안 함', !raw.includes('testpass123') && !JSON.stringify(chrome.storage.session._m).includes('testpass123'));
+ ok('옛 정보 이전', JSON.stringify(await PubVault.load())===JSON.stringify(P));
+ await PubVault.lock(); ok('잠김', await PubVault.state()==='locked');
+ let threw=false; try{await PubVault.load()}catch{threw=true} ok('잠긴 상태 읽기 불가', threw);
+ ok('틀린 암호 거부', (await PubVault.unlock('wrongpass1'))===false);
+ ok('맞는 암호 해제', (await PubVault.unlock('testpass123'))===true);
+ await PubVault.save({...P,email:'a@b.com'}); ok('저장·읽기', (await PubVault.load()).email==='a@b.com');
+ const v1=await PubVault.exportVault(); await PubVault.save({...P,email:'a@b.com'}); const v2=await PubVault.exportVault();
+ ok('저장마다 IV 새로', v1.iv!==v2.iv);
+ await PubVault.changePass('newpass456'); await PubVault.lock();
+ ok('암호 변경 후 옛 암호 거부', (await PubVault.unlock('testpass123'))===false);
+ ok('새 암호 해제', (await PubVault.unlock('newpass456'))===true);
+ const bk=await PubVault.exportVault(); ok('백업 파일 암호화', !JSON.stringify(bk).includes('홍길동'));
+ document.getElementById('o').textContent=L.join('\n'); window.RESULT=L; })();
+</script>

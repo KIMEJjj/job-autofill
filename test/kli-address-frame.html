@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="ko">
+<head><meta charset="utf-8"><title>KLI 주소 프레임 재현 시험</title></head>
+<body>
+  <label>주소 <input name="currentAddress.address" type="text"></label>
+  <label>상세 주소 <input name="currentAddress.detailAddress" type="text"></label>
+  <input name="postcodify_hidden" type="text" style="display:none">
+  <iframe src="kli-address-frame-content.html" title="우편번호 검색"></iframe>
+  <script src="../schema.js"></script>
+  <script src="../alias.js"></script>
+  <script src="../qnet.js"></script>
+  <script src="sample.js"></script>
+  <script src="../fill.js"></script>
+</body>
+</html>
