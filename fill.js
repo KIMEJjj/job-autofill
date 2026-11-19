@@ -3,7 +3,7 @@
 // 사용: window.__pubFill(profile, { overwrite:false })  /  window.__pubScan()
 (function () {
   // 버전이 같을 때만 다시 불러오지 않음 (확장을 고친 뒤에는 페이지 새로고침 없이도 새 엔진 사용)
-  const ENGINE = '0.5.99';
+  const ENGINE = '0.5.101';
   if (window.__pubFillLoaded === ENGINE) return;
   window.__pubFillLoaded = ENGINE;
   const { SCALAR, LISTS } = window.PUBFILL_SCHEMA;
@@ -358,8 +358,12 @@
     }
     let best = null;
     const isChoice = el.tagName === 'SELECT' || el.type === 'radio';
+    const emailBoxOk = el.tagName === 'SELECT' ? [...el.options].some(o => /\.(com|net|kr|co|org)\b|직접\s*입력/i.test(o.text + ' ' + o.value))
+      : !(el.type === 'radio' || el.type === 'checkbox' || el.getAttribute('role') === 'combobox' || (el.closest && el.closest('[class*="select__control"]')));
     const consider = (cand, score) => {
       if (cand.field.type === 'period' && isChoice) return; // 기간 쌍은 날짜 칸에만
+      // 이메일은 글자 칸(또는 도메인 고르는 목록: naver.com·직접입력)에만. '채용 소식을 이메일로 받기' 같은 예/아니오 목록·선택 목록(Agoda)에는 잇지 않음
+      if (cand.field.type === 'email' && !emailBoxOk) return;
       if (cand.field.type === 'period' && /입대|전역|제대|입학|졸업|입사|퇴사|시작일|종료일/.test(d)) return; // '입대일자'처럼 한쪽 날짜면 기간 칸 아님
       if (score > 0 && (!best || score > best.score)) best = { ...cand, score };
     };
@@ -1032,7 +1036,7 @@
         mark(t.btn, ok); if (ok) n++; else check++;
         continue;
       }
-      if (!v) { if (!t.list) missing.push(t.field.label); mark(t.btn, false); check++; continue; }
+      if (!v) { if (!t.list && !t.field.derived) missing.push(t.field.label); mark(t.btn, false); check++; continue; }
       ok = t.isDate ? await arkDate(t.btn, v) : await arkSelect(t.btn, v);
       mark(t.btn, ok); if (ok) n++; else check++;
     }
@@ -1362,6 +1366,8 @@
   }
 
   window.__pubFill = function (profile, opts = {}) {
+    // 계산해서 쓰는 값(저장 안 함): 주소가 한국 주소(한글)면 거주 국가 = 대한민국. 사용자가 값을 넣었다면 그대로
+    if (profile && !profile.residenceCountry && /[가-힣]/.test(profile.address1 || '')) profile = { ...profile, residenceCountry: '대한민국' };
     if (opts.addressOnly) {
       if (!profile.address1) return { filled: 0, check: 0 };
       return fillKliPostcodify(profile).then(state => {
@@ -1500,7 +1506,7 @@
         if (!value) { g.els.forEach(e => done.add(e)); continue; } // 내 정보에 없는 줄·칸은 일부러 비워 둠
       } else value = g.m.field.type === 'period' ? ((profile[g.m.field.from] || profile[g.m.field.to]) ? [profile[g.m.field.from], profile[g.m.field.to]] : '') : profile[g.m.field.key];
       if (!g.m.list && (g.m.field.key === 'name' || g.m.field.key === 'nameEn') && value) value = namePart(g.els[0], g.m.field.key, value, profile);
-      if (!value) { missing.add(g.m.field.label); continue; }
+      if (!value) { if (!g.m.field.derived) missing.add(g.m.field.label); continue; }
       const targets = opts.overwrite ? g.els : g.els.filter(isEmpty);
       if (!targets.length) { g.els.forEach(e => done.add(e)); continue; }
       // 주소가 한 칸 묶음에 (우편번호, 주소, 상세주소) 함께 있는 경우
@@ -1562,7 +1568,7 @@
         continue;
       }
       v = profile[x.m.field.key];
-      if (!v) { missing.add(x.m.field.label); mark(els[0], false); continue; }
+      if (!v) { if (!x.m.field.derived) missing.add(x.m.field.label); mark(els[0], false); continue; }
       const rr = fillRadios(els, x.m.field, v);
       if (rr) { if (rr === 1) filled++; els.forEach(e => done.add(e)); }
       else { nochoice.add(x.m.field.label); mark(els[0], false); }

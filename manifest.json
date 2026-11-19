@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "지원서 자동입력",
-  "version": "0.5.99",
+  "version": "0.5.101",
   "description": "내 정보는 브라우저에 암호화 저장됩니다. 일반 자동입력은 외부 전송하지 않으며, Postcodify 주소 검색은 검색어를 주소 서비스에 전달합니다.",
   "permissions": [
     "activeTab",

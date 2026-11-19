@@ -79,13 +79,17 @@ want="s=2019.05 e=2020.11 hs=2015.03 he=2018.02"
 got=$(NOINJECT=1 node test/headless/cdp.mjs "$ROOT" "http://127.0.0.1:8765/test/ym-date.html" "$PORT" test/headless/ym-date.js 2>&1 | tail -1)
 if [ "$got" = "$want" ]; then ok "ym-date $got"; else bad "ym-date 기대 $want / 실제 $got"; fi
 
-say "== 1f. 해외 지원서 (Greenhouse 학력 구역, Recruitee 이름) =="
+say "== 1f. 해외 지원서 (Greenhouse 학력 구역, Recruitee 이름, 거주 국가) =="
 want="sy=2018 ey=2025 rs=degree=학사,endMonth=February,majorEn=Business Administration,schoolEn=Test University,startMonth=March"
 got=$(NOINJECT=1 node test/headless/cdp.mjs "$ROOT" "http://127.0.0.1:8765/test/gh-education.html" "$PORT" test/headless/gh-education.js 2>&1 | tail -1)
 if [ "$got" = "$want" ]; then ok "gh-education $got"; else bad "gh-education 기대 $want / 실제 $got"; fi
 want="3/0 name=HONG GILDONG email=testuser@gmail.com phone=010-1234-5678"
 got=$(NOINJECT=1 node test/headless/cdp.mjs "$ROOT" "http://127.0.0.1:8765/test/recruitee.html" "$PORT" test/headless/recruitee.js 2>&1 | tail -1)
 if [ "$got" = "$want" ]; then ok "recruitee $got"; else bad "recruitee 기대 $want / 실제 $got"; fi
+
+want="a=South Korea l=Korea, Republic of t=대한민국 c=Seoul q=none miss= e5= e6= rs= mail=testuser@gmail.com | foreign a= l= t= miss="
+got=$(NOINJECT=1 node test/headless/cdp.mjs "$ROOT" "http://127.0.0.1:8765/test/residence.html" "$PORT" test/headless/residence.js 2>&1 | tail -1)
+if [ "$got" = "$want" ]; then ok "residence $got"; else bad "residence 기대 $want / 실제 $got"; fi
 
 say "== 2. 사진 첨부 =="
 PHOTO=$(node test/headless/cdp.mjs "$ROOT" "http://127.0.0.1:8765/test/photo.html" 9369 test/headless/photo.js 2>&1)
@@ -140,6 +144,11 @@ UI=$(node test/headless/ui-check.mjs "$ROOT" 9366 2>&1 | tail -1)
 if printf '%s' "$UI" | grep -q '"ok":true'; then ok "팝업 버튼 6개 · 콘솔 오류 0"; else bad "ui-check: $UI"; fi
 
 if [ "${FORCE_FAIL:-0}" = "1" ]; then bad "FORCE_FAIL=1 자기 시험"; fi
+
+say "== 7. 실제 확장 (시험용 크롬에 올려 툴바 팝업으로) =="
+# 설정 화면 잠금 암호·사진·지원 기록 저장 후 다시 열기, 칸 알려 주기, 채우기와 지원 기록. GH_URLS를 주면 실제 Greenhouse 선택 목록까지
+RX=$(timeout 400 node test/headless/real-ext.mjs "$ROOT" ${GH_URLS:-} 2>&1 | tail -1)
+if printf '%s' "$RX" | grep -q '"ok":true'; then ok "real-ext $(printf '%s' "$RX" | python3 -c 'import json,sys; d=json.load(sys.stdin)["steps"]; print("사진·기록 유지, 알려 주기", d["teach"]["marked"], "칸, 채움", d["fill"]["filled"], "칸", *[g["url"].split("/")[3]+" 목록 "+str(len(g["picked"])) for g in d.get("greenhouse",[])])')"; else bad "real-ext: $RX"; fi
 
 say "== 결과 =="
 if [ "$FAIL" -eq 0 ]; then say "전체 통과"; exit 0; else say "실패 있음"; exit 1; fi

@@ -12,6 +12,8 @@
       { key: 'birth', label: '생년월일', type: 'date', kw: ['생년월일', '생일', 'birth'] },
       { key: 'gender', label: '성별', type: 'select', choices: ['', '남', '여'], kw: ['성별'] },
       { key: 'nationality', label: '국적', placeholder: '대한민국', kw: ['국적', 'country', 'nationality'] },
+      // 거주 국가(해외 지원서 'currently based' 질문): 저장하지 않고 채울 때 주소가 한국 주소면 '대한민국'으로 계산(fill.js derive)
+      { key: 'residenceCountry', label: '거주 국가', hidden: true, derived: true, kw: ['거주국가', '거주국', '거주지국가', 'countryofresidence', 'residencecountry', 'currentlybased', 'currentlylocated', 'whatisyourlocation', 'countryyouliveinnow', 'countrywhereyoulive'] },
       { key: 'phone', label: '휴대폰', type: 'phone', placeholder: '010-1234-5678', kw: ['휴대폰', '휴대전화', '핸드폰', '이동전화', '연락처', 'mobile', 'cellphone'], ex: ['비상', '긴급', '보호자', '자택', '집', '인증', '회사', '추천', '유선'] },
       { key: 'tel', label: '자택전화', type: 'phone', kw: ['자택전화', '집전화', '전화번호(자택)', '유선전화', '일반전화'] },
       { key: 'emergencyPhone', label: '비상연락처', type: 'phone', kw: ['비상연락', '긴급연락'] },
