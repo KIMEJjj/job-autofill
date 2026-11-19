@@ -79,6 +79,14 @@ want="s=2019.05 e=2020.11 hs=2015.03 he=2018.02"
 got=$(NOINJECT=1 node test/headless/cdp.mjs "$ROOT" "http://127.0.0.1:8765/test/ym-date.html" "$PORT" test/headless/ym-date.js 2>&1 | tail -1)
 if [ "$got" = "$want" ]; then ok "ym-date $got"; else bad "ym-date 기대 $want / 실제 $got"; fi
 
+say "== 1f. 해외 지원서 (Greenhouse 학력 구역, Recruitee 이름) =="
+want="sy=2018 ey=2025 rs=degree=학사,endMonth=February,majorEn=Business Administration,schoolEn=Test University,startMonth=March"
+got=$(NOINJECT=1 node test/headless/cdp.mjs "$ROOT" "http://127.0.0.1:8765/test/gh-education.html" "$PORT" test/headless/gh-education.js 2>&1 | tail -1)
+if [ "$got" = "$want" ]; then ok "gh-education $got"; else bad "gh-education 기대 $want / 실제 $got"; fi
+want="3/0 name=HONG GILDONG email=testuser@gmail.com phone=010-1234-5678"
+got=$(NOINJECT=1 node test/headless/cdp.mjs "$ROOT" "http://127.0.0.1:8765/test/recruitee.html" "$PORT" test/headless/recruitee.js 2>&1 | tail -1)
+if [ "$got" = "$want" ]; then ok "recruitee $got"; else bad "recruitee 기대 $want / 실제 $got"; fi
+
 say "== 2. 사진 첨부 =="
 PHOTO=$(node test/headless/cdp.mjs "$ROOT" "http://127.0.0.1:8765/test/photo.html" 9369 test/headless/photo.js 2>&1)
 PHOTO_CHECK=$(printf '%s' "$PHOTO" | python3 -c '

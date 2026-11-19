@@ -1,0 +1,1 @@
+(async()=>{const r=await window.__pubFill(window.SAMPLE,{});const v=id=>document.getElementById(id).value;return r.filled+"/"+r.check+" name="+v('candidate-name')+" email="+v('candidate-email')+" phone="+v('candidate-phone')})()

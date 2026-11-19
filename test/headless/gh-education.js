@@ -1,0 +1,1 @@
+(async()=>{const r=await window.__pubFill(window.SAMPLE,{});const v=id=>document.getElementById(id).value;const rs=(r.rsTargets||[]).map(t=>t.field.split('.').pop()+'='+t.value).sort().join(',');return "sy="+v('start-year--0')+" ey="+v('end-year--0')+" rs="+rs})()

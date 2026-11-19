@@ -1,0 +1,58 @@
+[
+  {
+    "site": "https://apply.workable.com/huggingface/j/DB4D7C0EC8/apply/",
+    "url": "https://apply.workable.com/huggingface/j/DB4D7C0EC8/apply/",
+    "status": "진단",
+    "title": "Senior Open-Source Python Engineer, ML Developer Tools - EMEA Remote - Hugging Face - Application",
+    "files": [
+      "[ ] * Resume Choose file or drag and drop he {.pdf,.doc,.docx,.odt,.rtf,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.oasis.opendocument.text,application/rtf}"
+    ],
+    "photo": 0,
+    "filled": 4,
+    "check": 3,
+    "total": 21,
+    "recognized": 7,
+    "excluded": 0,
+    "unknown": [
+      "Expected salary (Optional) | Expected salary [input:text] CA_10626",
+      "SVGs not supported by this browser. | Notice period / availa [input:text] input_CA_10627_input",
+      "SVGs not supported by this browser. [input:text] CA_10627",
+      "YES [input:radio] CA_10628",
+      "NO [input:radio] CA_10628",
+      "YES [input:radio] QA_12487756",
+      "NO [input:radio] QA_12487756",
+      "YES [input:radio] QA_12487757",
+      "NO [input:radio] QA_12487757",
+      "YES [input:radio] QA_12487758",
+      "NO [input:radio] QA_12487758"
+    ]
+  },
+  {
+    "site": "https://apply.workable.com/huggingface/j/F88446C814/apply/",
+    "url": "https://apply.workable.com/huggingface/j/F88446C814/apply/",
+    "status": "진단",
+    "title": "Senior Open-Source Python Engineer, ML Developer Tools - US Remote - Hugging Face - Application",
+    "files": [
+      "[ ] * Resume Choose file or drag and drop he {.pdf,.doc,.docx,.odt,.rtf,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.oasis.opendocument.text,application/rtf}"
+    ],
+    "photo": 0,
+    "filled": 4,
+    "check": 3,
+    "total": 21,
+    "recognized": 7,
+    "excluded": 0,
+    "unknown": [
+      "Expected salary (Optional) | Expected salary [input:text] CA_10626",
+      "SVGs not supported by this browser. | Notice period / availa [input:text] input_CA_10627_input",
+      "SVGs not supported by this browser. [input:text] CA_10627",
+      "YES [input:radio] CA_10628",
+      "NO [input:radio] CA_10628",
+      "YES [input:radio] QA_12487827",
+      "NO [input:radio] QA_12487827",
+      "YES [input:radio] QA_12487828",
+      "NO [input:radio] QA_12487828",
+      "YES [input:radio] QA_12487829",
+      "NO [input:radio] QA_12487829"
+    ]
+  }
+]

@@ -1,0 +1,331 @@
+[
+  {
+    "site": "https://jobs.lever.co/veeva/197796f3-d4fa-40df-9e65-61806d47bd56",
+    "url": "https://jobs.lever.co/veeva/197796f3-d4fa-40df-9e65-61806d47bd56/apply",
+    "status": "진단",
+    "title": "Not found – 404 error",
+    "files": [],
+    "photo": 0,
+    "filled": 0,
+    "check": 0,
+    "total": 0,
+    "recognized": 0,
+    "excluded": 0,
+    "unknown": []
+  },
+  {
+    "site": "https://jobs.lever.co/insiderone",
+    "url": "https://jobs.lever.co/insiderone/5189ace2-70a3-44bd-bda5-f2ad1bd44f20/apply",
+    "status": "진단",
+    "title": "Insider One - Account Manager - Bogota",
+    "files": [
+      "[ ] Resume/CV ATTACH RESUME/CV"
+    ],
+    "photo": 0,
+    "filled": 8,
+    "check": 0,
+    "total": 7,
+    "recognized": 7,
+    "excluded": 0,
+    "unknown": []
+  },
+  {
+    "site": "https://jobs.lever.co/palantir",
+    "url": "https://jobs.lever.co/palantir/1bb19522-3936-4adc-9ced-c3df8b5900b9/apply",
+    "status": "진단",
+    "title": "Palantir Technologies - Forward Deployed Software Engineer",
+    "files": [
+      "[ ] Resume/CV ✱ ATTACH RESUME/CV"
+    ],
+    "photo": 0,
+    "filled": 9,
+    "check": 5,
+    "total": 23,
+    "recognized": 8,
+    "excluded": 0,
+    "unknown": [
+      "Supplementary Questions | Type your response [input:text] cards[a69a985a-eae9-4c14-90fb-b5a4b891523e][field1]",
+      "Supplementary Questions | Type your response [input:text] cards[a69a985a-eae9-4c14-90fb-b5a4b891523e][field2]",
+      "Yes [input:radio] cards[1c719ca9-5069-4afe-9e82-39ca420e0edb][field0]",
+      "No [input:radio] cards[1c719ca9-5069-4afe-9e82-39ca420e0edb][field0]",
+      "Yes [input:radio] cards[1c719ca9-5069-4afe-9e82-39ca420e0edb][field1]",
+      "No [input:radio] cards[1c719ca9-5069-4afe-9e82-39ca420e0edb][field1]",
+      "✱ [select:select-one] cards[d54adf7b-3148-4095-93bb-72bef32a61f8][field1]",
+      "University [select:select-one] cards[3da58b41-acf5-40a1-945e-c7f047ef8050][field0]",
+      "✱ [select:select-one] cards[a6197d84-549e-4a91-8bb0-6af972510013][field0]",
+      "Yes, I consent [input:radio] cards[73796cde-fc01-4758-9002-c85155f3503d][field0]",
+      "No, I do not consent [input:radio] cards[73796cde-fc01-4758-9002-c85155f3503d][field0]"
+    ]
+  },
+  {
+    "site": "https://jobs.lever.co/bluebottlecoffee",
+    "url": "https://jobs.lever.co/bluebottlecoffee/ec37b73d-2937-4469-9477-161967d04380/apply",
+    "status": "진단",
+    "title": "Blue Bottle Coffee - (인재풀) Barista (25h) - 서울/경기/인천 Seoul Metropolitan",
+    "files": [
+      "[ ] Resume/CV ✱ ATTACH RESUME/CV"
+    ],
+    "photo": 0,
+    "filled": 6,
+    "check": 3,
+    "total": 17,
+    "recognized": 6,
+    "excluded": 1,
+    "unknown": [
+      "즉시 [input:radio] cards[dd4da239-9146-48cb-9ca4-0407f1d18c7c][field2]",
+      "2주 이내 [input:radio] cards[dd4da239-9146-48cb-9ca4-0407f1d18c7c][field2]",
+      "1개월 이내 [input:radio] cards[dd4da239-9146-48cb-9ca4-0407f1d18c7c][field2]",
+      "협의 후, 결정 [input:radio] cards[dd4da239-9146-48cb-9ca4-0407f1d18c7c][field2]",
+      "동의합니다 [input:radio] cards[9fe54c73-7aee-4d4f-8903-163c97ecadd7][field0]",
+      "동의합니다 [input:radio] cards[9fe54c73-7aee-4d4f-8903-163c97ecadd7][field1]",
+      "Gender [select:select-one] eeo[gender]",
+      "RaceHispanic or LatinoA person of Cuban, Mexican, Puerto Ric [select:select-one] eeo[race]",
+      "Veteran status [select:select-one] eeo[veteran]"
+    ]
+  },
+  {
+    "site": "https://jobs.lever.co/xsolla",
+    "url": "https://jobs.lever.co/xsolla/1d90094e-377f-448f-89ef-de5ae413c0e2/apply",
+    "status": "진단",
+    "title": "Xsolla - Public Relations Manager, APAC",
+    "files": [
+      "[ ] Resume/CV ✱ ATTACH RESUME/CV"
+    ],
+    "photo": 0,
+    "filled": 9,
+    "check": 9,
+    "total": 20,
+    "recognized": 9,
+    "excluded": 0,
+    "unknown": [
+      "Submit your application [select:select-one] opportunityLocationId",
+      "Twitter URL [input:text] urls[Twitter]",
+      "Getting to Know You [select:select-one] cards[3655404a-c045-48c4-958f-919c31287ee4][field0]",
+      "Getting to Know You | Type your response [input:text] cards[3655404a-c045-48c4-958f-919c31287ee4][field1]",
+      "Gender [select:select-one] eeo[gender]",
+      "RaceHispanic or LatinoA person of Cuban, Mexican, Puerto Ric [select:select-one] eeo[race]",
+      "Veteran status [select:select-one] eeo[veteran]",
+      "What is your location? [select:select-one] "
+    ]
+  },
+  {
+    "site": "https://jobs.lever.co/matchgroup",
+    "url": "https://jobs.lever.co/matchgroup/d5bfb112-3638-4cc8-982a-9cb515711af5/apply",
+    "status": "진단",
+    "title": "Match Group - Senior, Machine Learning Research Scientist (Azar)",
+    "files": [
+      "[ ] Resume/CV ✱ ATTACH RESUME/CV"
+    ],
+    "photo": 0,
+    "filled": 9,
+    "check": 3,
+    "total": 17,
+    "recognized": 10,
+    "excluded": 0,
+    "unknown": [
+      "Job Source [select:select-one] cards[0e0cf60a-07b7-43d8-a591-369dcbbf9154][field0]",
+      "✱ [input:radio] cards[0706bd07-3e86-4ca6-9c0b-b4f9fd9a9b5b][field0]",
+      "✱ [input:radio] cards[0706bd07-3e86-4ca6-9c0b-b4f9fd9a9b5b][field0]",
+      "HPCNT - Korea Visa | Type your response [input:text] cards[0706bd07-3e86-4ca6-9c0b-b4f9fd9a9b5b][field1]",
+      "Female [input:radio] surveysResponses[a025f000-ffd1-400a-bdf2-be50f57f6908][responses][field0]",
+      "Male [input:radio] surveysResponses[a025f000-ffd1-400a-bdf2-be50f57f6908][responses][field0]",
+      "Prefer not to answer [input:radio] surveysResponses[a025f000-ffd1-400a-bdf2-be50f57f6908][responses][field0]"
+    ]
+  },
+  {
+    "site": "https://jobs.lever.co/weloglobal",
+    "url": "https://jobs.lever.co/weloglobal/4f12d1f4-06b8-4b9e-ab24-25b3b1c83e4e/apply",
+    "status": "진단",
+    "title": "Welo Global - English to Japanese linguist for Patent",
+    "files": [
+      "[ ] Resume/CV ✱ ATTACH RESUME/CV"
+    ],
+    "photo": 0,
+    "filled": 9,
+    "check": 2,
+    "total": 20,
+    "recognized": 9,
+    "excluded": 0,
+    "unknown": [
+      "Submit your application [select:select-one] opportunityLocationId",
+      "None [input:radio] cards[cb0cbe80-08dc-4b8f-9576-04f5434a2841][field0]",
+      "1 year or more [input:radio] cards[cb0cbe80-08dc-4b8f-9576-04f5434a2841][field0]",
+      "2 years or more [input:radio] cards[cb0cbe80-08dc-4b8f-9576-04f5434a2841][field0]",
+      "IT [input:radio] cards[cb0cbe80-08dc-4b8f-9576-04f5434a2841][field1]",
+      "Mechanics [input:radio] cards[cb0cbe80-08dc-4b8f-9576-04f5434a2841][field1]",
+      "Biology [input:radio] cards[cb0cbe80-08dc-4b8f-9576-04f5434a2841][field1]",
+      "Electricity [input:radio] cards[cb0cbe80-08dc-4b8f-9576-04f5434a2841][field1]",
+      "Biochemistry/Chemistry [input:radio] cards[cb0cbe80-08dc-4b8f-9576-04f5434a2841][field1]",
+      "Life Science/Medical related documents [input:radio] cards[cb0cbe80-08dc-4b8f-9576-04f5434a2841][field1]",
+      "None [input:radio] cards[cb0cbe80-08dc-4b8f-9576-04f5434a2841][field1]"
+    ]
+  },
+  {
+    "site": "https://jobs.lever.co/shopback-2",
+    "url": "https://jobs.lever.co/shopback-2/b304cac9-698b-463a-b09d-9c72bf015561/apply",
+    "status": "진단",
+    "title": "ShopBack - Social Media & Community Coordinator (Contract)",
+    "files": [
+      "[ ] Resume/CV ✱ ATTACH RESUME/CV"
+    ],
+    "photo": 0,
+    "filled": 8,
+    "check": 5,
+    "total": 14,
+    "recognized": 7,
+    "excluded": 0,
+    "unknown": [
+      "Additional Information - Korea | Type your response [input:text] cards[68163358-815d-443b-940b-37c6d19b0d54][field0]",
+      "Salary Expectation (KRW)✱ | Type your response [input:text] cards[68163358-815d-443b-940b-37c6d19b0d54][field1]",
+      "Notice Period✱ | Type your response [input:text] cards[68163358-815d-443b-940b-37c6d19b0d54][field2]",
+      "Visa Requirement✱ [select:select-one] cards[68163358-815d-443b-940b-37c6d19b0d54][field3]",
+      "Location Based✱ [select:select-one] cards[68163358-815d-443b-940b-37c6d19b0d54][field4]",
+      "Yes [input:radio] cards[7616caa1-adf2-4ac4-977b-5146422d7d9e][field0]",
+      "No [input:radio] cards[7616caa1-adf2-4ac4-977b-5146422d7d9e][field0]"
+    ]
+  },
+  {
+    "site": "https://jobs.lever.co/rws",
+    "url": "https://jobs.lever.co/rws/d70afa3f-68d0-495b-b0b3-d0a2ec891b67/apply",
+    "status": "진단",
+    "title": "RWS TrainAI - AI Data Specialist - Korean",
+    "files": [
+      "[ ] Resume/CV ✱ ATTACH RESUME/CV"
+    ],
+    "photo": 0,
+    "filled": 9,
+    "check": 11,
+    "total": 27,
+    "recognized": 9,
+    "excluded": 0,
+    "unknown": [
+      "Twitter URL [input:text] urls[Twitter]",
+      "Global TrainAI Screening [select:select-one] cards[2b7206a6-78ea-4829-b3d6-d7f4e0a3fad8][field0]",
+      "What is your native language?✱ [select:select-one] cards[2b7206a6-78ea-4829-b3d6-d7f4e0a3fad8][field1]",
+      "Global TrainAI Screening [select:select-one] cards[2b7206a6-78ea-4829-b3d6-d7f4e0a3fad8][field2]",
+      "Yes [input:radio] cards[2b7206a6-78ea-4829-b3d6-d7f4e0a3fad8][field3]",
+      "No [input:radio] cards[2b7206a6-78ea-4829-b3d6-d7f4e0a3fad8][field3]",
+      "Global TrainAI Screening [select:select-one] cards[2b7206a6-78ea-4829-b3d6-d7f4e0a3fad8][field4]",
+      "Yes [input:radio] cards[2b7206a6-78ea-4829-b3d6-d7f4e0a3fad8][field5]",
+      "No [input:radio] cards[2b7206a6-78ea-4829-b3d6-d7f4e0a3fad8][field5]",
+      "Vendor Type [select:select-one] cards[8b762c5b-d210-4ed2-a7a8-695af5db5bd7][field0]",
+      "Vendor Type [select:select-one] cards[8b762c5b-d210-4ed2-a7a8-695af5db5bd7][field1]",
+      "Vendor Type [select:select-one] cards[8b762c5b-d210-4ed2-a7a8-695af5db5bd7][field2]",
+      "Vendor Type | Type your response [input:text] cards[8b762c5b-d210-4ed2-a7a8-695af5db5bd7][field3]",
+      "Yes [input:radio] cards[43839bf6-f29a-48c8-8181-65f3ff70cdda][field0]",
+      "No [input:radio] cards[43839bf6-f29a-48c8-8181-65f3ff70cdda][field0]",
+      "Project Diamond/Echo [select:select-one] cards[43839bf6-f29a-48c8-8181-65f3ff70cdda][field1]",
+      "Yes [input:radio] cards[43839bf6-f29a-48c8-8181-65f3ff70cdda][field2]",
+      "No [input:radio] cards[43839bf6-f29a-48c8-8181-65f3ff70cdda][field2]"
+    ]
+  },
+  {
+    "site": "https://jobs.lever.co/ajax",
+    "url": "https://jobs.lever.co/ajax/547cc42a-4352-46ed-b8fc-6a210bae27cf/apply",
+    "status": "진단",
+    "title": "Ajax Systems - Office Manager",
+    "files": [
+      "[ ] Resume/CV ATTACH RESUME/CV"
+    ],
+    "photo": 0,
+    "filled": 7,
+    "check": 1,
+    "total": 7,
+    "recognized": 7,
+    "excluded": 0,
+    "unknown": []
+  },
+  {
+    "site": "https://jobs.lever.co/aleph",
+    "url": "https://jobs.lever.co/aleph/38358628-e222-4324-b5a0-3aa8300769b5/apply",
+    "status": "진단",
+    "title": "Aleph - Client Partner – Reddit Ads",
+    "files": [
+      "[ ] Resume/CV ✱ ATTACH RESUME/CV"
+    ],
+    "photo": 0,
+    "filled": 8,
+    "check": 10,
+    "total": 23,
+    "recognized": 8,
+    "excluded": 0,
+    "unknown": [
+      "Twitter URL [input:text] urls[Twitter]",
+      "✱ | Type your response [input:text] cards[09f9307b-f0d7-4c87-a318-dc79310f9689][field0]",
+      "✱ [select:select-one] cards[09f9307b-f0d7-4c87-a318-dc79310f9689][field1]",
+      "✱ [select:select-one] cards[09f9307b-f0d7-4c87-a318-dc79310f9689][field2]",
+      "Notice Period | Type your response [input:text] cards[1f3d0b3f-b74b-431b-903b-e68407fb49a3][field0]",
+      "Language Proficiency: English [select:select-one] cards[384de934-280e-42a8-973d-540927397c6f][field0]",
+      "No [input:radio] cards[71e293e6-35d1-4253-bbdc-01f9603a2f0b][field0]",
+      "Yes [input:radio] cards[71e293e6-35d1-4253-bbdc-01f9603a2f0b][field0]",
+      "No [input:radio] cards[71e293e6-35d1-4253-bbdc-01f9603a2f0b][field1]",
+      "Yes [input:radio] cards[71e293e6-35d1-4253-bbdc-01f9603a2f0b][field1]",
+      "No [input:radio] cards[71e293e6-35d1-4253-bbdc-01f9603a2f0b][field2]",
+      "Yes [input:radio] cards[71e293e6-35d1-4253-bbdc-01f9603a2f0b][field2]",
+      "Other (please specify below): | Type your response [input:text] cards[0cafb958-2e8f-4cdc-9636-db361c5e4e66][field1]",
+      "Other (please specify below): [select:select-one] cards[0cafb958-2e8f-4cdc-9636-db361c5e4e66][field2]",
+      "Other (please specify below): | Type your response [input:text] cards[0cafb958-2e8f-4cdc-9636-db361c5e4e66][field3]"
+    ]
+  },
+  {
+    "site": "https://jobs.lever.co/spotify",
+    "url": "https://jobs.lever.co/spotify/77d3435e-569e-4644-876d-afc960da8d0a/apply",
+    "status": "진단",
+    "title": "Spotify - Associate Artist Label Partnerships Manager, South Korea",
+    "files": [
+      "[ ] Resume/CV ✱ ATTACH RESUME/CV"
+    ],
+    "photo": 0,
+    "filled": 9,
+    "check": 3,
+    "total": 13,
+    "recognized": 9,
+    "excluded": 0,
+    "unknown": [
+      "South Korea Music Industry [select:select-one] cards[44e16c1d-ede5-406a-9dbb-a2291c566bcc][field0]",
+      "Yes, I would require visa sponsorship [input:radio] cards[2e8e7981-e5df-4242-bed8-9bc8c0c8f4b6][field0]",
+      "✱ [input:radio] cards[2e8e7981-e5df-4242-bed8-9bc8c0c8f4b6][field0]",
+      "What is your location? [select:select-one] "
+    ]
+  },
+  {
+    "site": "https://jobs.lever.co/gausslabs",
+    "url": "https://jobs.lever.co/gausslabs/b8b45d11-dae9-4151-8d46-10a250b01aa9/apply",
+    "status": "진단",
+    "title": "Gauss Labs - Forward-Deployed Site Reliability Engineer (KR)",
+    "files": [
+      "[ ] Resume/CV ✱ ATTACH RESUME/CV"
+    ],
+    "photo": 0,
+    "filled": 8,
+    "check": 0,
+    "total": 8,
+    "recognized": 7,
+    "excluded": 0,
+    "unknown": []
+  },
+  {
+    "site": "https://jobs.lever.co/panopto",
+    "url": "https://jobs.lever.co/panopto/5f6a1f94-f4db-4e40-97f8-f27dbaa0e80e/apply",
+    "status": "진단",
+    "title": "Panopto - Join Our Talent Community: General Consideration",
+    "files": [
+      "[ ] Resume/CV ✱ ATTACH RESUME/CV",
+      "[ ] Please attach your cover letter. UPLOAD "
+    ],
+    "photo": 0,
+    "filled": 9,
+    "check": 7,
+    "total": 18,
+    "recognized": 10,
+    "excluded": 0,
+    "unknown": [
+      "Twitter URL [input:text] urls[Twitter]",
+      "Citizen/Employment Status [select:select-one] cards[1b74fa9f-88a8-45ee-a6fc-4bb7cf41d096][field0]",
+      "Candidate Source | Type your response [input:text] cards[9b042d3a-577a-4111-98ff-8fd9c49288a5][field0]",
+      "Gender [select:select-one] eeo[gender]",
+      "RaceHispanic or LatinoA person of Cuban, Mexican, Puerto Ric [select:select-one] eeo[race]",
+      "Veteran status [select:select-one] eeo[veteran]"
+    ]
+  }
+]

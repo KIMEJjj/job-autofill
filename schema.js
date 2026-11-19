@@ -92,6 +92,11 @@
       { key: 'research', label: '연구분야', kw: ['연구분야', '연구 분야'] },
       { key: 'advisor', label: '지도교수', kw: ['지도교수', '지도 교수'] },
       { key: 'period', label: '기간', type: 'period', from: 'start', to: 'end', hidden: true, kw: ['재학기간', '학업기간', '수학기간'] },
+      // 해외 지원서(Greenhouse)처럼 입학·졸업을 연도 칸과 월 칸으로 나눠 받는 경우: 입학일·졸업일에서 꺼내 씀(화면에는 안 보임)
+      { key: 'startYear', label: '입학 연도', type: 'yearOf', from: 'start', hidden: true, kw: [] },
+      { key: 'startMonth', label: '입학 월', type: 'monthNameOf', from: 'start', hidden: true, kw: [] },
+      { key: 'endYear', label: '졸업 연도', type: 'yearOf', from: 'end', hidden: true, kw: [] },
+      { key: 'endMonth', label: '졸업 월', type: 'monthNameOf', from: 'end', hidden: true, kw: [] },
     ]},
     { key: 'certificates', label: '자격증', section: ['자격', '면허'], fields: [
       { key: 'name', label: '자격증명', kw: ['자격증명', '자격명', '자격증', '자격종류', '종목', '면허명', '명칭', '자격(면허)', '자격내용', '면허내용'], ex: ['주관', '발급', '발행', '시행'] },

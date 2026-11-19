@@ -1,0 +1,265 @@
+[
+  {
+    "site": "modoodoc",
+    "url": "https://modoodoc.career.greetinghr.com/ko/o/82457/apply",
+    "status": "진단",
+    "title": "15분 커피챗 🧊☕",
+    "files": [
+      "[ ] 파일 업로드"
+    ],
+    "photo": 0,
+    "filled": 3,
+    "check": 1,
+    "total": 6,
+    "recognized": 3,
+    "excluded": 0,
+    "unknown": []
+  },
+  {
+    "site": "modoodoc",
+    "url": "https://modoodoc.career.greetinghr.com/ko/o/237636/apply",
+    "status": "진단",
+    "title": "[채용전환형/월 500만원] 모두닥 Problem Solver - 인플루언서 마케팅 인턴",
+    "files": [
+      "[ ] 파일 URL 파일 업로드",
+      "[ ] 파일 URL 파일 업로드",
+      "[ ] 파일 URL 파일 업로드"
+    ],
+    "photo": 0,
+    "filled": 3,
+    "check": 1,
+    "total": 6,
+    "recognized": 6,
+    "excluded": 0,
+    "unknown": []
+  },
+  {
+    "site": "nuua",
+    "url": "https://nuua.career.greetinghr.com/ko/o/217901/apply",
+    "status": "진단",
+    "title": "AI Agent 엔지니어",
+    "files": [
+      "[ ] 파일 URL 파일 업로드",
+      "[ ] 파일 URL 파일 업로드",
+      "[ ] 파일 URL 파일 업로드"
+    ],
+    "photo": 0,
+    "filled": 3,
+    "check": 1,
+    "total": 6,
+    "recognized": 6,
+    "excluded": 0,
+    "unknown": []
+  },
+  {
+    "site": "nuua",
+    "url": "https://nuua.career.greetinghr.com/ko/o/239507/apply",
+    "status": "진단",
+    "title": "AI 서비스 기획자",
+    "files": [
+      "[ ] 파일 URL 파일 업로드",
+      "[ ] 파일 URL 파일 업로드",
+      "[ ] 파일 URL 파일 업로드"
+    ],
+    "photo": 0,
+    "filled": 3,
+    "check": 1,
+    "total": 6,
+    "recognized": 6,
+    "excluded": 0,
+    "unknown": []
+  },
+  {
+    "site": "aim",
+    "url": "https://aim.career.greetinghr.com/ko/o/242175/apply",
+    "status": "진단",
+    "title": "[에임시스템] 공항사업 개발자 및 사업관리/QA 채용",
+    "files": [
+      "[첨부] 사진 * 용량 제한: 3MB 지원 형식: JPG, JPEG, PNG {image/jpg, image/jpeg, image/png}",
+      "[ ] 파일 업로드",
+      "[ ] 파일 업로드",
+      "[ ] 파일 URL 파일 업로드"
+    ],
+    "photo": 1,
+    "filled": 24,
+    "check": 6,
+    "total": 27,
+    "recognized": 27,
+    "excluded": 0,
+    "unknown": []
+  },
+  {
+    "site": "aim",
+    "url": "https://aim.career.greetinghr.com/ko/o/241472/apply",
+    "status": "진단",
+    "title": "[에임시스템] MES 프로젝트 PM 채용",
+    "files": [
+      "[첨부] 사진 용량 제한: 3MB 지원 형식: JPG, JPEG, PNG {image/jpg, image/jpeg, image/png}",
+      "[ ] 파일 업로드",
+      "[ ] 파일 업로드",
+      "[ ] 파일 URL 파일 업로드"
+    ],
+    "photo": 1,
+    "filled": 21,
+    "check": 4,
+    "total": 21,
+    "recognized": 21,
+    "excluded": 0,
+    "unknown": []
+  },
+  {
+    "site": "fourcompany",
+    "url": "https://fourcompany.career.greetinghr.com/ko/o/241620/apply",
+    "status": "진단",
+    "title": "[포컴퍼니] 본부 전략 기획 Staff",
+    "files": [
+      "[ ] 파일 URL 파일 업로드",
+      "[ ] 파일 URL 파일 업로드",
+      "[ ] 파일 URL 파일 업로드"
+    ],
+    "photo": 0,
+    "filled": 3,
+    "check": 10,
+    "total": 20,
+    "recognized": 9,
+    "excluded": 0,
+    "unknown": [
+      "현재연봉(세전 금액 기준)* [input:text] customAttributeAnswers.60758473",
+      "포함미포함직접입력: | 근무조건 사전 확인 [input:radio] customAttributeAnswers.60758474",
+      "포함미포함직접입력: | 근무조건 사전 확인 [input:radio] customAttributeAnswers.60758474",
+      "포함미포함직접입력: | 근무조건 사전 확인 [input:radio] customAttributeAnswers.60758474",
+      "직접입력: | : [input:text] customAttributeAnswers.60758474",
+      "현재연봉) 식대 지원 금액 [input:text] customAttributeAnswers.60758475",
+      "현재연봉) 기본급 외 고정 수당 [input:text] customAttributeAnswers.60758476",
+      "2025년 기준 횟수/ 총금액에 대해 작성해주세요. [input:text] customAttributeAnswers.60758477",
+      "금액과 사유를 함께 작성해주세요. [input:text] customAttributeAnswers.60758479",
+      "입사가능일 * [ark:date] customAttributeAnswers.60758481"
+    ]
+  },
+  {
+    "site": "fourcompany",
+    "url": "https://fourcompany.career.greetinghr.com/ko/o/241650/apply",
+    "status": "진단",
+    "title": "[포컴퍼니] 채용 코디네이터(Recruiting Cordinator) (서포터)",
+    "files": [
+      "[ ] 파일 URL 파일 업로드",
+      "[ ] 파일 URL 파일 업로드",
+      "[ ] 파일 URL 파일 업로드"
+    ],
+    "photo": 0,
+    "filled": 3,
+    "check": 2,
+    "total": 8,
+    "recognized": 8,
+    "excluded": 0,
+    "unknown": []
+  },
+  {
+    "site": "hanwhaengine-recruit",
+    "url": "https://hanwhaengine-recruit.career.greetinghr.com/ko/o/238113/apply",
+    "status": "진단",
+    "title": "한화엔진 채용",
+    "files": [],
+    "photo": 0,
+    "filled": 0,
+    "check": 0,
+    "total": 0,
+    "recognized": 0,
+    "excluded": 0,
+    "unknown": []
+  },
+  {
+    "site": "lotteworldrecruit",
+    "url": "",
+    "status": "공고 없음"
+  },
+  {
+    "site": "kakaomobility",
+    "url": "",
+    "status": "공고 없음"
+  },
+  {
+    "site": "https://transperfect.recruitee.com/o/human-resources-assistant/c/new",
+    "url": "https://transperfect.recruitee.com/o/human-resources-assistant/c/new",
+    "status": "진단",
+    "title": "We couldn’t find this job",
+    "files": [],
+    "photo": 0,
+    "filled": 0,
+    "check": 0,
+    "total": 0,
+    "recognized": 0,
+    "excluded": 0,
+    "unknown": []
+  },
+  {
+    "site": "https://theegg.breezy.hr/p/6ae0a2ae07cb-seo-manager-organic-search-south-korea/apply",
+    "url": "https://theegg.breezy.hr/p/6ae0a2ae07cb-seo-manager-organic-search-south-korea/apply",
+    "status": "진단",
+    "title": "채용 직책 The Egg Company",
+    "files": [],
+    "photo": 0,
+    "filled": 0,
+    "check": 0,
+    "total": 0,
+    "recognized": 0,
+    "excluded": 0,
+    "unknown": []
+  },
+  {
+    "site": "https://jobs.eu.lever.co/xm/9d1e5b9e-1325-4f97-93f3-549e72492856/apply",
+    "url": "https://jobs.eu.lever.co/xm/9d1e5b9e-1325-4f97-93f3-549e72492856/apply",
+    "status": "진단",
+    "title": "Not found – 404 error",
+    "files": [],
+    "photo": 0,
+    "filled": 0,
+    "check": 0,
+    "total": 0,
+    "recognized": 0,
+    "excluded": 0,
+    "unknown": []
+  },
+  {
+    "site": "https://job-boards.greenhouse.io/evismart/jobs/4024278009",
+    "url": "https://job-boards.greenhouse.io/evismart/jobs/4024278009",
+    "status": "진단",
+    "title": "Evismart 채용 정보",
+    "files": [],
+    "photo": 0,
+    "filled": 0,
+    "check": 0,
+    "total": 1,
+    "recognized": 0,
+    "excluded": 1,
+    "unknown": []
+  },
+  {
+    "site": "https://job-boards.greenhouse.io/seoulrobotics/jobs/4601804008",
+    "url": "https://job-boards.greenhouse.io/seoulrobotics/jobs/4601804008",
+    "status": "진단",
+    "title": "Seoul Robotics 채용 정보",
+    "files": [],
+    "photo": 0,
+    "filled": 0,
+    "check": 0,
+    "total": 1,
+    "recognized": 0,
+    "excluded": 1,
+    "unknown": []
+  },
+  {
+    "site": "https://jobs.lever.co/hypebeast/0ef757bf-4eb1-4342-ba20-74cd980e2db0/apply",
+    "url": "https://jobs.lever.co/hypebeast/0ef757bf-4eb1-4342-ba20-74cd980e2db0/apply",
+    "status": "진단",
+    "title": "Not found – 404 error",
+    "files": [],
+    "photo": 0,
+    "filled": 0,
+    "check": 0,
+    "total": 0,
+    "recognized": 0,
+    "excluded": 0,
+    "unknown": []
+  }
+]

@@ -3,7 +3,7 @@
 // 사용: window.__pubFill(profile, { overwrite:false })  /  window.__pubScan()
 (function () {
   // 버전이 같을 때만 다시 불러오지 않음 (확장을 고친 뒤에는 페이지 새로고침 없이도 새 엔진 사용)
-  const ENGINE = '0.5.98';
+  const ENGINE = '0.5.99';
   if (window.__pubFillLoaded === ENGINE) return;
   window.__pubFillLoaded = ENGINE;
   const { SCALAR, LISTS } = window.PUBFILL_SCHEMA;
@@ -262,7 +262,8 @@
   }
   // 칸 내부 이름(영문)이 분명하면 글자 설명보다 먼저 판단 (recruiter 계열 사이트 등)
   const ATTR_LIST = {
-    education: { region: /location|region|sido|area_?code/, track: /category|affiliation|series|track/, dayNight: /day_?or_?night|daynight/, admission: /admission_?(type|kind|cd|code)|entr\w*_?(type|kind)|transfer/, school: /school_?(name|nm)\b|schoolname/, major: /major/, start: /entrance|admission_?date|start_?date|str_?yymm/, end: /graduation_?date|end_?date|end_?yymm/, status: /graduation_?type|graduation_?status|gradu_?type/, degree: /degree/, gpaMax: /(^|_)credit$|scale/, gpa: /\bgpa\b|grade_?point|score\b|sch_?point/ },
+    // Greenhouse 학력 구역(id: school--0, degree--0, discipline--0, start-month--0, start-year--0 …)
+    education: { schoolEn: /(^|\s)school--\d/, majorEn: /(^|\s)discipline--\d/, startYear: /(^|\s)start-year--\d/, startMonth: /(^|\s)start-month--\d/, endYear: /(^|\s)end-year--\d/, endMonth: /(^|\s)end-month--\d/, region: /location|region|sido|area_?code/, track: /category|affiliation|series|track/, dayNight: /day_?or_?night|daynight/, admission: /admission_?(type|kind|cd|code)|entr\w*_?(type|kind)|transfer/, school: /school_?(name|nm)\b|schoolname/, major: /major/, start: /entrance|admission_?date|start_?date|str_?yymm/, end: /graduation_?date|end_?date|end_?yymm/, status: /graduation_?type|graduation_?status|gradu_?type/, degree: /degree/, gpaMax: /(^|_)credit$|scale/, gpa: /\bgpa\b|grade_?point|score\b|sch_?point/ },
     certificates: { grade: /rating|grade|level/, issuer: /issu|agency|publisher|inst_?nm/, date: /acqu|_dt\b|date/, number: /cert\w*_?(no|num)|licen\w*_?(no|num)|credential_?(no|num)/ },
     languages: { score: /score|rating|grade/, number: /exam_?(no|num)|test_?(no|num)/ },
     career: { type: /criteria|employ\w*type|career_?type|employee_?type/, company: /company|corp/, dept: /dept|department/, position: /position|rank/, start: /start_?date|join_?date|str_?(yymm|dt)/, end: /end_?date|leave_?date|resign|end_?(yymm|dt)/ },
@@ -277,7 +278,7 @@
     // 일반 이름(CJ 등 zz_*) 보강: 경력 → 자격증 → 학력 순으로 판단
     const list0 = (/career|company|employee|position|salary|workexperience|(^|_)work(_|$)/.test(a) && !/milit|army|desiredsalary/.test(a)) ? 'career'
       : /certificat|(^|_)lic_|(^|_)inst_?nm/.test(a) ? 'certificates'
-      : /highschool|college|graduate|univ|education|school|major|sch_?point|gradu|(^|_)credit$|(^|_)(str|end)_?yymm/.test(a) ? 'education' : null;
+      : (/highschool|college|graduate|univ|education|school|major|sch_?point|gradu|(^|_)credit$|(^|_)(str|end)_?yymm/.test(a) || /(^|\s)(degree|discipline|(start|end)-(month|year))--\d/.test(a)) ? 'education' : null;
     if (!list0) return null;
     for (const [key, re] of Object.entries(ATTR_LIST[list0])) if (re.test(a)) {
       const list = list0; const f = LISTS.find(l => l.key === list).fields.find(x => x.key === key);
@@ -292,6 +293,11 @@
     // 라벨 판정을 속성 힌트보다 먼저 해 Legal First Name (Korean)이 영문 이름으로 분류되지 않게 함.
     if (/legalfirstname.*korean|legallastname.*korean/.test(d)) {
       const field = SCALAR_FIELDS.find(f => f.key === 'name');
+      if (field) return { list: null, field, score: 100 };
+    }
+    // 해외 지원서의 영어 라벨 'Full name'(Recruitee·Lever 등): 영문 이름 전체 (Ashby Name과 같은 기준)
+    if (/(^|[^a-z])fullname/.test(d) && !/preferred|korean|한글|국문/.test(d)) {
+      const field = SCALAR_FIELDS.find(f => f.key === 'nameEn');
       if (field) return { list: null, field, score: 100 };
     }
     // Ashby 'Preferred Name (if applicable)': 영문 이름 전체
@@ -478,7 +484,7 @@
     ['복무중', '복무', '군복무중', '재복무'],
     ['남', '남자', '남성', 'm', 'male'],
     ['여', '여자', '여성', 'f', 'female'],
-    ['사회복무요원', '공익근무요원', '공익'], ['현역병', '현역'], ['대한민국', '한국', 'korea', 'southkorea', 'korea,republicof', 'republicofkorea'], ['신입', '경력없음', '경력 없음', '해당없음'], ['경력', '경력있음', '경력 있음', '경력자'], ['졸업', '졸업자'], ['졸업예정', '졸업예정자'], ['재학', '재학중'], ['수료', '수료자'], ['신입학', '입학', '일반입학', '신입생'], ['편입학', '편입', '편입생'], ['재입학', '재입생'],
+    ['사회복무요원', '공익근무요원', '공익'], ['현역병', '현역'], ['대한민국', '한국', 'korea', 'southkorea', 'korea,republicof', 'republicofkorea'], ['신입', '경력없음', '경력 없음', '해당없음'], ['경력', '경력있음', '경력 있음', '경력자'], ['졸업', '졸업자'], ['졸업예정', '졸업예정자'], ['재학', '재학중'], ['수료', '수료자'], ['학사', "bachelor's degree", "bachelor's", 'bachelor', 'bachelors'], ['전문학사', "associate's degree", "associate's", 'associate'], ['석사', "master's degree", "master's", 'master', 'masters'], ['박사', 'doctor of philosophy (ph.d.)', 'ph.d.', 'phd', 'doctorate'], ['고등학교', 'high school', 'high school diploma'], ['신입학', '입학', '일반입학', '신입생'], ['편입학', '편입', '편입생'], ['재입학', '재입생'],
     ['채용사이트', 'external job board', 'external job site', 'job board'],
   ];
   // React 선택 목록 입력칸(react-select). 이미 고른 값이 있으면 빈 칸으로 보지 않음
@@ -1061,10 +1067,19 @@
     return pool ? (pool[idx] || null) : undefined; // undefined = 판단 불가(순서대로)
   }
   const DEGREE = { '대학교': '학사', '전문대학': '전문학사', '대학원(석사)': '석사', '대학원(박사)': '박사' };
+  // Greenhouse 학력 구역(school--0, degree--0 …): 해외 지원서는 첫 칸에 최종 학력을 적으므로 졸업일이 늦은 학교부터 넣음
+  function ghEduItem(el, arr) {
+    const m = ((el && el.id) || '').match(/^(school|degree|discipline|(start|end)-(month|year))--(\d+)$/);
+    if (!m) return undefined;
+    const sorted = [...arr].sort((a, b) => String((b && (b.end || b.start)) || '').localeCompare(String((a && (a.end || a.start)) || '')));
+    return sorted[+m[4]] || null;
+  }
   function listValue(list, item, field) {
     if (!item) return '';
     if (field.type === 'period') return (item[field.from] || item[field.to]) ? [item[field.from], item[field.to]] : '';
     if (list === 'education' && field.key === 'degree' && !item.degree) return DEGREE[item.level] || '';
+    if (field.type === 'yearOf') { const m = String(item[field.from] || '').match(/(\d{4})/); return m ? m[1] : ''; }
+    if (field.type === 'monthNameOf') { const m = String(item[field.from] || '').match(/\d{4}\D?(\d{1,2})/); return m ? ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'][+m[1] - 1] || '' : ''; }
     return item[field.key];
   }
 
@@ -1470,6 +1485,7 @@
         const arr = profile[g.m.list] || [];
         let item = arr[n];
         if (g.m.list === 'education') { const byAttr = eduItemByAttr(g.els[0], arr); if (byAttr !== undefined) item = byAttr; }
+        if (g.m.list === 'education') { const gh = ghEduItem(g.els[0], arr); if (gh !== undefined) item = gh; }
         if (g.m.list === 'certificates' || g.m.list === 'languages') { const r = rowItem(g.els[0], g.m.list, arr); if (r !== undefined) item = r; }
         value = listValue(g.m.list, item, g.m.field);
         if (g.m.list === 'certificates' || g.m.list === 'languages') {
@@ -1538,6 +1554,7 @@
         const n = unitOrd.get(rg) ?? 0;
         let item = arr[n];
         if (x.m.list === 'education') { const byAttr = eduItemByAttr(els[0], arr); if (byAttr !== undefined) item = byAttr; }
+        if (x.m.list === 'education') { const gh = ghEduItem(els[0], arr); if (gh !== undefined) item = gh; }
         v = listValue(x.m.list, item, x.m.field);
         if (!v) { els.forEach(e => done.add(e)); mark(els[0], false); continue; }
         const rr = fillRadios(els, x.m.field, v);
