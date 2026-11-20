@@ -1,6 +1,6 @@
 // 실제 확장 검사: 진짜 크롬(헤드리스)에 확장을 올리고 가짜 정보(test/sample.js)로
-//  ① 설정 화면: 잠금 암호 정하기 → 증명사진·지원 기록 저장 → 잠갔다 다시 열어도 남는지
-//  ② 팝업: '칸 알려 주기'가 시작되는지(파란 표시), '이 페이지 채우기'가 채우고 지원 기록을 남기는지
+//  ① 설정 화면: 잠금 암호 정하기 → 증명사진 저장 → 잠갔다 다시 열어도 남는지
+//  ② 팝업: '칸 알려 주기'가 시작되는지(파란 표시), '이 페이지 채우기'가 채우는지(지원 기록은 2026-11-20에 기능을 빼서 남기지 않아야 함)
 // 사용: node test/headless/real-ext.mjs <확장폴더> [실제 Greenhouse 지원서 주소...]   (로컬 서버 8765 필요)
 //  ③ 주소를 주면: 실제 공개 지원서에서 팝업 채우기 → 선택 목록(chrome.debugger 경로)이 골라졌는지. 제출은 누르지 않습니다.
 // 확장은 고치지 않은 그대로 올리고(배포 제외 파일만 뺀 복사본), 팝업은 CDP Extensions.triggerAction으로
@@ -86,18 +86,17 @@ try {
   const q = await send('DOM.querySelector', { nodeId: root.nodeId, selector: 'section input#photoFile' }, o);
   await send('DOM.setFileInputFiles', { files: [jpg], nodeId: q.result.nodeId }, o);
   R.steps.photoPicked = !!(await waitFor(o, `/^data:image\\/jpeg;base64,/.test(document.querySelector('[data-key="photo"]').value)`));
-  // 지원 기록 한 줄 추가 → 회사 이름 → 저장
-  await ev(o, `applyAdd.click(); const c = document.querySelector('#applyRows input[placeholder="회사"]'); c.value = '시험회사'; c.dispatchEvent(new Event('input')); save.click(); true`);
+  // 저장
+  await ev(o, `save.click(); true`);
   await sleep(1500);
   // 잠갔다가 설정 화면을 새로 열어 잠금 해제 → 남아 있는지
   await ev(o, `lock.click(); true`); await sleep(500);
   await send('Page.navigate', { url: `${EXT}/options.html` }, o);
   await waitFor(o, `!document.getElementById('gate').classList.contains('hidden') && document.getElementById('gateTitle').textContent === '잠금 해제'`);
   await ev(o, `pass1.value = ${JSON.stringify(PASS)}; gateBtn.click(); true`);
-  const kept = await waitFor(o, `(() => { if (document.getElementById('app').classList.contains('hidden')) return null; const img = document.querySelector('#photoBox img'); const rows = [...document.querySelectorAll('#applyRows input[placeholder="회사"]')].map(x => x.value); return rows.length || img ? { photo: !!img, applyRows: rows } : null; })()`, 30000);
+  const kept = await waitFor(o, `(() => { if (document.getElementById('app').classList.contains('hidden')) return null; const img = document.querySelector('#photoBox img'); return img ? { photo: true } : null; })()`, 30000);
   R.steps.reopen = kept;
   R.steps.photoKept = !!(kept && kept.photo);
-  R.steps.applyKept = !!(kept && kept.applyRows.includes('시험회사'));
 
   // ② 팝업: 칸 알려 주기, 채우기
   const page = (await open('http://127.0.0.1:8765/test/form.html', 'form')).sessionId;
@@ -113,13 +112,12 @@ try {
   await send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Escape', code: 'Escape', windowsVirtualKeyCode: 27 }, page);
   await sleep(300);
   pp = await popupFor('http://127.0.0.1:8765/test/form.html');
-  const before = await ev(pp.s, `PubVault.load().then(p => JSON.parse(p.applications || '[]').length)`);
   await ev(pp.s, `out.textContent = ''; document.getElementById('fill').click(); true`);
   const fillMsg = await waitFor(pp.s, `/채운 칸|실행할 수 없습니다/.test(out.textContent) ? out.textContent : null`, 30000);
   const filled = await ev(page, `[...document.querySelectorAll('input:not([type=hidden]):not([type=file]),select,textarea')].filter(e => e.type === 'checkbox' || e.type === 'radio' ? e.checked : !!e.value).length`);
   await sleep(800);
-  const after = await ev(pp.s, `PubVault.load().then(p => JSON.parse(p.applications || '[]'))`);
-  R.steps.fill = { message: (fillMsg || '').split('\n')[0], filled, applyBefore: before, applyAfter: Array.isArray(after) ? after.length : after, lastHow: Array.isArray(after) && after[0] ? after[0].how : null };
+  const rec = await ev(pp.s, `PubVault.load().then(p => !!p.applications)`);
+  R.steps.fill = { message: (fillMsg || '').split('\n')[0], filled, noRecord: rec === false };
   await pp.close();
 
   // ③ 실제 Greenhouse 지원서: 팝업 채우기(선택 목록은 background.js가 chrome.debugger로 고름). 제출은 누르지 않음
@@ -139,9 +137,9 @@ try {
 
   R.siteErrors = errs.filter(e => e.startsWith('greenhouse:')).length;
   R.errors = errs.filter(e => !e.startsWith('greenhouse:'));
-  R.ok = R.errors.length === 0 && (!ghUrls.length || R.steps.greenhouse.every(g => g.picked.length > 0)) && R.steps.create && R.steps.photoPicked && R.steps.photoKept && R.steps.applyKept
+  R.ok = R.errors.length === 0 && (!ghUrls.length || R.steps.greenhouse.every(g => g.picked.length > 0)) && R.steps.create && R.steps.photoPicked && R.steps.photoKept
     && R.steps.teach.started && R.steps.teach.marked > 0
-    && R.steps.fill.filled > 10 && R.steps.fill.applyAfter > before;
+    && R.steps.fill.filled > 10 && R.steps.fill.noRecord;
 } catch (e) { R.reason = String(e && e.message || e); R.errors = errs; }
 console.log(JSON.stringify(R));
 chrome.kill(); await new Promise(r => { chrome.on('exit', r); setTimeout(r, 3000); });

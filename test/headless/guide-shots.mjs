@@ -17,7 +17,6 @@ const prep = await ev(`(async () => {
   x.fillStyle = '#dfe4ea'; x.fillRect(0, 0, 450, 600); x.fillStyle = '#9aa3ad'; x.beginPath(); x.arc(225, 230, 95, 0, 7); x.fill(); x.beginPath(); x.ellipse(225, 560, 190, 170, 0, 0, 7); x.fill();
   const P = JSON.parse(JSON.stringify(window.SAMPLE)); P.photo = c.toDataURL('image/jpeg', 0.9);
   P.certificates.push({ name: '정보처리기사', issuer: '한국산업인력공단', date: '2024-06-12' }, { name: '사회조사분석사 2급', issuer: '한국산업인력공단', date: '2023-11-30' });
-  P.applications = JSON.stringify([{ date: '2026-11-19', company: '테스트공사', position: '사무행정', how: '양식 채우기: 테스트공사_지원서.hwp', status: '지원함' }, { date: '2026-11-12', company: 'krafton', position: 'Data Analyst', how: '웹 채우기: job-boards.greenhouse.io/krafton', status: '서류 합격', memo: '면접 11/25' }]);
   render(P); document.getElementById('gate').classList.add('hidden'); document.getElementById('app').classList.remove('hidden');
   HTMLAnchorElement.prototype.click = function () {};
   const dt = new DataTransfer(); dt.items.add(new File([await (await fetch('/test/docfill/resume_photo.docx')).arrayBuffer()], '테스트공사_입사지원서.docx'));
@@ -36,7 +35,6 @@ await ev(`document.querySelector('header').style.position = 'static'`);
 await shot('#docSec', '09-docfill.png', 1500);
 await shot('#cvSec', '10-resume-pick.png');
 await shot('#photoBox', '11-photo-box.png');
-await shot('#applySec', '12-apply.png');
 // 증명사진 구역 전체
 await ev(`(() => { const b = document.getElementById('photoBox'); b.closest('section').id = 'photoSec'; return 1; })()`);
 await shot('#photoSec', '11-photo.png');

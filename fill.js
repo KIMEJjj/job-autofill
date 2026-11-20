@@ -233,12 +233,16 @@
     researchfield: 'education.research', academicadviser: 'education.advisor',
     purposeofoverseasexperience: 'overseas.purpose', periodofoverseasexperience: 'overseas.period', completionperiod: 'trainings.start', servicecategory: 'activities.type',
     skillcategory: 'skills.category', skilllevel: 'skills.level',
+    // 대상(그리팅) 봉사활동 주관기관: 자격증 발급기관으로 잡히지 않게
+    hostorganization: 'activities.org',
   };
   function nameHint(el) {
     const nm = (el.name || '').toLowerCase(); if (!nm) return null;
     const segs = nm.split('.').filter(x => !/^\d+$/.test(x));
     const last = segs[segs.length - 1] || '';
     if (last === 'salary' && /desiredsalary/.test(nm)) return mappedField('desiredSalary');
+    // 그리팅 현주소 우편번호(personalInformation.currentAddress.postalCode). 주민등록지 우편번호는 글자 규칙(제외)에 맡김
+    if (last === 'postalcode') return /registered/.test(nm) ? null : mappedField('zip');
     // 기간 칸: 앞 마디(재학·근무·복무 기간) + startDate/endDate
     const prev = segs[segs.length - 2] || '';
     if (last === 'role' && /extracurricular|activit/.test(nm)) return mappedField('activities.role');
@@ -265,8 +269,9 @@
     // Greenhouse 학력 구역(id: school--0, degree--0, discipline--0, start-month--0, start-year--0 …)
     education: { schoolEn: /(^|\s)school--\d/, majorEn: /(^|\s)discipline--\d/, startYear: /(^|\s)start-year--\d/, startMonth: /(^|\s)start-month--\d/, endYear: /(^|\s)end-year--\d/, endMonth: /(^|\s)end-month--\d/, region: /location|region|sido|area_?code/, track: /category|affiliation|series|track/, dayNight: /day_?or_?night|daynight/, admission: /admission_?(type|kind|cd|code)|entr\w*_?(type|kind)|transfer/, school: /school_?(name|nm)\b|schoolname/, major: /major/, start: /entrance|admission_?date|start_?date|str_?yymm/, end: /graduation_?date|end_?date|end_?yymm/, status: /graduation_?type|graduation_?status|gradu_?type/, degree: /degree/, gpaMax: /(^|_)credit$|scale/, gpa: /\bgpa\b|grade_?point|score\b|sch_?point/ },
     certificates: { grade: /rating|grade|level/, issuer: /issu|agency|publisher|inst_?nm/, date: /acqu|_dt\b|date/, number: /cert\w*_?(no|num)|licen\w*_?(no|num)|credential_?(no|num)/ },
-    languages: { score: /score|rating|grade/, number: /exam_?(no|num)|test_?(no|num)/ },
-    career: { type: /criteria|employ\w*type|career_?type|employee_?type/, company: /company|corp/, dept: /dept|department/, position: /position|rank/, start: /start_?date|join_?date|str_?(yymm|dt)/, end: /end_?date|leave_?date|resign|end_?(yymm|dt)/ },
+    languages: { score: /score|rating|grade/, number: /exam_?(no|num)|test_?(no|num)|registration_?(no|num)/ },
+    // reason을 end보다 먼저: 그리팅 reasonForResignation이 end(/resign/)로 잡히지 않게
+    career: { reason: /reason/, type: /criteria|employ\w*type|career_?type|employee_?type/, company: /company|corp/, dept: /dept|department/, position: /position|rank/, start: /start_?date|join_?date|str_?(yymm|dt)/, end: /end_?date|leave_?date|resign|end_?(yymm|dt)/ },
   };
   function attrList(el) {
     const a = ((el.name || '') + ' ' + (el.id || '')).toLowerCase();
@@ -333,6 +338,8 @@
     {
       const an = ((el.name || '') + ' ' + (el.id || '')).toLowerCase();
       const F = k => SCALAR_FIELDS.find(f => f.key === k);
+      // 그리팅 컴퓨터 활용능력 프로그램명: 내 정보에 맞는 항목이 없어 교육 과정명으로 잡히지 않게 제외(칸 알려 주기로 연결 가능)
+      if (/computerskills.*\.programname$/i.test(el.name || '')) return { skip: true };
       const hint = nameHint(el); if (hint) return { ...hint, score: 96 };
       if (/^country$/i.test(el.id || '') && el.matches('input[role="combobox"]')) { const f = F('nationality'); if (f) return { list: null, field: f, score: 96 }; }
       // Ashby: 성명 한 칸(_systemfield_name, Name/Legal Name)은 해외 지원서라 영문 성명. 전화 칸(type=tel, Phone)은 휴대폰
@@ -388,7 +395,8 @@
       if (best) best.fromQuestion = true;
     }
     if (!best) {
-      // 4) name/id 속성 (영문 이름만)
+      // 4) name/id 속성 (영문 이름만). 등본상·영구 주소 칸(registeredAddress.postalCode 등)은 현주소 우편번호로 채우지 않음
+      if (/등본|영구주소/.test(d) || /registered|permanent/.test(attr)) return null;
       const ATTR = { militaryStart: /milit\w*start|enlist|mil\w*_?s(tart)?_?d(ate|t)/, militaryEnd: /milit\w*end|discharge_?d(ate|t)|mil\w*_?e(nd)?_?d(ate|t)/, militaryRank: /milit\w*(rank|position)/, militarySpecialty: /militaryrole|milit\w*special/, militaryBranch: /milit\w*branch/, militaryDischarge: /discharge(code|type)/, name: /^(user)?(kor)?name$|^nm$|kor_?nm/, nameHanja: /chinese_?name|hanja_?name|hanmun_?name/, email: /e?mail/, phone: /hp|mobile|cell|phone/, birth: /birth|brth/, zip: /zip|post/, nameEn: /eng.?n(a)?m|english_?name|name_?en(g)?\b/ };
       for (const [key, re] of Object.entries(ATTR)) if (re.test(attr)) { const f = SCALAR_FIELDS.find(x => x.key === key); return { list: null, field: f, score: 1 }; }
     }
@@ -1511,8 +1519,11 @@
       if (!targets.length) { g.els.forEach(e => done.add(e)); continue; }
       // 주소가 한 칸 묶음에 (우편번호, 주소, 상세주소) 함께 있는 경우
       // 검색 버튼으로 넣는 주소칸: 값은 넣되(받아 주는 사이트도 있음), 검색 창 선택을 요구하는 사이트를 위해 알림
-      // 화면 안 주소 검색 창으로 넣을 수 있는 사이트(코스트코 '우편번호'): 읽기 전용 주소칸에 값만 넣지 않고 뒤의 fillModalAddress에 맡김
-      if (['zip', 'address1', 'address2'].includes(g.m.field.key) && g.els.every(e => e.readOnly) && !hasPostcodifyWidget() && inPageAddrSearch() && modalAddrOpener()) {
+      // 화면 안 주소 검색 창으로 넣을 수 있는 사이트(코스트코 '우편번호', 그리팅 '주소 찾기'): 읽기 전용 주소칸에 값만 넣지 않고 뒤의 fillModalAddress에 맡김
+      // (그리팅은 버튼을 누르기 전에는 검색 칸이 없음. 상자에서 검색 칸을 못 찾으면 fillModalAddress가 예전처럼 주소칸에 글자를 넣음)
+      if (['zip', 'address1', 'address2'].includes(g.m.field.key) && g.els.every(e => e.readOnly) && !hasPostcodifyWidget() && modalAddrOpener()) {
+        // 검색 상자가 끝내 주소를 넣지 못하면 팝업이 '주소 검색' 안내를 띄우도록 표시(성공하면 addressSearchDone이 덮음)
+        addrSearch = true;
         g.els.forEach(e => done.add(e)); continue;
       }
       if (['zip', 'address1'].includes(g.m.field.key) && g.els.some(needsAddrSearch)) {
@@ -1657,6 +1668,10 @@
           if (ok) res = { ...res, filled: res.filled + 1 };
         } }
       const ma = await fillModalAddress(profile);
+      // 주민등록지 묶음: 내 정보 '현주소와 같음'(기본)이면 현주소, '다른 주소'면 따로 적은 주소로 같은 방법(주소 찾기 상자)으로 넣음
+      const regP = profile.regSame === '다른 주소' ? (profile.regAddress1 ? { address1: profile.regAddress1, address2: profile.regAddress2 || '', zip: profile.regZip || '' } : null) : (profile.address1 ? { address1: profile.address1, address2: profile.address2 || '', zip: profile.zip || '' } : null);
+      const mr = regP && modalAddrOpener(true) ? await fillModalAddress(regP, true) : null;
+      if (mr) res = { ...res, filled: res.filled + (mr.ok ? 1 : 0), check: res.check + (mr.ok ? 0 : 1) };
       if (ma) { res = { ...res, filled: res.filled + (ma.ok ? 1 : 0), check: res.check + (ma.ok ? 0 : 1), addressSearchDone: ma.ok || res.addressSearchDone, addrSearch: ma.ok ? res.addrSearch : true, addressSearchReason: ma.reason || res.addressSearchReason }; }
       const dd = dropdownTargets();
       if (!dd.length) return res;
@@ -1817,26 +1832,36 @@
   // ---------- 페이지 안에 뜨는 "주소입력" 창 (검색 → 우편번호 같은 결과 선택 → 확인) ----------
   // 화면 안 주소 검색 창을 쓰는 사이트: recruiter.co.kr(트리니티항공·코스트코) 또는 검색 창이 페이지에 미리 들어 있음
   const inPageAddrSearch = () => /(^|\.)recruiter\.co\.kr$/.test(location.host) || [...document.querySelectorAll('input')].some(i => /반포대|도로명|건물명|지번|삼성동/.test(i.placeholder || ''));
-  function modalAddrOpener() {
+  function modalAddrOpener(reg) {
     // 트리니티항공 '주소입력', 코스트코(recruiter 예전 화면) '우편번호'
     const btns = [...document.querySelectorAll('button,a,input[type=button]')].filter(b => visible(b) && /^(주소\s?입력|주소\s?찾기|주소\s?검색|우편번호(\s?(찾기|검색))?)$/.test(b.tagName === 'INPUT' ? (b.value || '').trim() : textOf(b)));
     // '우편번호'는 새 창(다음 우편번호 등)을 여는 사이트가 많아, recruiter 사이트이거나 화면 안 검색 창이 미리 들어 있을 때만 사용
     const okBtn = b => !/^우편번호/.test(b.tagName === 'INPUT' ? (b.value || '').trim() : textOf(b)) || inPageAddrSearch();
     // 현주소 줄을 우선 (주민등록지 줄은 건너뜀)
-    return btns.filter(okBtn).find(b => /현주소|주소/.test(groupTitle(b, 20)) && !/주민등록/.test(groupTitle(b, 20))) || null;
+    // reg: 주민등록지 묶음의 버튼(그리팅 '주민등록지' 제목 아래 '주소 찾기'). 이름이 사이트마다 달라 함께 봄
+    // 주민등록 쪽: 주민등록지·주민등록상 주소·등본상 주소·영구주소 / 현주소 쪽: 현주소·실거주지·현거주지·실제 거주지·현재 주소·거주지·주소
+    const REG = /주민등록|등본|영구주소|permanentaddress/, CUR = /현주소|실거주|현거주|실제거주|현재주소|거주지|주소/;
+    const gt = b => norm(groupTitle(b, 20));
+    if (reg) return btns.filter(okBtn).find(b => REG.test(gt(b))) || null;
+    return btns.filter(okBtn).find(b => CUR.test(gt(b)) && !REG.test(gt(b))) || null;
   }
-  async function fillModalAddress(profile) {
+  async function fillModalAddress(profile, reg) {
     if (!profile.address1 || hasPostcodifyWidget()) return null;
-    const opener = modalAddrOpener(); if (!opener) return null;
+    const opener = modalAddrOpener(reg); if (!opener) return null;
     // 여는 버튼에서 위로 올라가며 주소칸이 들어 있는 줄을 찾음(코스트코: 버튼 줄과 주소칸 줄이 따로 있음)
     const isAddrBox = i => i.type !== 'hidden' && (/주소/.test(i.placeholder || '') || /address/i.test(i.name || '')) && !/상세|detail|zip|post/i.test((i.placeholder || '') + ' ' + (i.name || ''));
     let row = opener.parentElement && opener.parentElement.parentElement;
     for (let e = opener.parentElement, k = 0; e && k < 4; e = e.parentElement, k++) if ([...e.querySelectorAll('input')].some(isAddrBox)) { row = e; break; }
     const addrBox = row && [...row.querySelectorAll('input')].find(isAddrBox);
-    if (addrBox && addrBox.value) return null; // 이미 들어 있음
+    // 이미 들어 있으면 그대로. 내 정보 주소와 같은 글자면(예전 버전이 글자만 넣은 경우 등) 검색 상자로 다시 고름
+    if (addrBox && addrBox.value && addressNorm(addrBox.value) !== addressNorm(profile.address1)) return null;
     opener.click(); await sleep(600);
     const search = [...document.querySelectorAll('input')].find(i => visible(i) && /반포대|도로명|건물명|지번|삼성동/.test(i.placeholder || ''));
-    if (!search) return { ok: false, reason: '주소입력 창의 검색칸을 찾지 못했습니다.' };
+    if (!search) {
+      // 새 창(다음 우편번호 등)을 여는 사이트: 예전처럼 읽기 전용 주소칸에 글자만 넣고 확인 요청
+      if (!reg && addrBox && !addrBox.value) { Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value').set.call(addrBox, profile.address1); addrBox.dispatchEvent(new Event('input', { bubbles: true })); addrBox.dispatchEvent(new Event('change', { bubbles: true })); }
+      return { ok: false, reason: '주소입력 창의 검색칸을 찾지 못했습니다.' };
+    }
     const dialog = search.closest('[role="dialog"],[aria-modal="true"]') || (() => { let e = search; for (let k = 0; k < 8 && e.parentElement; k++) { e = e.parentElement; if (/확인|저장/.test(textOf(e)) && /취소/.test(textOf(e))) return e; } return e; })();
     Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value').set.call(search, profile.address1);
     search.dispatchEvent(new Event('input', { bubbles: true })); search.dispatchEvent(new Event('change', { bubbles: true }));
@@ -1858,22 +1883,27 @@
     const jibunKey = x => { const m = String(x || '').replace(/[()]/g, ' ').match(/([가-힣0-9]+(?:동|리|가|읍|면))\s+(산\s?\d+(?:-\d+)?|\d+(?:-\d+)?)(?![가-힣\d])/); return m ? m[1] + m[2].replace(/\s/g, '') : ''; };
     const wantJ = jibunKey(profile.address1);
     const dedupe = list => { const r = [...new Set(list)].filter(x => x !== dialog); return r.filter(x => !r.some(o => o !== x && o.contains(x))); };
+    // 요소 자신의 글자(자식 태그 글자 제외). 그리팅 결과 줄: <div><span>주소</span>서울특별시 중구 …</div>, <div><span>우편번호</span>04541</div>
+    const ownText = e => [...e.childNodes].filter(n => n.nodeType === 3).map(n => n.textContent).join(' ').replace(/\s+/g, ' ').trim();
+    const tx = e => e.children.length ? ownText(e) : textOf(e);
     for (let t = 0; t < 25 && !hit; t++) {
       await sleep(200);
       // 결과 글자가 a·strong·em·label 등 어느 태그에 있어도 읽도록 끝 요소 전체에서 찾음
-      const texts = [...dialog.querySelectorAll('*')].filter(e => e.children.length === 0 && !/^(INPUT|BUTTON|SCRIPT|STYLE|OPTION|SELECT|TEXTAREA)$/.test(e.tagName) && visible(e) && !e.contains(search) && textOf(e).length >= 5 && textOf(e).length <= 120);
-      const allRows = dedupe(texts.filter(e => SIDO.test(textOf(e))).map(rowOf));
+      const texts = [...dialog.querySelectorAll('*')].filter(e => (e.children.length === 0 || ownText(e).length >= 5) && !/^(INPUT|BUTTON|SCRIPT|STYLE|OPTION|SELECT|TEXTAREA)$/.test(e.tagName) && visible(e) && !e.contains(search) && tx(e).length >= 5 && tx(e).length <= 120);
+      const allRows = dedupe(texts.filter(e => SIDO.test(tx(e))).map(rowOf));
       seen = allRows.length;
-      const byZip = zip ? texts.filter(e => textOf(e).replace(/\D/g, '') === zip || textOf(e).includes(zip)) : [];
-      const byAddr = want ? texts.filter(e => { const x = nAddr(textOf(e)); return x && (x.startsWith(want) || x === want || (wantKey && roadKey(textOf(e)) === wantKey)); }) : [];
+      const byZip = zip ? texts.filter(e => tx(e).replace(/\D/g, '') === zip || tx(e).includes(zip)) : [];
+      const byAddr = want ? texts.filter(e => { const x = nAddr(tx(e)); return x && (x.startsWith(want) || x === want || (wantKey && roadKey(tx(e)) === wantKey)); }) : [];
       let leaves = byZip.length ? byZip : byAddr;
       if (!leaves.length) { const only = [...dialog.querySelectorAll('li')].filter(l => visible(l) && /도로명|지번/.test(textOf(l))); if (only.length === 1) { const p0 = [...only[0].querySelectorAll('p,span')].find(e => e.children.length === 0 && textOf(e).length > 5); if (p0) leaves = [p0]; } }
       let rows = dedupe(leaves.map(rowOf));
+      // 같은 우편번호·도로명 후보가 여럿이면 정식 주소(시·도로 시작) 줄만 남김. 그리팅 결과에는 가게·사무실 등록 줄('수원시 장안구 송죽동 499-3번지 108호 … KR')이 섞임
+      if (rows.length > 1) { const area = r => (r.parentElement && r.parentElement !== dialog) ? r.parentElement : r; const off = rows.filter(r => [area(r), ...area(r).querySelectorAll('*')].some(e => SIDO.test(tx(e)))); if (off.length === 1) rows = off; }
       // 신주소로 못 맞추면 구주소(지번)로 비교
       if (!rows.length && wantJ) rows = allRows.filter(r => jibunKey(textOf(r)) === wantJ);
       // 내 주소 전체로 검색했으므로 결과가 딱 한 줄이면 그 줄(결과가 다 나오도록 잠시 기다린 뒤)
       if (!rows.length && allRows.length === 1 && t >= 3) rows = allRows;
-      if (rows.length === 1) { hit = rows[0]; hitText = leaves.find(e => hit.contains(e)) || texts.find(e => hit.contains(e) && SIDO.test(textOf(e))) || hit; }
+      if (rows.length === 1) { hit = rows[0]; hitText = leaves.find(e => hit.contains(e)) || texts.find(e => hit.contains(e) && SIDO.test(tx(e))) || hit; }
       else if (rows.length > 1) { reason = '같은 주소 후보가 ' + rows.length + '개라 직접 골라 주세요.'; if (t > 8) break; }
     }
     if (!hit) { const close = [...dialog.querySelectorAll('button')].find(b => textOf(b) === '취소'); if (close) close.click(); return { ok: false, reason: reason || (seen ? '검색 결과 ' + seen + '줄 중 내 주소와 같은 줄을 찾지 못했습니다.' : '검색 결과가 나오지 않았습니다(0줄). 내 정보 주소로 검색되지 않는 형식일 수 있습니다.') }; }
@@ -1901,11 +1931,13 @@
       return false;
     };
     const fire = el => { const r = el.getBoundingClientRect(); const o = { bubbles: true, cancelable: true, view: window, button: 0, clientX: r.left + r.width / 2, clientY: r.top + r.height / 2 }; for (const tp of ['pointerover', 'pointerdown', 'mousedown', 'pointerup', 'mouseup']) el.dispatchEvent(new (tp.startsWith('pointer') ? PointerEvent : MouseEvent)(tp, { ...o, pointerType: 'mouse', isPrimary: true })); el.click(); };
+    // 결과를 누르자마자 창이 닫히는 사이트(그리팅: 상자가 문서에서 빠지거나 숨겨짐)도 고른 것으로 봄
+    const closed = () => !document.body.contains(dialog) || !visible(search);
     let picked = baseFilled();
     for (const el of [hitText, hitText && hitText.parentElement, hit].filter(Boolean)) {
       if (picked) break;
       fire(el);
-      for (let t = 0; t < 8 && !(picked = baseFilled()); t++) await sleep(200);
+      for (let t = 0; t < 8 && !(picked = baseFilled() || closed()); t++) await sleep(200);
     }
     const inDetail = detailInDialog();
     if (!picked && !document.body.contains(dialog)) picked = true; // 누르자마자 창이 닫히는 사이트

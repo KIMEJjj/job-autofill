@@ -26,7 +26,7 @@
 | `alias.js`, `qnet.js` | 자격증·어학시험 별칭, Q-Net 국가자격 공식 명칭 |
 | `vault.js` | 내 정보 암호화 저장 (원칙 1 참고) |
 | `popup.js` | 확장 아이콘 창. `fill.js`를 모든 프레임에 넣고 `__pubFill`을 두 번 실행, 결과·안내 표시 |
-| `options.js` | 내 정보 설정 화면 (양식 파일 채우기·이력서 내보내기·증명사진·지원 기록 포함) |
+| `options.js` | 내 정보 설정 화면 (양식 파일 채우기·이력서 내보내기·증명사진 포함) |
 | `docfill.js`, `resume.js` | 회사 양식 파일(.hwp·.hwpx·.docx·.pptx) 채우기, 이력서 Word·PDF 만들기 |
 | `mappings.js` | 사용자가 "칸 알려 주기"로 저장한 칸 → 항목 연결 |
 | `background.js` | 키체인 잠금 해제, 해외 선택 목록(chrome.debugger, 누른 순간만) |

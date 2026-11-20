@@ -18,8 +18,11 @@ function inputFor(f, value) {
   }
   el.dataset.key = f.key;
   el.value = value || '';
+  if (el.tagName === 'SELECT' && el.selectedIndex < 0) el.selectedIndex = 0; // 빈 선택지가 없는 목록(주민등록지)은 첫 선택지가 기본
   const lab = document.createElement('label');
   lab.append(f.label, el);
+  // showWhen: [항목, 값] — 그 항목이 이 값일 때만 보임(주민등록지 '다른 주소')
+  if (f.showWhen) lab.dataset.showWhen = f.showWhen.join('\u0001');
   return lab;
 }
 
@@ -44,12 +47,15 @@ function render(profile) {
     const grid = document.createElement('div');
     grid.className = 'grid';
     for (const f of g.fields) if (!f.hidden) grid.appendChild(inputFor(f, profile[f.key]));
+    // showWhen 칸: 기준 항목 값이 바뀔 때마다 보이기·숨기기
+    const conds = [...grid.querySelectorAll('label[data-show-when]')];
+    const sync = () => conds.forEach(l => { const [k, v] = l.dataset.showWhen.split('\u0001'); const src = grid.querySelector(`[data-key="${k}"]`); l.style.display = src && src.value === v ? '' : 'none'; });
+    if (conds.length) { grid.addEventListener('change', sync); sync(); }
     sec.appendChild(grid);
     sec.dataset.scalar = '1';
     formEl.appendChild(sec);
   }
   formEl.appendChild(photoSection(profile.photo));
-  formEl.appendChild(applySection(profile.applications));
   for (const list of LISTS) {
     const sec = document.createElement('section');
     sec.dataset.list = list.key;
@@ -104,57 +110,9 @@ function photoSection(value) {
   return sec;
 }
 
-// 지원 기록: 날짜·회사·지원 분야·방법·진행 상태·메모. 내 정보와 함께 암호화 저장(숨은 칸 data-key="applications", JSON)
-const APPLY_STATUS = ['', '지원함', '서류 합격', '면접', '최종 합격', '불합격', '지원 취소'];
-function applySection(value) {
-  let recs = []; try { recs = JSON.parse(value || '[]'); } catch {}
-  const sec = document.createElement('section'); sec.dataset.scalar = '1'; sec.id = 'applySec';
-  sec.innerHTML = `<h2>지원 기록 <button type="button" class="small" id="applyAdd">+ 추가</button></h2>
-    <p class="note" style="margin:0 0 8px">양식 파일을 내려받거나 이력서를 내보내면 한 줄이 자동으로 추가됩니다. 회사명·상태를 고친 뒤 상단 저장을 눌러 주세요. 내 정보와 함께 암호화 저장됩니다.</p>
-    <div id="applyRows"></div><input type="hidden" data-key="applications">`;
-  const hid = sec.querySelector('[data-key="applications"]'), box = sec.querySelector('#applyRows');
-  const sync = () => { hid.value = recs.length ? JSON.stringify(recs) : ''; };
-  // 이 화면을 열 때 있던 기록(지운 기록을 저장 때 되살리지 않기 위해)
-  window.__applySeen = new Set(recs.map(x => x.date + '|' + x.how));
-  const draw = () => {
-    box.innerHTML = '';
-    if (!recs.length) { box.innerHTML = '<div class="note" style="margin:0">아직 기록이 없습니다.</div>'; sync(); return; }
-    recs.forEach((r, i) => {
-      const row = document.createElement('div'); row.className = 'grid'; row.style.cssText = 'grid-template-columns:128px minmax(0,1.1fr) minmax(0,1fr) minmax(0,1.2fr) 104px minmax(0,1fr) 46px;gap:6px;align-items:end;margin-bottom:6px';
-      const inp = (k, ph, type = 'text') => { const e = document.createElement('input'); e.type = type; e.placeholder = ph; e.value = r[k] || ''; e.oninput = () => { r[k] = e.value; sync(); }; return e; };
-      const st = document.createElement('select'); st.innerHTML = APPLY_STATUS.map(x => `<option${x === r.status ? ' selected' : ''} value="${x}">${x || '(상태)'}</option>`).join(''); st.onchange = () => { r.status = st.value; sync(); };
-      const del = document.createElement('button'); del.type = 'button'; del.className = 'small'; del.textContent = '삭제'; del.onclick = () => { recs.splice(i, 1); draw(); };
-      row.append(inp('date', '날짜', 'date'), inp('company', '회사'), inp('position', '지원 분야'), inp('how', '방법(양식·웹·이력서)'), st, inp('memo', '메모'), del);
-      box.appendChild(row);
-    });
-    sync();
-  };
-  const today = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; };
-  sec.querySelector('#applyAdd').onclick = () => { recs.unshift({ date: today(), status: '지원함' }); draw(); };
-  // 다른 기능에서 부름: 같은 날 같은 방법이면 다시 추가하지 않음
-  window.addApplyRecord = rec => {
-    if (recs.some(x => x.date === today() && x.how === rec.how)) return;
-    recs.unshift({ date: today(), status: '지원함', ...rec }); draw();
-    if (typeof flash === 'function') flash('지원 기록에 추가했습니다(저장을 눌러 주세요)');
-  };
-  draw();
-  return sec;
-}
-
-// 저장: 팝업이 웹 채우기 때 추가한 지원 기록을 덮어쓰지 않도록, 저장소의 새 기록을 합쳐서 저장
+// 저장. 지원 기록 기능은 사용자 결정(2026-11-20)으로 뺌: 예전 버전이 남긴 기록(applications)은 이 저장 때 함께 지워짐
 async function saveProfile() {
-  const p = collect();
-  let added = 0;
-  try {
-    const cur = await PubVault.load();
-    const mine = JSON.parse(p.applications || '[]'), theirs = JSON.parse((cur && cur.applications) || '[]');
-    const seen = window.__applySeen || new Set(), have = new Set(mine.map(x => x.date + '|' + x.how));
-    for (const x of theirs) { const k = x.date + '|' + x.how; if (!have.has(k) && !seen.has(k)) { mine.push(x); added++; } }
-    if (added) { mine.sort((a, b) => (b.date || '').localeCompare(a.date || '')); p.applications = JSON.stringify(mine); }
-  } catch {}
-  await PubVault.save(p);
-  if (added) render(p);
-  return added;
+  await PubVault.save(collect());
 }
 
 function collect() {
@@ -461,7 +419,7 @@ async function processPhotos(files) {
       const title = document.createElement('b'); title.textContent = r.name;
       const btn = document.createElement('button'); btn.className = 'primary'; btn.textContent = '내려받기';
       const url = URL.createObjectURL(r.blob);
-      btn.onclick = () => { const a = document.createElement('a'); a.href = url; a.download = r.name; a.click(); btn.textContent = '다시 내려받기'; if (window.addApplyRecord) window.addApplyRecord({ company: f.name.replace(/\.[^.]+$/, '').replace(/[_\-\s]*(지원서|입사지원서|이력서|자소서|양식|\(.*?\))+[_\-\s]*/g, ' ').trim(), how: `양식 채우기: ${f.name}` }); };
+      btn.onclick = () => { const a = document.createElement('a'); a.href = url; a.download = r.name; a.click(); btn.textContent = '다시 내려받기'; };
       head.append(title, btn); card.appendChild(head);
       card.appendChild(line('#0a7a3c', `채운 칸: ${[...s.one, ...lists].join(', ')}.`));
       if (r.missing.length) card.appendChild(line('#b26a00', `양식에 적혀 있지만 내 정보에 없는 항목(이름만 남김): ${r.missing.join(', ')}.`));
@@ -527,11 +485,10 @@ async function processPhotos(files) {
       const r = await PubResume.toDocx(collect(), sel);
       const a = document.createElement('a'); a.href = URL.createObjectURL(r.blob); a.download = r.name; a.click();
       setTimeout(() => URL.revokeObjectURL(a.href), 60000);
-      if (window.addApplyRecord) window.addApplyRecord({ how: `이력서 내보내기(Word${sel.lang === 'en' ? ', 영문' : ''})` });
       st.textContent = `${r.name} 를 내려받았습니다. Word·한글·Polaris Office에서 열어 사진과 서명을 넣어 주세요.`;
     } catch (err) { st.textContent = '만들지 못했습니다: ' + (err && err.message || err); }
   };
-  $('cvGoPdf').onclick = () => { sel.lang = $('cvLang').value; PubResume.print(collect(), sel); if (window.addApplyRecord) window.addApplyRecord({ how: `이력서 내보내기(PDF${sel.lang === 'en' ? ', 영문' : ''})` }); st.textContent = '인쇄 창의 대상에서 "PDF로 저장"을 고르면 PDF 파일로 저장됩니다.'; };
+  $('cvGoPdf').onclick = () => { sel.lang = $('cvLang').value; PubResume.print(collect(), sel); st.textContent = '인쇄 창의 대상에서 "PDF로 저장"을 고르면 PDF 파일로 저장됩니다.'; };
 })();
 
 (async () => {

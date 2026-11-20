@@ -44,7 +44,7 @@ document.getElementById('fill').onclick = async () => {
     out.textContent = '채우는 중...';
     const profile = await PubVault.load();
     if (!profile || !Object.keys(profile).length) { out.textContent = '먼저 "내 정보 설정"에서 정보를 저장해 주세요.'; return; }
-    // 페이지에 보낼 정보: 지원 기록은 채우기에 필요 없어 뺌
+    // 페이지에 보낼 정보: 예전 버전이 남긴 지원 기록(applications)은 채우기에 필요 없어 뺌
     const pageProfile = { ...profile }; delete pageProfile.applications;
     const { fieldMappings = {} } = await chrome.storage.local.get('fieldMappings');
     const tab = await activeTab();
@@ -108,21 +108,6 @@ document.getElementById('fill').onclick = async () => {
       try { await navigator.clipboard.writeText(profile.address1); msg += `\n\n주소 검색이 자동으로 끝나지 않았습니다. 우편번호/주소 검색 창을 열고 검색 칸에 ⌘+V 한 뒤, 맞는 결과를 직접 골라 주세요. 주소는 클립보드에 복사해 두었습니다.`; }
       catch { msg += `\n\n주소는 사이트의 '우편번호 검색'에서 직접 골라 주세요.`; }
     }
-    // 지원 기록 자동 추가: 채운 칸이 있을 때, 같은 날 같은 페이지는 한 번만(내 정보와 함께 암호화 저장)
-    try {
-      if (filled > 0 && /^https?:/.test(tab.url || '')) {
-        const u = new URL(tab.url), host = u.hostname, seg = u.pathname.split('/').filter(Boolean);
-        const company = /greetinghr\.com$|ninehire\.site$/.test(host) ? host.split('.')[0] : /greenhouse\.io$|lever\.co$|ashbyhq\.com$/.test(host) ? (seg[0] || host) : host.replace(/^www\./, '');
-        const how = `웹 채우기: ${host}${u.pathname}`.slice(0, 120);
-        const d = new Date(), date = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
-        let recs = []; try { recs = JSON.parse(profile.applications || '[]'); } catch {}
-        if (!recs.some(x => x.date === date && x.how === how)) {
-          recs.unshift({ date, company, position: (tab.title || '').slice(0, 80), how, status: '지원함' });
-          await PubVault.save({ ...profile, applications: JSON.stringify(recs) });
-          msg += '\n\n지원 기록에 추가했습니다(내 정보 설정 > 지원 기록).';
-        }
-      }
-    } catch (e) { /* 기록 실패는 채우기 결과에 영향 없음 */ }
     out.textContent = msg;
   } catch (e) {
     out.textContent = '이 페이지에서는 실행할 수 없습니다.\n(' + e.message + ')';

@@ -9,10 +9,11 @@
 - 전체 자동 시험: `test/headless/all.sh` (위 항목 + 양식 4종 + 이력서 + 팝업·설정 화면 열림까지 한 번에, 하나라도 다르면 exit 1)
 - 실제 확장 검사: `node test/headless/real-ext.mjs <확장폴더> [Greenhouse 공고 주소…]` — 시험용 크롬에 확장을 그대로 올리고(CDP `Extensions.loadUnpacked`) 실제 툴바 버튼(`Extensions.triggerAction`)으로 팝업을 열어 설정 저장·칸 알려 주기·채우기·선택 목록을 가짜 정보로 확인(제출 안 함, all.sh 7번, `GH_URLS`로 공고 주소 전달). 팝업을 일반 탭으로 열면 보안 검사 때문에 선택 목록이 동작하지 않음
 - 거주 국가·이메일 받기 질문: `test/residence.html` + `residence.js` (all.sh 1f)
+- 그리팅 주소 찾기 상자(대상웰라이프 구조): `test/greeting-address.html` + `greeting-address.js` — 현주소·주민등록지(같음/다른 주소), 같은 우편번호의 가게 등록 줄 거르기, 예전 글자만 들어간 주소 다시 고르기, 우편번호·퇴직사유·어학 등록번호·봉사 주관기관 칸 연결 (all.sh 1f)
 - 양식 파일 채우기: `python3 test/docfill/make_templates.py && node test/headless/docfill-test.mjs "$PWD" && python3 test/docfill/verify.py test/docfill/out/resume_채움.* test/docfill/out/shapes_채움.docx` (변형 구조 shapes.docx 포함, `FILES=`로 파일 지정, 수원대 실제 양식은 `test/docfill/_local/`, 배포 제외)
 - 이력서 내보내기: `resume-test.mjs <확장폴더>` → test/docfill/out/cv.docx·cv.pdf·cv_en.*
 - Greenhouse 선택 목록(react-select): `rs-test.mjs <확장폴더> <지원서 URL>` (`RSDEBUG=1`, `ONLY=city`)
-- 시연 GIF 9개: `demo-gifs.mjs <확장폴더> [번호]` → `demo/` (외부 프로그램 없이 `gifenc.html`로 인코딩), 검사 `gifcheck.mjs "/demo/<파일>.gif" <출력폴더> [장면]`. 시연용 페이지 `test/teach-demo.html`, `test/photo.html`
+- 시연 GIF 8개(07 지원 기록은 기능을 빼며 지움): `demo-gifs.mjs <확장폴더> [번호]` → `demo/` (외부 프로그램 없이 `gifenc.html`로 인코딩), 검사 `gifcheck.mjs "/demo/<파일>.gif" <출력폴더> [장면]`. 시연용 페이지 `test/teach-demo.html`, `test/photo.html`
 - 안내서 그림(새 기능): `guide-shots.mjs <확장폴더>` → guide/images/09~12
 - 실제 사이트 시험 (가짜 프로필, 제출 안 함): `check.js`(그리팅 슈프리마 https://hr-suprema.career.greetinghr.com/ko/o/244288/apply), `gf4.js`(구글 설문)
 - 공개 ATS 일괄 진단(가짜 프로필, 제출 버튼 미작동): `PORT=9351 node test/headless/diagnose.mjs <확장폴더> <사이트목록.txt> <보고서폴더> 1`. 목록은 `sites/`(Greeting 하위 주소, Ninehire/Greenhouse/Lever/Ashby 게시판 URL), Korea/Seoul 공고 우선. **동시에 여러 개 돌릴 때는 PORT를 다르게.** 보고서에 파일 칸·사진 첨부 결과도 나옵니다. 최신 보고서: `report-ashby-086`(Ashby 101/278, Location 모르는 칸 0), `report-greenhouse-new-086`, `report-greeting-guess-086b`, 지난 보고서는 `report-old/`.

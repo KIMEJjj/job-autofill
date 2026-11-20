@@ -45,7 +45,7 @@ got=$(NOINJECT=1 node test/headless/cdp.mjs "$ROOT" "http://127.0.0.1:8765/test/
 if [ "$got" = "$want" ]; then ok "submit-guard $got"; else bad "submit-guard 기대 $want / 실제 $got"; fi
 
 say "== 1. 회귀 15종 =="
-for pair in form:54/0 recruiter:6/0 choices:6/0 toggles:4/1 questions:5/1 mui:3/0 mui2:2/0 period:8/0 kei:9/0 edu:8/0 emailcheck:6/0 trinity:9/1 kli-address:2/0 cj:24/0 ninehire:12/0; do
+for pair in form:54/0 recruiter:6/0 choices:6/0 toggles:4/1 questions:5/1 mui:3/0 mui2:2/0 period:8/0 kei:9/0 edu:8/0 emailcheck:6/0 trinity:10/1 kli-address:2/0 cj:24/0 ninehire:12/0; do
   t="${pair%%:*}"; want="${pair#*:}"
   got=$(NOINJECT=1 node test/headless/cdp.mjs "$ROOT" "http://127.0.0.1:8765/test/$t.html" "$PORT" test/headless/reg.js 2>&1 | tail -1)
   if [ "$got" = "$want" ]; then ok "$t $got"; else bad "$t 기대 $want / 실제 $got"; fi
@@ -90,6 +90,14 @@ if [ "$got" = "$want" ]; then ok "recruitee $got"; else bad "recruitee 기대 $w
 want="a=South Korea l=Korea, Republic of t=대한민국 c=Seoul q=none miss= e5= e6= rs= mail=testuser@gmail.com | foreign a= l= t= miss="
 got=$(NOINJECT=1 node test/headless/cdp.mjs "$ROOT" "http://127.0.0.1:8765/test/residence.html" "$PORT" test/headless/residence.js 2>&1 | tail -1)
 if [ "$got" = "$want" ]; then ok "residence $got"; else bad "residence 기대 $want / 실제 $got"; fi
+# 그리팅 '주소 찾기' 상자(대상웰라이프 구조, 현주소·주민등록지·같은 우편번호 가게 줄) + 우편번호·퇴직사유·어학 등록번호·컴퓨터 프로그램명·봉사 주관기관 칸
+want='zip=zip regzip=(제외) reason=career.reason langNo=languages.number certNo=certificates.number prog=(제외) host=activities.org | z=04541 a=서울특별시 중구 을지로 79 d=101동 1001호 done=true open=false | reg z=04541 a=서울특별시 중구 을지로 79 d=101동 1001호 | pre z=04541 done=true | other a=서울특별시 중구 을지로 7 z= | regDiff z=04533 a=서울특별시 중구 을지로 7 d=3층'
+got=$(NOINJECT=1 node test/headless/cdp.mjs "$ROOT" "http://127.0.0.1:8765/test/greeting-address.html" "$PORT" test/headless/greeting-address.js 2>&1 | tail -1)
+if [ "$got" = "$want" ]; then ok "greeting-address $got"; else bad "greeting-address 기대 $want / 실제 $got"; fi
+# 주소 이름이 다른 사이트(실거주지 / 등본상 주소) + 주민등록지 '다른 주소'
+want='heads=실거주지/등본상 주소 regzip=- regaddr=- regdet=- | cur z=04541 a=서울특별시 중구 을지로 79 d=101동 1001호 | reg z=04533 a=서울특별시 중구 을지로 7 d=3층'
+got=$(NOINJECT=1 node test/headless/cdp.mjs "$ROOT" "http://127.0.0.1:8765/test/greeting-address.html?names=1" "$PORT" test/headless/greeting-address-names.js 2>&1 | tail -1)
+if [ "$got" = "$want" ]; then ok "greeting-address-names $got"; else bad "greeting-address-names 기대 $want / 실제 $got"; fi
 
 say "== 2. 사진 첨부 =="
 PHOTO=$(node test/headless/cdp.mjs "$ROOT" "http://127.0.0.1:8765/test/photo.html" 9369 test/headless/photo.js 2>&1)
@@ -146,9 +154,9 @@ if printf '%s' "$UI" | grep -q '"ok":true'; then ok "팝업 버튼 6개 · 콘�
 if [ "${FORCE_FAIL:-0}" = "1" ]; then bad "FORCE_FAIL=1 자기 시험"; fi
 
 say "== 7. 실제 확장 (시험용 크롬에 올려 툴바 팝업으로) =="
-# 설정 화면 잠금 암호·사진·지원 기록 저장 후 다시 열기, 칸 알려 주기, 채우기와 지원 기록. GH_URLS를 주면 실제 Greenhouse 선택 목록까지
+# 설정 화면 잠금 암호·사진 저장 후 다시 열기, 칸 알려 주기, 채우기(지원 기록이 생기지 않는지). GH_URLS를 주면 실제 Greenhouse 선택 목록까지
 RX=$(timeout 400 node test/headless/real-ext.mjs "$ROOT" ${GH_URLS:-} 2>&1 | tail -1)
-if printf '%s' "$RX" | grep -q '"ok":true'; then ok "real-ext $(printf '%s' "$RX" | python3 -c 'import json,sys; d=json.load(sys.stdin)["steps"]; print("사진·기록 유지, 알려 주기", d["teach"]["marked"], "칸, 채움", d["fill"]["filled"], "칸", *[g["url"].split("/")[3]+" 목록 "+str(len(g["picked"])) for g in d.get("greenhouse",[])])')"; else bad "real-ext: $RX"; fi
+if printf '%s' "$RX" | grep -q '"ok":true'; then ok "real-ext $(printf '%s' "$RX" | python3 -c 'import json,sys; d=json.load(sys.stdin)["steps"]; print("사진 유지·지원 기록 없음, 알려 주기", d["teach"]["marked"], "칸, 채움", d["fill"]["filled"], "칸", *[g["url"].split("/")[3]+" 목록 "+str(len(g["picked"])) for g in d.get("greenhouse",[])])')"; else bad "real-ext: $RX"; fi
 
 say "== 결과 =="
 if [ "$FAIL" -eq 0 ]; then say "전체 통과"; exit 0; else say "실패 있음"; exit 1; fi

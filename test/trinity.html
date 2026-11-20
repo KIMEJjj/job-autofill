@@ -31,7 +31,7 @@ cal(document.getElementById('ms')); cal(document.getElementById('me'));
 </script>
 <div id="addrRow"><span>현주소</span><div><button type="button" id="openAddr">주소입력</button><input disabled placeholder="우편번호" id="z"><input disabled placeholder="주소" id="a"></div>
 <input placeholder="상세 주소를 입력해주세요." id="d"></div>
-<div><span>주민등록지</span><div><button type="button">주소입력</button><input disabled placeholder="우편번호"><input disabled placeholder="주소"></div></div>
+<div><span>주민등록지</span><div><button type="button" id="openReg">주소입력</button><input disabled placeholder="우편번호" id="rz"><input disabled placeholder="주소" id="ra"></div></div>
 <div id="modal" style="display:none;position:fixed;top:20px;left:20px;background:#fff;border:1px solid #000;padding:10px">
  <b>주소입력</b><input id="q" placeholder="예: 반포대로 201, 국립중앙도서관, 삼성동 25"><button type="button" id="go">검색</button>
  <ul id="res"></ul><div><span>기본주소</span><span id="base"></span></div><div><span>상세주소</span><input id="md" placeholder="상세주소를 입력하세요."></div><button type="button" id="cancel">취소</button><button type="button" id="ok" disabled>확인</button></div>
@@ -39,10 +39,12 @@ cal(document.getElementById('ms')); cal(document.getElementById('me'));
 document.addEventListener('input',e=>{if(e.target.id==='md') document.getElementById('ok').disabled=!(e.target.value&&document.getElementById('base').textContent);});
 dd('rk',['이병','일병','상병','병장','하사']);
 let picked=null; const M=document.getElementById('modal');
-document.getElementById('openAddr').onclick=()=>{M.style.display='block';};
+let tg=['z','a','d']; // 현주소·주민등록지 버튼이 같은 창을 씀(주민등록지는 상세주소 칸 없음)
+document.getElementById('openAddr').onclick=()=>{tg=['z','a','d'];M.style.display='block';};
+document.getElementById('openReg').onclick=()=>{tg=['rz','ra',null];document.getElementById('base').textContent='';document.getElementById('res').innerHTML='';M.style.display='block';};
 document.getElementById('go').onclick=()=>{ const q=document.getElementById('q').value; const r=document.getElementById('res'); r.innerHTML=''; if(!q) return;
   setTimeout(()=>{ [['04524','서울특별시 중구 을지로 79'],['04525','서울특별시 중구 을지로 81']].forEach(([z,a])=>{ const li=document.createElement('li'); li.innerHTML='<div><span>도로명</span><p>'+a+' (을지로2가)</p></div><div><span>지번</span><p>서울특별시 중구 을지로2가 100</p></div>'; li.querySelector('p').onclick=()=>{picked=[z,a]; document.getElementById('base').textContent=a; document.getElementById('ok').disabled=!document.getElementById('md').value;}; r.appendChild(li); }); },300); };
-document.getElementById('ok').onclick=()=>{ document.getElementById('z').value=picked[0]; document.getElementById('a').value=picked[1]; document.getElementById('d').value=document.getElementById('md').value; M.style.display='none'; };
+document.getElementById('ok').onclick=()=>{ document.getElementById(tg[0]).value=picked[0]; document.getElementById(tg[1]).value=picked[1]; if(tg[2]) document.getElementById(tg[2]).value=document.getElementById('md').value; M.style.display='none'; };
 document.getElementById('cancel').onclick=()=>{M.style.display='none'};
 </script>
 <script>document.querySelectorAll('.seg button').forEach(b=>b.onclick=()=>{b.closest('.seg').querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true')});</script>

@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><title>그리팅 주소 찾기·칸 이름 재현 (가짜)</title>
+<style>
+  body { font: 14px sans-serif; margin: 24px; } section { margin: 16px 0; } label { display: block; margin: 6px 0; }
+  [role=dialog] { position: fixed; top: 40px; left: 40px; width: 420px; background: #fff; border: 1px solid #999; padding: 12px; }
+  [role=dialog][hidden] { display: none; } .row { padding: 6px; border-bottom: 1px solid #eee; cursor: pointer; }
+</style>
+<script src="../schema.js"></script><script src="../alias.js"></script><script src="../qnet.js"></script><script src="sample.js"></script><script src="../fill.js"></script>
+</head><body>
+<!-- 대상웰라이프(career.daesang.com, 그리팅) 지원서 구조를 본뜬 가짜 페이지. 실제 칸 이름(name)과 주소 상자 짜임새만 따름 -->
+<form onsubmit="return false">
+<section><h3>인적사항</h3>
+  <div><h4>현주소</h4>
+    <div><label>우편번호<input name="personalInformation.currentAddress.postalCode" readonly></label>
+      <div><input name="personalInformation.currentAddress.address" placeholder="주소" readonly><button type="button" id="open">주소 찾기</button></div>
+      <label>상세주소<input name="personalInformation.currentAddress.detailedAddress" placeholder="상세주소"></label></div>
+  </div>
+  <div><h4>주민등록지</h4>
+    <div><label>주민등록지 우편번호<input name="personalInformation.registeredAddress.postalCode" readonly></label><button type="button" id="openReg">주소 찾기</button></div>
+    <label>주민등록지 주소<input name="personalInformation.registeredAddress.address" placeholder="주소" readonly></label>
+    <label>주민등록지 상세주소<input name="personalInformation.registeredAddress.detailedAddress" placeholder="상세주소"></label>
+  </div>
+</section>
+<section><h3>경력</h3>
+  <label>회사명<input name="workHistory.workExperiences.0.companyName"></label>
+  <label>퇴직사유<input name="workHistory.workExperiences.0.reasonForResignation"></label>
+</section>
+<section><h3>어학</h3>
+  <label>등록번호<input name="languagesCertificationsAndOtherActivity.certifiedLanguageTests.0.registrationNumber"></label>
+</section>
+<section><h3>자격증</h3>
+  <label>등록번호<input name="languagesCertificationsAndOtherActivity.certificatesLicenses.0.registrationNumber"></label>
+  <label>발급기관*<input name="languagesCertificationsAndOtherActivity.certificatesLicenses.0.issuingAgency"></label>
+</section>
+<section><h3>컴퓨터 활용능력</h3>
+  <label>프로그램명*<input name="languagesCertificationsAndOtherActivity.computerSkills.0.programName"></label>
+</section>
+<section><h3>봉사활동</h3>
+  <label>주관기관*<input name="languagesCertificationsAndOtherActivity.volunteerExperiences.0.hostOrganization"></label>
+</section>
+</form>
+<div role="dialog" aria-modal="true" hidden id="dlg">
+  <button type="button" aria-label="close" id="x">×</button><h2>주소 검색</h2>
+  <div><span></span><input type="search" placeholder="도로명, 지번, 건물명" autocomplete="off" id="q"></div>
+  <div id="res"></div>
+</div>
+<script>
+  // ?names=1: 사이트마다 다른 주소 이름(실거주지 / 등본상 주소)으로 바꿔 시험
+  if (/names=1/.test(location.search)) {
+    for (const h of document.querySelectorAll('h4')) h.textContent = h.textContent === '현주소' ? '실거주지' : '등본상 주소';
+    for (const l of document.querySelectorAll('label')) for (const n of l.childNodes) if (n.nodeType === 3) n.textContent = n.textContent.replace('주민등록지', '등본상');
+  }
+</script>
+<script>
+  // 가짜 주소 목록(시험용). 검색어와 앞부분이 같은 줄을 보여 줌. 결과 줄: <div><span>79</span><div><span>주소</span>…</div><div><span>우편번호</span>…</div></div>
+  // 그리팅처럼 같은 건물의 가게 등록 줄(시·도 없이 시작, 끝에 KR)이 함께 나옴
+  const DB = [['서울특별시 중구 을지로 79', '04541'], ['중구 을지로 79 1층 101호 서울 KR', '04541'], ['중구 을지로 79 2층 205호 서울 KR', '04541'], ['서울특별시 중구 을지로 7', '04533']];
+  const dlg = document.getElementById('dlg'), q = document.getElementById('q'), res = document.getElementById('res');
+  let tgt = 'currentAddress'; // 현주소·주민등록지 버튼이 같은 상자를 씀
+  const set = (n, v) => { const e = document.querySelector(`[name="personalInformation.${tgt}.${n}"]`); e.value = v; };
+  const openFor = t => () => { tgt = t; dlg.hidden = false; q.value = ''; res.innerHTML = ''; };
+  document.getElementById('open').onclick = openFor('currentAddress');
+  document.getElementById('openReg').onclick = openFor('registeredAddress');
+  document.getElementById('x').onclick = () => { dlg.hidden = true; };
+  q.addEventListener('input', () => setTimeout(() => {
+    res.innerHTML = '';
+    const w = q.value.replace(/\s/g, ''), key = (q.value.match(/\S+로 \d+/) || [''])[0];
+    for (const [a, z] of DB.filter(([a]) => w && (a.replace(/\s/g, '') === w || (key && a.includes(key + ' ') && /KR$/.test(a))))) {
+      const row = document.createElement('div'); row.className = 'row';
+      row.innerHTML = `<span>${a.split(' ').pop()}</span><div><span>주소</span>${a}</div><div><span>우편번호</span>${z}</div>`;
+      row.onclick = () => { set('postalCode', z); set('address', a); dlg.hidden = true; };
+      res.appendChild(row);
+    }
+  }, 300));
+</script>
+</body></html>

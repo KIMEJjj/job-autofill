@@ -9,7 +9,7 @@
 
 > **English:** A Chrome extension that autofills job application forms (Korean sites such as Greeting, Ninehire, recruiter.co.kr; global ATS such as Greenhouse, Lever, Ashby) and company .hwp/.docx templates. Your profile is encrypted locally (AES-256-GCM) and never leaves your computer. It never clicks submit.
 
-**할 수 있는 일:** 웹 지원서 채우기(국내 그리팅·나인하이어·recruiter·CJ·구글 설문, 해외 Greenhouse·Lever·Ashby) · 증명사진 자동 첨부(사진 칸만) · 회사 양식 파일 채우기(한글 .hwp·.hwpx, Word, PowerPoint, 미리보기 후 내려받기) · 내 이력서 내보내기(Word·PDF, 한국어·영문, 넣을 항목 고르기) · 지원 기록. 자세한 사용법은 `guide/안내서.md`(배포본에는 PDF)에 있습니다.
+**할 수 있는 일:** 웹 지원서 채우기(국내 그리팅·나인하이어·recruiter·CJ·구글 설문, 해외 Greenhouse·Lever·Ashby) · 증명사진 자동 첨부(사진 칸만) · 회사 양식 파일 채우기(한글 .hwp·.hwpx, Word, PowerPoint, 미리보기 후 내려받기) · 내 이력서 내보내기(Word·PDF, 한국어·영문, 넣을 항목 고르기). 자세한 사용법은 `guide/안내서.md`(배포본에는 PDF)에 있습니다.
 
 - 내 정보는 잠금 암호로 전부 암호화(AES-256-GCM, PBKDF2 60만 회)되어 이 크롬 안에만 저장되며 인터넷으로 보내지 않습니다.
 - 잠금 암호는 어디에도 저장하지 않습니다. 잊어버리면 복구할 수 없습니다. 크롬을 닫으면 다시 잠깁니다.
@@ -47,12 +47,11 @@
 사진 한 장에 자격증이 여러 개 있어도 위 → 아래, 왼쪽 → 오른쪽 순서로 나눠 넣습니다. 노란 줄을 확인하고 저장하세요.
 자격증번호·날짜는 사진 상태에 따라 틀릴 수 있습니다.
 
-## 회사 양식 파일 · 이력서 내보내기 · 지원 기록
+## 회사 양식 파일 · 이력서 내보내기 · 증명사진
 
 - **회사 양식 채우기:** 내 정보 설정 맨 위에 양식 파일을 끌어놓기 → 미리보기 확인(노란 점선 칸은 눌러서 항목 알려 주기) → **내려받기**로 `_채움` 파일 저장. 원본은 그대로입니다.
 - **내 이력서 내보내기:** 내 정보 설정의 **Word(.docx)로 내보내기** 또는 **PDF로 저장** → 넣을 구역·자격증 고르기 → 저장. 언어에서 영문 이력서도 고를 수 있습니다.
 - **증명사진:** 내 정보 설정의 증명사진 구역에서 사진 고르기(3:4로 자름). 이력서·Word 양식 사진 칸, 웹 지원서 사진 첨부 칸에 들어갑니다.
-- **지원 기록:** 웹 지원서를 채우거나 양식을 내려받거나 이력서를 내보내면 자동으로 한 줄 추가. 상태·메모를 적고 저장합니다(암호화).
 
 ## 칸을 잘못 채우거나 못 채울 때
 
@@ -79,7 +78,7 @@
 | `native/` | Mac 키체인 도우미 프로그램(Swift)과 등록 스크립트 |
 | `fill.js` | 칸 찾기·입력 엔진 |
 | `popup.html/js` | 아이콘 눌렀을 때 창 |
-| `options.html/js` | 내 정보 설정 화면(양식 채우기·이력서 내보내기·증명사진·지원 기록 포함) |
+| `options.html/js` | 내 정보 설정 화면(양식 채우기·이력서 내보내기·증명사진 포함) |
 | `docfill.js` | 회사 양식 파일(.hwp·.hwpx·.docx·.pptx) 채우기 |
 | `resume.js` | 내 이력서 Word·PDF 만들기 |
 | `mappings.js` | 칸 알려 주기로 저장한 연결 목록 |

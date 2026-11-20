@@ -18,10 +18,16 @@
       { key: 'tel', label: '자택전화', type: 'phone', kw: ['자택전화', '집전화', '전화번호(자택)', '유선전화', '일반전화'] },
       { key: 'emergencyPhone', label: '비상연락처', type: 'phone', kw: ['비상연락', '긴급연락'] },
       { key: 'email', label: '이메일', type: 'email', kw: ['이메일', 'e-mail', 'email', '전자우편', '메일'], ex: ['확인', '재입력', '수신'] },
-      { key: 'zip', label: '우편번호', kw: ['우편번호', 'zipcode', 'zip'] },
-      { key: 'address1', label: '주소', kw: ['주소', '기본주소', '도로명', '현주소', '거주지'], ex: ['이메일', '상세', '나머지', '우편', 'mail', 'ip', 'url', '홈페이지', '블로그'] },
+      // 주소 이름은 사이트마다 다름: 현주소·실거주지·현거주지·현재 주소 / 주민등록지·주민등록상 주소·등본상 주소·영구주소. 주민등록 쪽 칸은 현주소로 채우지 않음(주민등록 칸은 fill.js가 '주소 찾기'로만 넣음)
+      { key: 'zip', label: '우편번호', kw: ['우편번호', 'zipcode', 'zip'], ex: ['등본', '영구주소'] },
+      { key: 'address1', label: '주소', kw: ['주소', '기본주소', '도로명', '현주소', '거주지', '실거주지', '현거주지', '실제거주지', '현재주소', '거주지주소'], ex: ['이메일', '상세', '나머지', '우편', 'mail', 'ip', 'url', '홈페이지', '블로그', '등본', '영구주소'] },
       { key: 'addressEn', label: '주소(영문, 영문 이력서용)', placeholder: '79 Eulji-ro, Jung-gu, Seoul', kw: [] },
-      { key: 'address2', label: '상세주소', kw: ['상세주소', '나머지주소', '주소상세', '상세'] , needWith: '주소' },
+      { key: 'address2', label: '상세주소', kw: ['상세주소', '나머지주소', '주소상세', '상세'] , needWith: '주소', ex: ['등본', '영구주소'] },
+      // 주민등록지: 기본은 현주소와 같음(지원서의 주민등록지 묶음을 현주소로 채움). '다른 주소'면 아래 세 칸을 씀. 글자 규칙(kw)으로는 찾지 않고 fill.js가 '주민등록' 묶음의 주소 찾기로 넣음
+      { key: 'regSame', label: '주민등록지', type: 'select', choices: ['현주소와 같음', '다른 주소'], kw: [] },
+      { key: 'regZip', label: '주민등록지 우편번호', showWhen: ['regSame', '다른 주소'], kw: [] },
+      { key: 'regAddress1', label: '주민등록지 주소', placeholder: '서울특별시 중구 을지로 79', showWhen: ['regSame', '다른 주소'], kw: [] },
+      { key: 'regAddress2', label: '주민등록지 상세주소', showWhen: ['regSame', '다른 주소'], kw: [] },
       { key: 'city', label: '거주 도시(영문)', placeholder: 'Seoul', kw: ['location(city)', 'currentlocation', 'currentcity', 'cityofresidence', '거주도시', '위치(도시)'] },
     ]},
     { group: '병역', fields: [

@@ -173,21 +173,6 @@ const DEMOS = {
     await ev(`document.body.style.cssText += ';max-width:820px;margin:24px auto;background:#fff'; document.documentElement.style.background = '#e9edf2'`);
     await cap('언어를 "영문 이력서"로 바꾸면 영어 이력서(Word·PDF)도 만듭니다', 2600);
   }],
-  7: ['07-지원-기록', async () => {
-    await optionsPage();
-    await ev(dropFile('/test/docfill/resume_photo.docx', '테스트공사_입사지원서.docx'));
-    await scrollToEl('.doc-card', 20);
-    await click('.doc-card .head button');
-    await cap('양식을 내려받거나 이력서를 내보내면 지원 기록에 한 줄이 자동으로 생깁니다', 1600);
-    await scrollToEl('#applySec', 120);
-    await hold(1200);
-    await typeInto('#applyRows .grid input:nth-child(3)', '사무행정');
-    await moveTo('#applyRows .grid select');
-    await ev(`(() => { const s = document.querySelector('#applyRows .grid select'); s.value = '서류 합격'; s.dispatchEvent(new Event('change')); return 1; })()`);
-    await frame(600);
-    await typeInto('#applyRows .grid input:nth-child(6)', '면접 11/25 오후 2시');
-    await cap('진행 상태·메모를 적고 저장하면 내 정보와 함께 암호화 저장됩니다', 2600);
-  }],
 };
 
 // 화면 좌표로 커서 이동·누르기
