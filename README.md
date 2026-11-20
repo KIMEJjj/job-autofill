@@ -1,6 +1,13 @@
 # 지원서 자동입력 (크롬 확장)
 
 지원서 화면의 인적사항·병역·우대사항·학력·자격증·어학·경력·교육 칸을 내 정보로 채웁니다.
+회사마다 다른 지원서에 같은 정보를 처음부터 다시 쓰는 일을 버튼 한 번으로 줄입니다.
+
+**[⬇ 최신 버전 내려받기 (Releases)](https://github.com/KIMEJjj/job-autofill/releases/latest)** · 무료 · 회원가입 없음 · 서버 없음
+
+![웹 지원서 채우기 시연(가짜 정보)](demo/01-웹지원서-채우기.gif)
+
+> **English:** A Chrome extension that autofills job application forms (Korean sites such as Greeting, Ninehire, recruiter.co.kr; global ATS such as Greenhouse, Lever, Ashby) and company .hwp/.docx templates. Your profile is encrypted locally (AES-256-GCM) and never leaves your computer. It never clicks submit.
 
 **할 수 있는 일:** 웹 지원서 채우기(국내 그리팅·나인하이어·recruiter·CJ·구글 설문, 해외 Greenhouse·Lever·Ashby) · 증명사진 자동 첨부(사진 칸만) · 회사 양식 파일 채우기(한글 .hwp·.hwpx, Word, PowerPoint, 미리보기 후 내려받기) · 내 이력서 내보내기(Word·PDF, 한국어·영문, 넣을 항목 고르기) · 지원 기록. 자세한 사용법은 `guide/안내서.md`(배포본에는 PDF)에 있습니다.
 
