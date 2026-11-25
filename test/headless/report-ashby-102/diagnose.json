@@ -1,0 +1,496 @@
+[
+  {
+    "site": "https://jobs.ashbyhq.com/openai",
+    "url": "https://jobs.ashbyhq.com/openai/52263a22-1621-4dbb-9a11-ae4490f2acc8/application",
+    "status": "진단",
+    "title": "Account Director, Digital Native @ OpenAI",
+    "files": [
+      "[ ] Autofill from resume Upload your resume  {application/pdf,.pdf,application/msword,.doc,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.docx,application/vnd.oasis.opendocument.text,.odt,application/rtf,.rtf,text/plain,.txt,text/markdown,.md}",
+      "[ ] Resume Upload File or drag and drop here {application/pdf,.pdf,application/msword,.doc,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.docx,application/vnd.oasis.opendocument.text,.odt,application/rtf,.rtf,text/plain,.txt,text/markdown,.md,image/*,video/*,audio/*}"
+    ],
+    "photo": 0,
+    "filled": 5,
+    "check": 1,
+    "total": 7,
+    "recognized": 5,
+    "excluded": 0,
+    "unknown": [
+      "When can you start a new role? | Pick date... [input:text] "
+    ]
+  },
+  {
+    "site": "https://jobs.ashbyhq.com/twelve-labs",
+    "url": "https://jobs.ashbyhq.com/twelve-labs/aa6111e1-c44a-4123-8a14-dc7d2b402fb7/application",
+    "status": "진단",
+    "title": "ML Platform Engineer (Senior-level) @ TwelveLabs",
+    "files": [
+      "[ ] Autofill from resume Upload your resume  {application/pdf,.pdf,application/msword,.doc,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.docx,application/vnd.oasis.opendocument.text,.odt,application/rtf,.rtf,text/plain,.txt,text/markdown,.md}",
+      "[ ] Resume Upload File or drag and drop here {application/pdf,.pdf,application/msword,.doc,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.docx,application/vnd.oasis.opendocument.text,.odt,application/rtf,.rtf,text/plain,.txt,text/markdown,.md,image/*,video/*,audio/*}"
+    ],
+    "photo": 0,
+    "filled": 4,
+    "check": 1,
+    "total": 33,
+    "recognized": 4,
+    "excluded": 0,
+    "unknown": [
+      "Do you now or will you in the future need work authorization [input:text] 45bc7cb8-3e15-4083-8d17-0220a648c4a0",
+      "Under 30 [input:radio] e23fb9b2-54d0-42ba-b9ce-3dffe810bda1_cf0f1bc7-7ce6-4eb3-aebc-b6562141cb68",
+      "30-39 [input:radio] e23fb9b2-54d0-42ba-b9ce-3dffe810bda1_cf0f1bc7-7ce6-4eb3-aebc-b6562141cb68",
+      "40-49 [input:radio] e23fb9b2-54d0-42ba-b9ce-3dffe810bda1_cf0f1bc7-7ce6-4eb3-aebc-b6562141cb68",
+      "50-59 [input:radio] e23fb9b2-54d0-42ba-b9ce-3dffe810bda1_cf0f1bc7-7ce6-4eb3-aebc-b6562141cb68",
+      "60 or older [input:radio] e23fb9b2-54d0-42ba-b9ce-3dffe810bda1_cf0f1bc7-7ce6-4eb3-aebc-b6562141cb68",
+      "I prefer not to answer [input:radio] e23fb9b2-54d0-42ba-b9ce-3dffe810bda1_cf0f1bc7-7ce6-4eb3-aebc-b6562141cb68",
+      "Man [input:radio] e23fb9b2-54d0-42ba-b9ce-3dffe810bda1_8d7dcc65-3a0b-476a-b679-574b869780bb",
+      "Woman [input:radio] e23fb9b2-54d0-42ba-b9ce-3dffe810bda1_8d7dcc65-3a0b-476a-b679-574b869780bb",
+      "Non-Binary [input:radio] e23fb9b2-54d0-42ba-b9ce-3dffe810bda1_8d7dcc65-3a0b-476a-b679-574b869780bb",
+      "Another Gender Identity [input:radio] e23fb9b2-54d0-42ba-b9ce-3dffe810bda1_8d7dcc65-3a0b-476a-b679-574b869780bb",
+      "I prefer not to answer [input:radio] e23fb9b2-54d0-42ba-b9ce-3dffe810bda1_8d7dcc65-3a0b-476a-b679-574b869780bb",
+      "Yes [input:radio] e23fb9b2-54d0-42ba-b9ce-3dffe810bda1_0a90dc7e-908c-449f-9151-95612d844b10",
+      "No [input:radio] e23fb9b2-54d0-42ba-b9ce-3dffe810bda1_0a90dc7e-908c-449f-9151-95612d844b10",
+      "I prefer not to answer [input:radio] e23fb9b2-54d0-42ba-b9ce-3dffe810bda1_0a90dc7e-908c-449f-9151-95612d844b10",
+      "Male | Input gender [input:radio] c9e9ef5b-2d77-4018-a04d-95c32a5cba76__systemfield_eeoc_gender",
+      "Female | Input gender [input:radio] c9e9ef5b-2d77-4018-a04d-95c32a5cba76__systemfield_eeoc_gender",
+      "Decline to self-identify | Input gender [input:radio] c9e9ef5b-2d77-4018-a04d-95c32a5cba76__systemfield_eeoc_gender",
+      "Hispanic or Latino | Race [input:radio] c9e9ef5b-2d77-4018-a04d-95c32a5cba76__systemfield_eeoc_race",
+      "White (Not Hispanic or Latino) | Race [input:radio] c9e9ef5b-2d77-4018-a04d-95c32a5cba76__systemfield_eeoc_race",
+      "White (Not Hispanic or Latino) [input:radio] c9e9ef5b-2d77-4018-a04d-95c32a5cba76__systemfield_eeoc_race",
+      "White (Not Hispanic or Latino) [input:radio] c9e9ef5b-2d77-4018-a04d-95c32a5cba76__systemfield_eeoc_race",
+      "Asian (Not Hispanic or Latino) [input:radio] c9e9ef5b-2d77-4018-a04d-95c32a5cba76__systemfield_eeoc_race",
+      "Asian (Not Hispanic or Latino) [input:radio] c9e9ef5b-2d77-4018-a04d-95c32a5cba76__systemfield_eeoc_race",
+      "Asian (Not Hispanic or Latino) [input:radio] c9e9ef5b-2d77-4018-a04d-95c32a5cba76__systemfield_eeoc_race",
+      "Decline to self-identify [input:radio] c9e9ef5b-2d77-4018-a04d-95c32a5cba76__systemfield_eeoc_race",
+      "Veteran Status | Veteran Status [input:radio] c9e9ef5b-2d77-4018-a04d-95c32a5cba76__systemfield_eeoc_veteran_status",
+      "I am not a protected veteran | Veteran Status [input:radio] c9e9ef5b-2d77-4018-a04d-95c32a5cba76__systemfield_eeoc_veteran_status",
+      "Veteran Status | Veteran Status [input:radio] c9e9ef5b-2d77-4018-a04d-95c32a5cba76__systemfield_eeoc_veteran_status"
+    ]
+  },
+  {
+    "site": "https://jobs.ashbyhq.com/cohere",
+    "url": "https://jobs.ashbyhq.com/cohere/031c2335-db85-4265-8a88-a54b911be36a/application",
+    "status": "진단",
+    "title": "Forward Deployed Engineer, Agentic Platform (Korea) @ Cohere",
+    "files": [
+      "[ ] Autofill from resume Upload your resume  {application/pdf,.pdf,application/msword,.doc,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.docx,application/vnd.oasis.opendocument.text,.odt,application/rtf,.rtf,text/plain,.txt,text/markdown,.md}",
+      "[ ] Resume Upload File or drag and drop here {application/pdf,.pdf,application/msword,.doc,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.docx,application/vnd.oasis.opendocument.text,.odt,application/rtf,.rtf,text/plain,.txt,text/markdown,.md,image/*,video/*,audio/*}"
+    ],
+    "photo": 0,
+    "filled": 5,
+    "check": 0,
+    "total": 5,
+    "recognized": 5,
+    "excluded": 0,
+    "unknown": []
+  },
+  {
+    "site": "https://jobs.ashbyhq.com/speak",
+    "url": "https://jobs.ashbyhq.com/speak/5de54ac4-6948-4be1-a1a1-9c374a625a76/application",
+    "status": "진단",
+    "title": "B2B Marketing Manager @ Speak",
+    "files": [
+      "[ ] Autofill from resume Upload your resume  {application/pdf,.pdf,application/msword,.doc,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.docx,application/vnd.oasis.opendocument.text,.odt,application/rtf,.rtf,text/plain,.txt,text/markdown,.md}",
+      "[ ] Resume Upload File or drag and drop here {application/pdf,.pdf,application/msword,.doc,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.docx,application/vnd.oasis.opendocument.text,.odt,application/rtf,.rtf,text/plain,.txt,text/markdown,.md,image/*,video/*,audio/*}",
+      "[ ] Cover Letter Upload File or drag and dro {application/pdf,.pdf,application/msword,.doc,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.docx,application/vnd.oasis.opendocument.text,.odt,application/rtf,.rtf,text/plain,.txt,text/markdown,.md,image/*,video/*,audio/*}"
+    ],
+    "photo": 0,
+    "filled": 5,
+    "check": 0,
+    "total": 5,
+    "recognized": 5,
+    "excluded": 0,
+    "unknown": []
+  },
+  {
+    "site": "https://jobs.ashbyhq.com/applied",
+    "url": "https://jobs.ashbyhq.com/applied/528fef94-d87d-4521-b7b5-996b4d0567c2/application",
+    "status": "진단",
+    "title": "Customer Engineering - Lead Customer Engineer @ Applied Intuition",
+    "files": [
+      "[ ] Autofill from resume Upload your resume  {application/pdf,.pdf,application/msword,.doc,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.docx,application/vnd.oasis.opendocument.text,.odt,application/rtf,.rtf,text/plain,.txt,text/markdown,.md}",
+      "[ ] Resume Upload File or drag and drop here {application/pdf,.pdf,application/msword,.doc,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.docx,application/vnd.oasis.opendocument.text,.odt,application/rtf,.rtf,text/plain,.txt,text/markdown,.md,image/*,video/*,audio/*}"
+    ],
+    "photo": 0,
+    "filled": 8,
+    "check": 4,
+    "total": 22,
+    "recognized": 10,
+    "excluded": 2,
+    "unknown": [
+      "Start Date [select:select-one] ",
+      "Start Date [select:select-one] ",
+      "End Date [select:select-one] ",
+      "End Date [select:select-one] ",
+      "Native/bilingual [input:radio] 97e69cae-e040-43b9-bebf-291a3eecb9d4_2f1512bc-e04a-4f67-8da9-1d3669bccc27",
+      "Full professional proficiency [input:radio] 97e69cae-e040-43b9-bebf-291a3eecb9d4_2f1512bc-e04a-4f67-8da9-1d3669bccc27",
+      "Professional working proficiency [input:radio] 97e69cae-e040-43b9-bebf-291a3eecb9d4_2f1512bc-e04a-4f67-8da9-1d3669bccc27",
+      "Conversational [input:radio] 97e69cae-e040-43b9-bebf-291a3eecb9d4_2f1512bc-e04a-4f67-8da9-1d3669bccc27",
+      "Basic [input:radio] 97e69cae-e040-43b9-bebf-291a3eecb9d4_2f1512bc-e04a-4f67-8da9-1d3669bccc27"
+    ]
+  },
+  {
+    "site": "https://jobs.ashbyhq.com/reflectionai",
+    "url": "https://jobs.ashbyhq.com/reflectionai/026e952c-8bdc-4feb-91be-27e29fdf9634/application",
+    "status": "진단",
+    "title": "AGC, Head of Litigation @ Reflection",
+    "files": [
+      "[ ] Autofill from resume Upload your resume  {application/pdf,.pdf,application/msword,.doc,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.docx,application/vnd.oasis.opendocument.text,.odt,application/rtf,.rtf,text/plain,.txt,text/markdown,.md}",
+      "[ ] Resume Upload File or drag and drop here {application/pdf,.pdf,application/msword,.doc,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.docx,application/vnd.oasis.opendocument.text,.odt,application/rtf,.rtf,text/plain,.txt,text/markdown,.md,image/*,video/*,audio/*}"
+    ],
+    "photo": 0,
+    "filled": 3,
+    "check": 1,
+    "total": 8,
+    "recognized": 3,
+    "excluded": 0,
+    "unknown": [
+      "New York [input:radio] a3accd04-fca8-4e67-b9dd-deede3bca94b_5e9016b0-f9c8-445a-bb54-f4cd3ce08e72",
+      "San Francisco [input:radio] a3accd04-fca8-4e67-b9dd-deede3bca94b_5e9016b0-f9c8-445a-bb54-f4cd3ce08e72",
+      "London [input:radio] a3accd04-fca8-4e67-b9dd-deede3bca94b_5e9016b0-f9c8-445a-bb54-f4cd3ce08e72",
+      "Washington, D.C. [input:radio] a3accd04-fca8-4e67-b9dd-deede3bca94b_5e9016b0-f9c8-445a-bb54-f4cd3ce08e72",
+      "How soon can you start full-time? | Type here... [input:text] b474cfc5-51ca-4132-b13c-a0e352f223f2"
+    ]
+  },
+  {
+    "site": "https://jobs.ashbyhq.com/friendliai",
+    "url": "https://jobs.ashbyhq.com/friendliai/11f5ea91-9775-48a8-aca6-0438de737fd7/application",
+    "status": "진단",
+    "title": "Customer Success Engineer (contract based) @ FriendliAI",
+    "files": [
+      "[ ] Autofill from resume Upload your resume  {application/pdf,.pdf,application/msword,.doc,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.docx,application/vnd.oasis.opendocument.text,.odt,application/rtf,.rtf,text/plain,.txt,text/markdown,.md}",
+      "[ ] Resume Upload File or drag and drop here {application/pdf,.pdf,application/msword,.doc,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.docx,application/vnd.oasis.opendocument.text,.odt,application/rtf,.rtf,text/plain,.txt,text/markdown,.md,image/*,video/*,audio/*}"
+    ],
+    "photo": 0,
+    "filled": 4,
+    "check": 0,
+    "total": 4,
+    "recognized": 4,
+    "excluded": 0,
+    "unknown": []
+  },
+  {
+    "site": "https://jobs.ashbyhq.com/adjoe",
+    "url": "https://jobs.ashbyhq.com/adjoe/1c16bf91-a627-4d9b-bde2-df1987719c68/application",
+    "status": "진단",
+    "title": "Technical Account Manager - Korea @ adjoe",
+    "files": [
+      "[ ] Autofill from resume Upload your resume  {application/pdf,.pdf,application/msword,.doc,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.docx,application/vnd.oasis.opendocument.text,.odt,application/rtf,.rtf,text/plain,.txt,text/markdown,.md}",
+      "[ ] Resume Upload File or drag and drop here {application/pdf,.pdf,application/msword,.doc,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.docx,application/vnd.oasis.opendocument.text,.odt,application/rtf,.rtf,text/plain,.txt,text/markdown,.md,image/*,video/*,audio/*}",
+      "[ ] Additional Documents Have a cover letter {application/pdf,.pdf,application/msword,.doc,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.docx,application/vnd.oasis.opendocument.text,.odt,application/rtf,.rtf,text/plain,.txt,text/markdown,.md,image/*,video/*,audio/*}"
+    ],
+    "photo": 0,
+    "filled": 5,
+    "check": 4,
+    "total": 38,
+    "recognized": 5,
+    "excluded": 0,
+    "unknown": [
+      "High School [input:radio] 7ea6d9c3-1f64-4f2b-977a-9d248c96fda5_24222b42-8b61-45bd-b1f1-906d46b34078",
+      "Associate Degree [input:radio] 7ea6d9c3-1f64-4f2b-977a-9d248c96fda5_24222b42-8b61-45bd-b1f1-906d46b34078",
+      "Bachelor´s Degree [input:radio] 7ea6d9c3-1f64-4f2b-977a-9d248c96fda5_24222b42-8b61-45bd-b1f1-906d46b34078",
+      "Master's Degree [input:radio] 7ea6d9c3-1f64-4f2b-977a-9d248c96fda5_24222b42-8b61-45bd-b1f1-906d46b34078",
+      "MBA [input:radio] 7ea6d9c3-1f64-4f2b-977a-9d248c96fda5_24222b42-8b61-45bd-b1f1-906d46b34078",
+      "PhD [input:radio] 7ea6d9c3-1f64-4f2b-977a-9d248c96fda5_24222b42-8b61-45bd-b1f1-906d46b34078",
+      "Bootcamp / Technical Certification [input:radio] 7ea6d9c3-1f64-4f2b-977a-9d248c96fda5_24222b42-8b61-45bd-b1f1-906d46b34078",
+      "Other [input:radio] 7ea6d9c3-1f64-4f2b-977a-9d248c96fda5_24222b42-8b61-45bd-b1f1-906d46b34078",
+      "0-1 years [input:radio] 7ea6d9c3-1f64-4f2b-977a-9d248c96fda5_5ca98ee4-13e8-4c43-aa19-cbaeb4f9b2a9",
+      "1-3 years [input:radio] 7ea6d9c3-1f64-4f2b-977a-9d248c96fda5_5ca98ee4-13e8-4c43-aa19-cbaeb4f9b2a9",
+      "3-5 years [input:radio] 7ea6d9c3-1f64-4f2b-977a-9d248c96fda5_5ca98ee4-13e8-4c43-aa19-cbaeb4f9b2a9",
+      "5-8 years [input:radio] 7ea6d9c3-1f64-4f2b-977a-9d248c96fda5_5ca98ee4-13e8-4c43-aa19-cbaeb4f9b2a9",
+      "8+ years [input:radio] 7ea6d9c3-1f64-4f2b-977a-9d248c96fda5_5ca98ee4-13e8-4c43-aa19-cbaeb4f9b2a9",
+      "Native | Fluent (C1/C2) [input:radio] 7ea6d9c3-1f64-4f2b-977a-9d248c96fda5_b1513d99-2b0a-4da1-9558-8235db38c795",
+      "Professional (B1/B2) [input:radio] 7ea6d9c3-1f64-4f2b-977a-9d248c96fda5_b1513d99-2b0a-4da1-9558-8235db38c795",
+      "Basic (A1/A2) [input:radio] 7ea6d9c3-1f64-4f2b-977a-9d248c96fda5_b1513d99-2b0a-4da1-9558-8235db38c795",
+      "None [input:radio] 7ea6d9c3-1f64-4f2b-977a-9d248c96fda5_b1513d99-2b0a-4da1-9558-8235db38c795",
+      "Yes [input:radio] 7ea6d9c3-1f64-4f2b-977a-9d248c96fda5_337dd887-7458-477f-bd2c-885574150de5",
+      "No [input:radio] 7ea6d9c3-1f64-4f2b-977a-9d248c96fda5_337dd887-7458-477f-bd2c-885574150de5",
+      "No | Start typing... [input:text] ",
+      "If you were referred by one of our employees, who should we  [input:text] 3684c7f9-d8a4-4090-89d7-0724dee521f5",
+      "No | Start typing... [input:text] ",
+      "Yes, I need a visa to start the job | Logistics [input:radio] 7ea6d9c3-1f64-4f2b-977a-9d248c96fda5_795445a8-fa37-4b64-b5da-a12faba32a47",
+      "Logistics | Logistics [input:radio] 7ea6d9c3-1f64-4f2b-977a-9d248c96fda5_795445a8-fa37-4b64-b5da-a12faba32a47",
+      "Logistics | Logistics [input:radio] 7ea6d9c3-1f64-4f2b-977a-9d248c96fda5_795445a8-fa37-4b64-b5da-a12faba32a47",
+      "Immediately Available | Logistics [input:radio] 7ea6d9c3-1f64-4f2b-977a-9d248c96fda5_00a03e8e-fcdc-476e-80a7-35803a64d2c4",
+      "2 Weeks | Logistics [input:radio] 7ea6d9c3-1f64-4f2b-977a-9d248c96fda5_00a03e8e-fcdc-476e-80a7-35803a64d2c4",
+      "1 Month | Logistics [input:radio] 7ea6d9c3-1f64-4f2b-977a-9d248c96fda5_00a03e8e-fcdc-476e-80a7-35803a64d2c4",
+      "2 Months | Logistics [input:radio] 7ea6d9c3-1f64-4f2b-977a-9d248c96fda5_00a03e8e-fcdc-476e-80a7-35803a64d2c4",
+      "3 Months | Logistics [input:radio] 7ea6d9c3-1f64-4f2b-977a-9d248c96fda5_00a03e8e-fcdc-476e-80a7-35803a64d2c4",
+      "More than 3 Months | Logistics [input:radio] 7ea6d9c3-1f64-4f2b-977a-9d248c96fda5_00a03e8e-fcdc-476e-80a7-35803a64d2c4",
+      "Gross Annual Salary Expectation ₩: | Type here... [input:text] ebccc950-0a5c-4d73-b9b6-0d7a67f0e7c9"
+    ]
+  },
+  {
+    "site": "https://jobs.ashbyhq.com/fieldguide",
+    "url": "https://jobs.ashbyhq.com/fieldguide/e4449697-06e3-4864-b077-c1ed4130e3cf/application",
+    "status": "진단",
+    "title": "AI Engineer (Korea) @ Fieldguide",
+    "files": [
+      "[ ] Autofill from resume Upload your resume  {application/pdf,.pdf,application/msword,.doc,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.docx,application/vnd.oasis.opendocument.text,.odt,application/rtf,.rtf,text/plain,.txt,text/markdown,.md}",
+      "[ ] Resume Upload File or drag and drop here {application/pdf,.pdf,application/msword,.doc,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.docx,application/vnd.oasis.opendocument.text,.odt,application/rtf,.rtf,text/plain,.txt,text/markdown,.md,image/*,video/*,audio/*}",
+      "[ ] Cover Letter Upload File or drag and dro {application/pdf,.pdf,application/msword,.doc,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.docx,application/vnd.oasis.opendocument.text,.odt,application/rtf,.rtf,text/plain,.txt,text/markdown,.md,image/*,video/*,audio/*}"
+    ],
+    "photo": 0,
+    "filled": 7,
+    "check": 2,
+    "total": 27,
+    "recognized": 7,
+    "excluded": 0,
+    "unknown": [
+      "Preferred Pronouns | Type here... [input:text] 0ee06035-c46c-4986-9994-c2189cbe04de",
+      "If you were referred to Fieldguide, who were you referred by [input:text] 684f8bc4-c926-4f74-a736-3d4c128029c2",
+      "Yes [input:radio] 49748243-fb36-4789-ab12-37a71a750315_16e3630c-b469-476f-871e-974882c18bda",
+      "No [input:radio] 49748243-fb36-4789-ab12-37a71a750315_16e3630c-b469-476f-871e-974882c18bda",
+      "Yes [input:radio] 49748243-fb36-4789-ab12-37a71a750315_86489ed7-beba-4855-bc5e-79517b8834f7",
+      "No [input:radio] 49748243-fb36-4789-ab12-37a71a750315_86489ed7-beba-4855-bc5e-79517b8834f7",
+      "Male | Input gender [input:radio] 344cf110-fe12-439a-a499-ba4a75bc6e89__systemfield_eeoc_gender",
+      "Female | Input gender [input:radio] 344cf110-fe12-439a-a499-ba4a75bc6e89__systemfield_eeoc_gender",
+      "Decline to self-identify | Input gender [input:radio] 344cf110-fe12-439a-a499-ba4a75bc6e89__systemfield_eeoc_gender",
+      "Hispanic or Latino | Race [input:radio] 344cf110-fe12-439a-a499-ba4a75bc6e89__systemfield_eeoc_race",
+      "White (Not Hispanic or Latino) | Race [input:radio] 344cf110-fe12-439a-a499-ba4a75bc6e89__systemfield_eeoc_race",
+      "White (Not Hispanic or Latino) [input:radio] 344cf110-fe12-439a-a499-ba4a75bc6e89__systemfield_eeoc_race",
+      "White (Not Hispanic or Latino) [input:radio] 344cf110-fe12-439a-a499-ba4a75bc6e89__systemfield_eeoc_race",
+      "Asian (Not Hispanic or Latino) [input:radio] 344cf110-fe12-439a-a499-ba4a75bc6e89__systemfield_eeoc_race",
+      "Asian (Not Hispanic or Latino) [input:radio] 344cf110-fe12-439a-a499-ba4a75bc6e89__systemfield_eeoc_race",
+      "Asian (Not Hispanic or Latino) [input:radio] 344cf110-fe12-439a-a499-ba4a75bc6e89__systemfield_eeoc_race",
+      "Decline to self-identify [input:radio] 344cf110-fe12-439a-a499-ba4a75bc6e89__systemfield_eeoc_race",
+      "Veteran Status | Veteran Status [input:radio] 344cf110-fe12-439a-a499-ba4a75bc6e89__systemfield_eeoc_veteran_status",
+      "I am not a protected veteran | Veteran Status [input:radio] 344cf110-fe12-439a-a499-ba4a75bc6e89__systemfield_eeoc_veteran_status",
+      "Veteran Status | Veteran Status [input:radio] 344cf110-fe12-439a-a499-ba4a75bc6e89__systemfield_eeoc_veteran_status"
+    ]
+  },
+  {
+    "site": "https://jobs.ashbyhq.com/actcareers",
+    "url": "https://jobs.ashbyhq.com/actcareers/4b2e5fe0-096e-4979-a28f-232e644ebe9b/application",
+    "status": "진단",
+    "title": "AI Phone - Agentic Engineer @ Act",
+    "files": [
+      "[ ] Autofill from resume Upload your resume  {application/pdf,.pdf,application/msword,.doc,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.docx,application/vnd.oasis.opendocument.text,.odt,application/rtf,.rtf,text/plain,.txt,text/markdown,.md}",
+      "[ ] Resume Upload File or drag and drop here {application/pdf,.pdf,application/msword,.doc,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.docx,application/vnd.oasis.opendocument.text,.odt,application/rtf,.rtf,text/plain,.txt,text/markdown,.md,image/*,video/*,audio/*}"
+    ],
+    "photo": 0,
+    "filled": 6,
+    "check": 1,
+    "total": 12,
+    "recognized": 7,
+    "excluded": 0,
+    "unknown": [
+      "Application Form Questions [input:radio] c2d4319a-a5e0-413e-bb27-8cd78dc1321a_1f4813b8-e756-40e2-abfb-a8b947fda3c6",
+      "Application Form Questions [input:radio] c2d4319a-a5e0-413e-bb27-8cd78dc1321a_1f4813b8-e756-40e2-abfb-a8b947fda3c6",
+      "Application Form Questions [input:radio] c2d4319a-a5e0-413e-bb27-8cd78dc1321a_1f4813b8-e756-40e2-abfb-a8b947fda3c6",
+      "No production agent experience [input:radio] c2d4319a-a5e0-413e-bb27-8cd78dc1321a_1f4813b8-e756-40e2-abfb-a8b947fda3c6"
+    ]
+  },
+  {
+    "site": "https://jobs.ashbyhq.com/notion",
+    "url": "https://jobs.ashbyhq.com/notion/759a9c5a-cdd6-4d05-8eaf-e78eabc34293/application",
+    "status": "진단",
+    "title": "Business Development Representative @ Notion",
+    "files": [
+      "[ ] Autofill from resume Upload your resume  {application/pdf,.pdf,application/msword,.doc,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.docx,application/vnd.oasis.opendocument.text,.odt,application/rtf,.rtf,text/plain,.txt,text/markdown,.md}",
+      "[ ] Resume Upload File or drag and drop here {application/pdf,.pdf,application/msword,.doc,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.docx,application/vnd.oasis.opendocument.text,.odt,application/rtf,.rtf,text/plain,.txt,text/markdown,.md,image/*,video/*,audio/*}"
+    ],
+    "photo": 0,
+    "filled": 5,
+    "check": 0,
+    "total": 10,
+    "recognized": 5,
+    "excluded": 0,
+    "unknown": [
+      "He/Him [input:radio] 4641b3c0-e6c0-4ac8-a777-cc7796b6cced_b0a5aba8-dbb7-41a9-b548-f72cc3e48956",
+      "She/Her [input:radio] 4641b3c0-e6c0-4ac8-a777-cc7796b6cced_b0a5aba8-dbb7-41a9-b548-f72cc3e48956",
+      "They/Them [input:radio] 4641b3c0-e6c0-4ac8-a777-cc7796b6cced_b0a5aba8-dbb7-41a9-b548-f72cc3e48956",
+      "Prefer not to say [input:radio] 4641b3c0-e6c0-4ac8-a777-cc7796b6cced_b0a5aba8-dbb7-41a9-b548-f72cc3e48956",
+      "Not represented here [input:radio] 4641b3c0-e6c0-4ac8-a777-cc7796b6cced_b0a5aba8-dbb7-41a9-b548-f72cc3e48956"
+    ]
+  },
+  {
+    "site": "https://jobs.ashbyhq.com/sensor-tower",
+    "url": "https://jobs.ashbyhq.com/sensor-tower/0e0ac464-026e-4dac-910c-24e7d8afbc13/application",
+    "status": "진단",
+    "title": "Account Director @ Sensor Tower",
+    "files": [
+      "[ ] Autofill from resume Upload your resume  {application/pdf,.pdf,application/msword,.doc,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.docx,application/vnd.oasis.opendocument.text,.odt,application/rtf,.rtf,text/plain,.txt,text/markdown,.md}",
+      "[ ] Resume Upload File or drag and drop here {application/pdf,.pdf,application/msword,.doc,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.docx,application/vnd.oasis.opendocument.text,.odt,application/rtf,.rtf,text/plain,.txt,text/markdown,.md,image/*,video/*,audio/*}"
+    ],
+    "photo": 0,
+    "filled": 6,
+    "check": 0,
+    "total": 10,
+    "recognized": 6,
+    "excluded": 0,
+    "unknown": [
+      "Yes [input:radio] 61fed7b1-1617-4107-bed6-9fdf5f7c39d0_02533cad-af27-41c6-8f04-1a293a7e76a5",
+      "No [input:radio] 61fed7b1-1617-4107-bed6-9fdf5f7c39d0_02533cad-af27-41c6-8f04-1a293a7e76a5"
+    ]
+  },
+  {
+    "site": "https://jobs.ashbyhq.com/hopper",
+    "url": "https://jobs.ashbyhq.com/hopper/74999ae6-07a6-49a3-89cd-e0abc2dea79c/application",
+    "status": "진단",
+    "title": "Engineering Manager, Subledger @ Hopper",
+    "files": [
+      "[ ] Autofill from resume Upload your resume  {application/pdf,.pdf,application/msword,.doc,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.docx,application/vnd.oasis.opendocument.text,.odt,application/rtf,.rtf,text/plain,.txt,text/markdown,.md}",
+      "[ ] Resume Upload File or drag and drop here {application/pdf,.pdf,application/msword,.doc,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.docx,application/vnd.oasis.opendocument.text,.odt,application/rtf,.rtf,text/plain,.txt,text/markdown,.md,image/*,video/*,audio/*}"
+    ],
+    "photo": 0,
+    "filled": 5,
+    "check": 0,
+    "total": 17,
+    "recognized": 5,
+    "excluded": 0,
+    "unknown": [
+      "No people management experience [input:radio] 932f86c5-c06d-45cd-bbd0-5b3b98948f74_28b0d7fd-1dc2-4f1b-b1ec-842341566fd1",
+      "Less than 2 years [input:radio] 932f86c5-c06d-45cd-bbd0-5b3b98948f74_28b0d7fd-1dc2-4f1b-b1ec-842341566fd1",
+      "2 to 5 years [input:radio] 932f86c5-c06d-45cd-bbd0-5b3b98948f74_28b0d7fd-1dc2-4f1b-b1ec-842341566fd1",
+      "More than 5 years [input:radio] 932f86c5-c06d-45cd-bbd0-5b3b98948f74_28b0d7fd-1dc2-4f1b-b1ec-842341566fd1",
+      "More than 5 years [input:radio] 932f86c5-c06d-45cd-bbd0-5b3b98948f74_8fda6156-461a-465e-b663-5f25ff08de1d",
+      "More than 5 years [input:radio] 932f86c5-c06d-45cd-bbd0-5b3b98948f74_8fda6156-461a-465e-b663-5f25ff08de1d",
+      "More than 5 years [input:radio] 932f86c5-c06d-45cd-bbd0-5b3b98948f74_8fda6156-461a-465e-b663-5f25ff08de1d",
+      "I have not worked with these concepts [input:radio] 932f86c5-c06d-45cd-bbd0-5b3b98948f74_8fda6156-461a-465e-b663-5f25ff08de1d",
+      "More than 5 years [input:radio] 932f86c5-c06d-45cd-bbd0-5b3b98948f74_c6dfd56b-3b09-42c1-9e83-635cab9af6d1",
+      "More than 5 years [input:radio] 932f86c5-c06d-45cd-bbd0-5b3b98948f74_c6dfd56b-3b09-42c1-9e83-635cab9af6d1",
+      "More than 5 years [input:radio] 932f86c5-c06d-45cd-bbd0-5b3b98948f74_c6dfd56b-3b09-42c1-9e83-635cab9af6d1",
+      "I have not used AI tools in my work [input:radio] 932f86c5-c06d-45cd-bbd0-5b3b98948f74_c6dfd56b-3b09-42c1-9e83-635cab9af6d1"
+    ]
+  },
+  {
+    "site": "https://jobs.ashbyhq.com/mistral.ai",
+    "url": "https://jobs.ashbyhq.com/mistral.ai/1722cba1-bc85-467a-994d-980905aca031/application",
+    "status": "진단",
+    "title": "Applied Scientist, South Korea @ Mistral",
+    "files": [
+      "[ ] Autofill from resume Upload your resume  {application/pdf,.pdf,application/msword,.doc,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.docx,application/vnd.oasis.opendocument.text,.odt,application/rtf,.rtf,text/plain,.txt,text/markdown,.md}",
+      "[ ] Resume Upload File or drag and drop here {application/pdf,.pdf,application/msword,.doc,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.docx,application/vnd.oasis.opendocument.text,.odt,application/rtf,.rtf,text/plain,.txt,text/markdown,.md,image/*,video/*,audio/*}"
+    ],
+    "photo": 0,
+    "filled": 6,
+    "check": 3,
+    "total": 21,
+    "recognized": 6,
+    "excluded": 0,
+    "unknown": [
+      "Google Scholar | Type here... [input:text] d53ab6a1-6dea-4567-8fb6-912c06792608",
+      "Are you proficient in Korean? | Type here... [input:text] eeb95c43-5c26-4461-9df8-c24a435f344f",
+      "Are you proficient in English? | Type here... [input:text] a01db1ef-8016-4b4f-8161-732d981770c4",
+      "Man [input:radio] 75a957ed-f311-46cf-b99f-311229594fca_8d7dcc65-3a0b-476a-b679-574b869780bb",
+      "Woman [input:radio] 75a957ed-f311-46cf-b99f-311229594fca_8d7dcc65-3a0b-476a-b679-574b869780bb",
+      "Non - Binary [input:radio] 75a957ed-f311-46cf-b99f-311229594fca_8d7dcc65-3a0b-476a-b679-574b869780bb",
+      "I prefer not to answer [input:radio] 75a957ed-f311-46cf-b99f-311229594fca_8d7dcc65-3a0b-476a-b679-574b869780bb"
+    ]
+  },
+  {
+    "site": "https://jobs.ashbyhq.com/airwallex",
+    "url": "https://jobs.ashbyhq.com/airwallex/7adc7ed7-09e5-4b8c-9a18-3a7e5b671186/application",
+    "status": "진단",
+    "title": "Account Executive, SME & Growth, KR @ Airwallex",
+    "files": [
+      "[ ] Autofill from resume Upload your resume  {application/pdf,.pdf,application/msword,.doc,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.docx,application/vnd.oasis.opendocument.text,.odt,application/rtf,.rtf,text/plain,.txt,text/markdown,.md}",
+      "[ ] Resume Upload File or drag and drop here {application/pdf,.pdf,application/msword,.doc,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.docx,application/vnd.oasis.opendocument.text,.odt,application/rtf,.rtf,text/plain,.txt,text/markdown,.md,image/*,video/*,audio/*}"
+    ],
+    "photo": 0,
+    "filled": 5,
+    "check": 7,
+    "total": 12,
+    "recognized": 5,
+    "excluded": 0,
+    "unknown": [
+      "First Name | Type here... [input:text] 84caf64f-29cd-4351-9cc5-65bf3fe3b2a0",
+      "Middle Name | Type here... [input:text] 23e3e3f1-3914-4593-84af-be31ca9313ba",
+      "Last Name / Surname | Type here... [input:text] cf5a3180-ac6e-494a-a058-f70f9618134e",
+      "Salary Expectations | Type here... [input:text] 7217e99a-92db-49e4-8763-b6b0a9befebe",
+      "What is your notice period? | Type here... [input:text] d29c9f9e-25f9-4937-9211-245e8e60f7c6",
+      "If Yes, please state their name here | Type here... [input:text] 8b4ab68c-1629-4135-b46f-ae18556dc3c0",
+      "Where did you find this job posting? | Type here... [input:text] c74616e5-5191-40c4-a8a4-fc16204dd8aa"
+    ]
+  },
+  {
+    "site": "https://jobs.ashbyhq.com/neuralconcept",
+    "url": "https://jobs.ashbyhq.com/neuralconcept/c5008493-6d4d-4ce1-8ee5-fd3b11c650c6/application",
+    "status": "진단",
+    "title": "Account Executive - Korea @ Neural Concept",
+    "files": [
+      "[ ] Autofill from resume Upload your resume  {application/pdf,.pdf,application/msword,.doc,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.docx,application/vnd.oasis.opendocument.text,.odt,application/rtf,.rtf,text/plain,.txt,text/markdown,.md}",
+      "[ ] Resume In English only Upload File or dr {application/pdf,.pdf,application/msword,.doc,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.docx,application/vnd.oasis.opendocument.text,.odt,application/rtf,.rtf,text/plain,.txt,text/markdown,.md,image/*,video/*,audio/*}"
+    ],
+    "photo": 0,
+    "filled": 2,
+    "check": 4,
+    "total": 7,
+    "recognized": 3,
+    "excluded": 0,
+    "unknown": [
+      "Social Network and Web Links | Type here... [input:text] a1cb5f89-462a-4f67-a7d5-8b2d0741e2e7",
+      "Can you confirm your annual salary expectation? | Type here. [input:text] c3572a27-5553-43d7-90be-054f8407ecf7",
+      "What is your desired start date? | Type here... [input:text] bdf9e288-d483-428e-aa83-2ecc306fb16a"
+    ]
+  },
+  {
+    "site": "https://jobs.ashbyhq.com/cognition",
+    "url": "https://jobs.ashbyhq.com/cognition/77e0ec33-5709-447d-ad64-8f210dd47b97/application",
+    "status": "진단",
+    "title": "Country Leader - South Korea @ Cognition",
+    "files": [
+      "[ ] Autofill from resume Upload your resume  {application/pdf,.pdf,application/msword,.doc,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.docx,application/vnd.oasis.opendocument.text,.odt,application/rtf,.rtf,text/plain,.txt,text/markdown,.md}",
+      "[ ] Resume Upload File or drag and drop here {application/pdf,.pdf,application/msword,.doc,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.docx,application/vnd.oasis.opendocument.text,.odt,application/rtf,.rtf,text/plain,.txt,text/markdown,.md,image/*,video/*,audio/*}"
+    ],
+    "photo": 0,
+    "filled": 5,
+    "check": 0,
+    "total": 6,
+    "recognized": 5,
+    "excluded": 0,
+    "unknown": []
+  },
+  {
+    "site": "https://jobs.ashbyhq.com/legora",
+    "url": "https://jobs.ashbyhq.com/legora/9d45d803-9de5-4c21-ac99-55bf965f731c/application",
+    "status": "진단",
+    "title": "Engagement Manager - Korea @ Legora",
+    "files": [
+      "[ ] Autofill from resume Upload your resume  {application/pdf,.pdf,application/msword,.doc,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.docx,application/vnd.oasis.opendocument.text,.odt,application/rtf,.rtf,text/plain,.txt,text/markdown,.md}",
+      "[ ] Resume Upload File or drag and drop here {application/pdf,.pdf,application/msword,.doc,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.docx,application/vnd.oasis.opendocument.text,.odt,application/rtf,.rtf,text/plain,.txt,text/markdown,.md,image/*,video/*,audio/*}"
+    ],
+    "photo": 0,
+    "filled": 6,
+    "check": 1,
+    "total": 9,
+    "recognized": 7,
+    "excluded": 0,
+    "unknown": [
+      "Yes, I consent to be recorded [input:radio] db41c80c-24c0-422d-92d3-b219aed60f73__systemfield_recording_consent",
+      "Opt out of recording [input:radio] db41c80c-24c0-422d-92d3-b219aed60f73__systemfield_recording_consent"
+    ]
+  },
+  {
+    "site": "https://jobs.ashbyhq.com/sierra",
+    "url": "https://jobs.ashbyhq.com/sierra/575cf637-3a7a-4d9c-883c-8b0265811984/application",
+    "status": "진단",
+    "title": "Agent Strategist @ Sierra",
+    "files": [
+      "[ ] Autofill from resume Upload your resume  {application/pdf,.pdf,application/msword,.doc,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.docx,application/vnd.oasis.opendocument.text,.odt,application/rtf,.rtf,text/plain,.txt,text/markdown,.md}",
+      "[ ] Resume Upload File or drag and drop here {application/pdf,.pdf,application/msword,.doc,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.docx,application/vnd.oasis.opendocument.text,.odt,application/rtf,.rtf,text/plain,.txt,text/markdown,.md,image/*,video/*,audio/*}"
+    ],
+    "photo": 0,
+    "filled": 4,
+    "check": 3,
+    "total": 25,
+    "recognized": 8,
+    "excluded": 1,
+    "unknown": [
+      "Legal First Name | Type here... [input:text] 180a0dae-67d8-4daf-b7eb-d2e731c11d00",
+      "Legal Last Name | Type here... [input:text] b369c90d-e170-4305-8f93-d6b034af9ed8",
+      "Yes [input:radio] b3535f2d-726b-4fc3-9d63-79b9a01e743a_570ad948-7497-457d-a6f5-39b42bfe3462",
+      "No [input:radio] b3535f2d-726b-4fc3-9d63-79b9a01e743a_570ad948-7497-457d-a6f5-39b42bfe3462",
+      "Yes [input:radio] b3535f2d-726b-4fc3-9d63-79b9a01e743a_04289b72-aa59-45e8-be6e-cb96bf600bd8",
+      "No [input:radio] b3535f2d-726b-4fc3-9d63-79b9a01e743a_04289b72-aa59-45e8-be6e-cb96bf600bd8",
+      "Yes [input:radio] b3535f2d-726b-4fc3-9d63-79b9a01e743a_e440204a-ce08-4bf1-b0a8-c71a737a38b6",
+      "No [input:radio] b3535f2d-726b-4fc3-9d63-79b9a01e743a_e440204a-ce08-4bf1-b0a8-c71a737a38b6",
+      "What's your favorite junk food? | Type here... [input:text] af7d2a39-580f-4eb5-9ad6-4370b35b85da",
+      "Blog or news article [input:radio] b3535f2d-726b-4fc3-9d63-79b9a01e743a_afdc2ef9-5c9a-44c1-aca1-864c5402e5a2",
+      "Company website [input:radio] b3535f2d-726b-4fc3-9d63-79b9a01e743a_afdc2ef9-5c9a-44c1-aca1-864c5402e5a2",
+      "Current employee [input:radio] b3535f2d-726b-4fc3-9d63-79b9a01e743a_afdc2ef9-5c9a-44c1-aca1-864c5402e5a2",
+      "Event [input:radio] b3535f2d-726b-4fc3-9d63-79b9a01e743a_afdc2ef9-5c9a-44c1-aca1-864c5402e5a2",
+      "Other [input:radio] b3535f2d-726b-4fc3-9d63-79b9a01e743a_afdc2ef9-5c9a-44c1-aca1-864c5402e5a2",
+      "Podcast [input:radio] b3535f2d-726b-4fc3-9d63-79b9a01e743a_afdc2ef9-5c9a-44c1-aca1-864c5402e5a2"
+    ]
+  }
+]

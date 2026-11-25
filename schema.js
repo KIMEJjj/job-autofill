@@ -45,6 +45,7 @@
     ]},
     { group: '온라인 프로필 · 현재 직장 (해외 지원서용)', fields: [
       { key: 'linkedin', label: 'LinkedIn 주소', placeholder: 'https://www.linkedin.com/in/...', kw: ['linkedin', '링크드인'] },
+      { key: 'twitter', label: 'Twitter / X 주소', placeholder: 'https://...', kw: ['twitterurl', 'twitter', '트위터'], ex: ['company', 'employer', '회사', 'username', 'user name', 'handle', '아이디', '사용자 이름'] },
       { key: 'github', label: 'GitHub 주소', placeholder: 'https://github.com/...', kw: ['github', '깃허브'] },
       { key: 'portfolio', label: '포트폴리오 주소', placeholder: 'https://...', kw: ['portfolio', '포트폴리오'] },
       { key: 'website', label: '개인 웹사이트·블로그', placeholder: 'https://...', kw: ['website', 'personalsite', '홈페이지', '블로그', '개인사이트'], ex: ['회사', 'company'] },

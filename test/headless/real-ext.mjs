@@ -94,9 +94,10 @@ try {
   await send('Page.navigate', { url: `${EXT}/options.html` }, o);
   await waitFor(o, `!document.getElementById('gate').classList.contains('hidden') && document.getElementById('gateTitle').textContent === '잠금 해제'`);
   await ev(o, `pass1.value = ${JSON.stringify(PASS)}; gateBtn.click(); true`);
-  const kept = await waitFor(o, `(() => { if (document.getElementById('app').classList.contains('hidden')) return null; const img = document.querySelector('#photoBox img'); return img ? { photo: true } : null; })()`, 30000);
+  const kept = await waitFor(o, `PubVault.load().then(p => { if (document.getElementById('app').classList.contains('hidden')) return null; const img = document.querySelector('#photoBox img'); return img ? { photo: true, twitter: !!p.twitter } : null; })`, 30000);
   R.steps.reopen = kept;
   R.steps.photoKept = !!(kept && kept.photo);
+  R.steps.twitterKept = !!(kept && kept.twitter);
 
   // ② 팝업: 칸 알려 주기, 채우기
   const page = (await open('http://127.0.0.1:8765/test/form.html', 'form')).sessionId;
@@ -137,7 +138,7 @@ try {
 
   R.siteErrors = errs.filter(e => e.startsWith('greenhouse:')).length;
   R.errors = errs.filter(e => !e.startsWith('greenhouse:'));
-  R.ok = R.errors.length === 0 && (!ghUrls.length || R.steps.greenhouse.every(g => g.picked.length > 0)) && R.steps.create && R.steps.photoPicked && R.steps.photoKept
+  R.ok = R.errors.length === 0 && (!ghUrls.length || R.steps.greenhouse.every(g => g.picked.length > 0)) && R.steps.create && R.steps.photoPicked && R.steps.photoKept && R.steps.twitterKept
     && R.steps.teach.started && R.steps.teach.marked > 0
     && R.steps.fill.filled > 10 && R.steps.fill.noRecord;
 } catch (e) { R.reason = String(e && e.message || e); R.errors = errs; }

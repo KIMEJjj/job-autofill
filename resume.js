@@ -87,13 +87,13 @@
     let addr;
     if (en) {
       add('Name', v('nameEn') || v('name')); add('Date of Birth', enDate(v('birth'))); add('Gender', tr(v('gender'))); add('Nationality', tr(v('nationality')));
-      add('Phone', v('phone')); add('Email', v('email')); add('LinkedIn', v('linkedin')); add('GitHub', v('github')); add('Portfolio', v('portfolio')); add('Website', v('website'));
+      add('Phone', v('phone')); add('Email', v('email')); add('LinkedIn', v('linkedin')); add('Twitter / X', v('twitter')); add('GitHub', v('github')); add('Portfolio', v('portfolio')); add('Website', v('website'));
       addr = v('addressEn') || korAddr;
     } else {
       add('성명', v('name')); add('영문 성명', v('nameEn')); add('한자 성명', v('nameHanja'));
       add('생년월일', fmtDate(v('birth'))); add('성별', v('gender')); add('국적', v('nationality'));
       add('휴대폰', v('phone')); add('이메일', v('email')); add('자택전화', v('tel')); add('비상연락처', v('emergencyPhone'));
-      add('LinkedIn', v('linkedin')); add('GitHub', v('github')); add('포트폴리오', v('portfolio')); add('웹사이트', v('website'));
+      add('LinkedIn', v('linkedin')); add('Twitter / X', v('twitter')); add('GitHub', v('github')); add('포트폴리오', v('portfolio')); add('웹사이트', v('website'));
       addr = korAddr;
     }
     const blocks = [];

@@ -2,7 +2,7 @@
 window.SAMPLE = {
   name: '홍길동', nameEn: 'HONG GILDONG', birth: '1999-03-07', gender: '남', applySource: '채용사이트',
   phone: '010-1234-5678', emergencyPhone: '010-9876-5432', email: 'testuser@gmail.com',
-  linkedin: 'https://www.linkedin.com/in/test-user', github: 'https://github.com/test-user', portfolio: 'https://test-user.example.com', currentCompany: '테스트공사', tel: '02-123-4567',
+  linkedin: 'https://www.linkedin.com/in/test-user', twitter: 'https://x.com/test-user', github: 'https://github.com/test-user', portfolio: 'https://test-user.example.com', currentCompany: '테스트공사', tel: '02-123-4567',
   zip: '04524', address1: '서울특별시 중구 을지로 79', address2: '101동 1001호', city: 'Seoul',
   military: '군필', militaryBranch: '육군', militaryRank: '병장', militaryStart: '2019-05-01', militaryEnd: '2020-11-30',
   veteran: '비대상', disability: '비대상',

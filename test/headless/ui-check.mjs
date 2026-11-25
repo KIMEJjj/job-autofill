@@ -58,20 +58,23 @@ try {
   current = 'options';
   await send('Page.navigate', { url: 'http://127.0.0.1:8765/options.html' });
   await sleep(3200);
+  await ev(`pass1.value = pass2.value = 'test-only-password'; gateBtn.click(); true`);
+  await sleep(1200);
   const options = await ev(`({
     title: document.title,
     sections: document.querySelectorAll('section').length,
     hasForm: !!document.getElementById('form'),
+    twitterField: !!document.querySelector('[data-key="twitter"]'),
     status: (document.getElementById('status') || {}).textContent || ''
   })`);
   result.options = options;
   if (!options || options.error) throw new Error('options evaluate: ' + JSON.stringify(options));
 
   const popupOk = popup.buttons === 6 && popup.hasFill && popup.hasTeach && popup.hasOpts;
-  const optionsOk = /내 정보 설정/.test(options.title || '') && options.hasForm && options.sections > 0;
+  const optionsOk = /내 정보 설정/.test(options.title || '') && options.hasForm && options.sections > 0 && options.twitterField;
   result.ok = popupOk && optionsOk && errs.length === 0;
   if (!popupOk) result.reason = 'popup buttons/fields mismatch';
-  else if (!optionsOk) result.reason = 'options did not render';
+  else if (!optionsOk) result.reason = 'options did not render Twitter/X profile field';
   else if (errs.length) result.reason = 'console errors: ' + errs.map(e => `${e.page}/${e.kind}: ${e.text}`).join(' | ');
 } catch (e) {
   result.ok = false; result.reason = String(e && e.message || e);

@@ -47,6 +47,7 @@
 
 직접 할 때:
 1. 저장소 폴더에서 `./build-dist.sh` → `dist/지원서자동입력_배포_v버전.zip`
+   - 이미 만들어 둔 다른 버전의 폴더·zip은 유지하고, 같은 버전의 이전 산출물만 다시 만듭니다.
 2. `shasum -a 256 dist/지원서자동입력_배포_v버전.zip` → 나온 긴 값(지문)을 복사
 3. 깃허브 → Releases → Draft a new release → 태그 `v버전` → zip 파일 첨부 → 설명에 바뀐 점과 지문(SHA-256) 적기 → Publish
 

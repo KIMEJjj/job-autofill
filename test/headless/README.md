@@ -6,8 +6,11 @@
   `for t in form recruiter choices toggles questions mui mui2 period kei edu emailcheck trinity kli-address cj ninehire; do printf "%s " $t; NOINJECT=1 timeout 150 node test/headless/cdp.mjs "$PWD" "http://127.0.0.1:8765/test/$t.html" 9337 test/headless/reg.js | tail -1; done`
 - 증명사진 첨부: `node test/headless/cdp.mjs "$PWD" http://127.0.0.1:8765/test/photo.html 9369 test/headless/photo.js` → photo 2, 서류 칸 0
 - 검색형 목록 칸(Ashby Location): `NOINJECT=1 node test/headless/cdp.mjs "$PWD" http://127.0.0.1:8765/test/ashby-location.html 9374 test/headless/ashby-location.js` → `"1/0"`, 값 `Seoul, South Korea`
-- 전체 자동 시험: `test/headless/all.sh` (위 항목 + 양식 4종 + 이력서 + 팝업·설정 화면 열림까지 한 번에, 하나라도 다르면 exit 1)
-- 실제 확장 검사: `node test/headless/real-ext.mjs <확장폴더> [Greenhouse 공고 주소…]` — 시험용 크롬에 확장을 그대로 올리고(CDP `Extensions.loadUnpacked`) 실제 툴바 버튼(`Extensions.triggerAction`)으로 팝업을 열어 설정 저장·칸 알려 주기·채우기·선택 목록을 가짜 정보로 확인(제출 안 함, all.sh 7번, `GH_URLS`로 공고 주소 전달). 팝업을 일반 탭으로 열면 보안 검사 때문에 선택 목록이 동작하지 않음
+- Twitter/X URL: `NOINJECT=1 node test/headless/cdp.mjs "$PWD" http://127.0.0.1:8765/test/twitter.html 9384 test/headless/twitter.js` → 개인 Twitter/X·LinkedIn·GitHub·포트폴리오 연결, 회사 URL·Twitter username은 비움 (`all.sh` 1g)
+- Lever Twitter/X 실제 공개 지원서(가짜 프로필, 제출 안 함): `node test/headless/cdp.mjs "$PWD" "https://jobs.lever.co/xsolla/1d90094e-377f-448f-89ef-de5ae413c0e2/apply" 9384 test/headless/lever-twitter.js` → `urls[Twitter]` 인식이 `twitter`, 값은 가짜 `https://x.com/test-user`로 확인(공고가 닫히면 로컬 fixture 사용)
+- 전체 자동 시험: `test/headless/all.sh` — 원칙 guard·제출 금지, 회귀 15종, 입학구분·focus·주소 찾기·날짜·해외/그리팅 주소 재현, 사진 판별, Ashby 검색형 Location, 기본·변형 양식 4종, 이력서, 팝업·설정 UI, 실제 확장 툴바 팝업까지 검사합니다. `FORCE_FAIL=1`은 실패 감지 자체를 확인합니다.
+- `all.sh`는 `make_templates.py`가 다시 만드는 양식 시험 파일을 시작 시 임시 백업하고 종료 때 복원해, 시험 전 사용자의 로컬 양식 변경도 보존합니다.
+- 실제 확장 검사: `node test/headless/real-ext.mjs <확장폴더> [Greenhouse 공고 주소…]` — 시험용 크롬에 확장을 그대로 올리고(CDP `Extensions.loadUnpacked`) 실제 툴바 버튼(`Extensions.triggerAction`)으로 팝업을 열어 설정 저장(사진·Twitter/X 값 유지)·칸 알려 주기·채우기·선택 목록을 가짜 정보로 확인(제출 안 함, all.sh 7번, `GH_URLS`로 공고 주소 전달). 팝업을 일반 탭으로 열면 보안 검사 때문에 선택 목록이 동작하지 않음
 - 거주 국가·이메일 받기 질문: `test/residence.html` + `residence.js` (all.sh 1f)
 - 그리팅 주소 찾기 상자(대상웰라이프 구조): `test/greeting-address.html` + `greeting-address.js` — 현주소·주민등록지(같음/다른 주소), 같은 우편번호의 가게 등록 줄 거르기, 예전 글자만 들어간 주소 다시 고르기, 우편번호·퇴직사유·어학 등록번호·봉사 주관기관 칸 연결 (all.sh 1f)
 - 양식 파일 채우기: `python3 test/docfill/make_templates.py && node test/headless/docfill-test.mjs "$PWD" && python3 test/docfill/verify.py test/docfill/out/resume_채움.* test/docfill/out/shapes_채움.docx` (변형 구조 shapes.docx 포함, `FILES=`로 파일 지정, 수원대 실제 양식은 `test/docfill/_local/`, 배포 제외)
@@ -16,7 +19,7 @@
 - 시연 GIF 8개(07 지원 기록은 기능을 빼며 지움): `demo-gifs.mjs <확장폴더> [번호]` → `demo/` (외부 프로그램 없이 `gifenc.html`로 인코딩), 검사 `gifcheck.mjs "/demo/<파일>.gif" <출력폴더> [장면]`. 시연용 페이지 `test/teach-demo.html`, `test/photo.html`
 - 안내서 그림(새 기능): `guide-shots.mjs <확장폴더>` → guide/images/09~12
 - 실제 사이트 시험 (가짜 프로필, 제출 안 함): `check.js`(그리팅 슈프리마 https://hr-suprema.career.greetinghr.com/ko/o/244288/apply), `gf4.js`(구글 설문)
-- 공개 ATS 일괄 진단(가짜 프로필, 제출 버튼 미작동): `PORT=9351 node test/headless/diagnose.mjs <확장폴더> <사이트목록.txt> <보고서폴더> 1`. 목록은 `sites/`(Greeting 하위 주소, Ninehire/Greenhouse/Lever/Ashby 게시판 URL), Korea/Seoul 공고 우선. **동시에 여러 개 돌릴 때는 PORT를 다르게.** 보고서에 파일 칸·사진 첨부 결과도 나옵니다. 최신 보고서: `report-ashby-086`(Ashby 101/278, Location 모르는 칸 0), `report-greenhouse-new-086`, `report-greeting-guess-086b`, 지난 보고서는 `report-old/`.
+- 공개 ATS 일괄 진단(가짜 프로필, 제출 버튼 미작동): `PORT=9351 node test/headless/diagnose.mjs <확장폴더> <사이트목록.txt> <보고서폴더> 1`. 목록은 `sites/`(Greeting 하위 주소, Ninehire/Greenhouse/Lever/Ashby 게시판 URL), Korea/Seoul 공고 우선. **동시에 돌릴 때는 PORT를 다르게.** 보고서에 파일 칸·사진 첨부 결과도 나옵니다. 2026-11-25 재진단: `report-greenhouse-102` 9개 공고 93/186(50%), `report-ashby-102` 19개 공고 105/278(38%, Location 모르는 칸 0). 지난 비교 자료: `report-ashby-086`, `report-greenhouse-new-086`, `report-greeting-guess-086b`.
 - 일회성 실제 사이트 시험 스크립트(가짜 프로필, 제출 안 함): `check.js`(슈프리마), `gf4.js`(구글 설문), `molo-name.js`·`greenhouse-name.js`·`greenhouse-source*.js`(Greenhouse 이름·지원경로), `scan.js`·`form-detail.js`(칸 구조 출력)
 - 한국노동연구원 한문이름 재현 시험: `NOINJECT=1 node test/headless/cdp.mjs "$PWD" "http://127.0.0.1:8765/test/kli-name.html" 9336 test/headless/kli-name.js`
 - 한국노동연구원 우편번호 검색 재현 시험: `NOINJECT=1 node test/headless/cdp.mjs "$PWD" "http://127.0.0.1:8765/test/kli-address.html" 9337 test/headless/kli-address.js`

@@ -1,0 +1,281 @@
+[
+  {
+    "site": "https://job-boards.greenhouse.io/moloco",
+    "url": "https://job-boards.greenhouse.io/moloco/jobs/7711666003",
+    "status": "진단",
+    "title": "Job Application for 채용관심등록 Expression of Interest: Software Engineer - Korea at Moloco",
+    "files": [
+      "[ ] Attach Attach Google Drive Enter manuall {.pdf,.doc,.docx,.txt,.rtf}",
+      "[ ] Attach Attach Google Drive Enter manuall {.pdf,.doc,.docx,.txt,.rtf}"
+    ],
+    "photo": 0,
+    "filled": 12,
+    "check": 7,
+    "total": 20,
+    "recognized": 14,
+    "excluded": 0,
+    "unknown": [
+      "Do you speak English fluently?* | Do you speak English fluen [input:text] question_30507897003",
+      "Select... [input:text] ",
+      "What is your preferred programming language? (up to 2)* | Wh [input:text] question_30507898003",
+      "Do you have the authorization to work in this job's location [input:text] question_30507899003",
+      "Will you now or in the future require sponsorship to work fo [input:text] question_30507900003"
+    ]
+  },
+  {
+    "site": "https://job-boards.greenhouse.io/sendbird",
+    "url": "",
+    "status": "공고 없음"
+  },
+  {
+    "site": "https://job-boards.greenhouse.io/hyperconnect",
+    "url": "",
+    "status": "공고 없음"
+  },
+  {
+    "site": "https://job-boards.greenhouse.io/coupang",
+    "url": "",
+    "status": "공고 없음"
+  },
+  {
+    "site": "https://job-boards.greenhouse.io/devsisters",
+    "url": "",
+    "status": "공고 없음"
+  },
+  {
+    "site": "https://job-boards.greenhouse.io/riiid",
+    "url": "",
+    "status": "공고 없음"
+  },
+  {
+    "site": "https://job-boards.greenhouse.io/krafton",
+    "url": "https://job-boards.greenhouse.io/krafton/jobs/8470910002",
+    "status": "진단",
+    "title": "KRAFTON의 [PUBG Franchise] Art Director (10년 이상) 직무 입사 지원서",
+    "files": [
+      "[ ] 파일 첨부 파일 첨부 Dropbox Google 드라이브 수동으로 입력  {.pdf,.doc,.docx,.txt,.rtf}",
+      "[ ] 파일 첨부 파일 첨부 Dropbox Google 드라이브 수동으로 입력  {.pdf,.doc,.docx,.txt,.rtf}",
+      "[ ] 파일 첨부 파일 첨부 Dropbox Google 드라이브 허용되는 파일  {.pdf,.doc,.docx,.txt,.rtf}"
+    ],
+    "photo": 0,
+    "filled": 7,
+    "check": 12,
+    "total": 22,
+    "recognized": 11,
+    "excluded": 0,
+    "unknown": [
+      "국가* [input:text] ",
+      "【 이력서 제출 시 유의 사항 / Precautions for submitting a resume. 】* | [input:text] question_35776518002",
+      "선택... [input:text] ",
+      "【 (필수) 개인정보 수집 및 이용에 대한 동의 / (Required) Consent for Collecti [input:text] question_35776521002",
+      "선택... [input:text] ",
+      "【 (선택) 개인정보 수집 및 이용에 대한 동의 / (Optional) Consent for Collecti [input:text] question_35776522002",
+      "【 (필수) 민감정보 수집 및 이용 동의 / (Required) Consent for Collection a [input:text] question_35776523002",
+      "선택... [input:text] ",
+      "선택... [input:text] ",
+      "선택... [input:text] ",
+      "선택... [input:text] "
+    ]
+  },
+  {
+    "site": "https://job-boards.greenhouse.io/webtoon",
+    "url": "",
+    "status": "공고 없음"
+  },
+  {
+    "site": "https://job-boards.greenhouse.io/anthropic",
+    "url": "https://job-boards.greenhouse.io/anthropic/jobs/5183044008",
+    "status": "진단",
+    "title": "Job Application for Anthropic Fellows Program, AI Safety & Security at Anthropic",
+    "files": [
+      "[ ] Attach Attach Dropbox Google Drive Enter {.pdf,.doc,.docx,.txt,.rtf}"
+    ],
+    "photo": 0,
+    "filled": 4,
+    "check": 3,
+    "total": 7,
+    "recognized": 5,
+    "excluded": 0,
+    "unknown": [
+      "Please note that you will not be considered unless you compl [input:text] question_15639912008",
+      "Select... [input:text] "
+    ]
+  },
+  {
+    "site": "https://job-boards.greenhouse.io/agoda",
+    "url": "https://job-boards.greenhouse.io/agoda/jobs/8129477",
+    "status": "진단",
+    "title": "Job Application for 2026 Support Associate - Korean&English(Seoul) at Agoda",
+    "files": [
+      "[ ] Attach Attach Dropbox Google Drive Enter {.pdf,.doc,.docx,.txt,.rtf}",
+      "[ ] Attach Attach Dropbox Google Drive Enter {.pdf,.doc,.docx,.txt,.rtf}"
+    ],
+    "photo": 0,
+    "filled": 6,
+    "check": 30,
+    "total": 40,
+    "recognized": 12,
+    "excluded": 0,
+    "unknown": [
+      "Are you aware that this is a 24/7 shift?* | Are you aware th [input:text] question_68586643",
+      "Select... [input:text] ",
+      "Do you speak native level Korean or have TOPIK 6 certificate [input:text] question_68586644",
+      "Select... [input:text] ",
+      "Select... [input:text] ",
+      "Select... [input:text] ",
+      "Do you require a Work Visa to be employed in Agoda Korea* |  [input:text] question_68586647",
+      "Select... [input:text] ",
+      "Select... [input:text] ",
+      "What is your expected salary?* | What is your expected salar [input:text] question_68586649",
+      "When is your earliest starting date?* | When is your earlies [input:text] question_68586650",
+      "Select... [input:text] ",
+      "Select... [input:text] ",
+      "Are you presently employed by any company within the Booking [input:text] question_68586653",
+      "Select... [input:text] ",
+      "Do you as a candidate have a personal relationship with a cu [input:text] question_68586654",
+      "Select... [input:text] ",
+      "Do you agree to Agoda’s use of personal data from your appli [input:text] question_68586655",
+      "Select... [input:text] ",
+      "We collect your gender information for diversity, equity & i [input:text] question_68586656",
+      "Select... [input:text] ",
+      "Do you allow us to provide you TEXT/SMS updates of your inte [input:text] question_68586657",
+      "Select... [input:text] ",
+      "Email me about other job openings within the Booking Holding [input:text] question_68586658",
+      "Select... [input:text] ",
+      "To avoid actual or perceived impairment of our parent compan [input:text] question_70991033",
+      "Select... [input:text] "
+    ]
+  },
+  {
+    "site": "https://job-boards.greenhouse.io/humanrightswatch",
+    "url": "https://job-boards.greenhouse.io/humanrightswatch/jobs/8930423002",
+    "status": "진단",
+    "title": "Job Application for Researcher, Koreas at Human Rights Watch",
+    "files": [
+      "[ ] Attach Attach Dropbox Google Drive Enter {.pdf,.doc,.docx,.txt,.rtf}",
+      "[ ] Attach Attach Dropbox Google Drive Enter {.pdf,.doc,.docx,.txt,.rtf}"
+    ],
+    "photo": 0,
+    "filled": 5,
+    "check": 7,
+    "total": 12,
+    "recognized": 6,
+    "excluded": 0,
+    "unknown": [
+      "Are you based in Seoul or are you willing to relocate to Seo [input:text] question_39131230002",
+      "Select... [input:text] ",
+      "Do you possess valid Korean Work Authorization? HRW is unabl [input:text] question_39131231002",
+      "Select... [input:text] ",
+      "Are you fluent in both Korean and English?* | Are you fluent [input:text] question_39131232002",
+      "Select... [input:text] "
+    ]
+  },
+  {
+    "site": "https://job-boards.greenhouse.io/censys",
+    "url": "https://job-boards.greenhouse.io/censys/jobs/8684280002",
+    "status": "진단",
+    "title": "Job Application for Distributed Systems Engineer (Data Platform) at Censys",
+    "files": [
+      "[ ] Attach Attach Dropbox Google Drive Enter {.pdf,.doc,.docx,.txt,.rtf}",
+      "[ ] Attach Attach Dropbox Google Drive Enter {.pdf,.doc,.docx,.txt,.rtf}"
+    ],
+    "photo": 0,
+    "filled": 7,
+    "check": 9,
+    "total": 16,
+    "recognized": 9,
+    "excluded": 0,
+    "unknown": [
+      "Do you require sponsorship to work in the US now or in the f [input:text] question_37647722002",
+      "Select... [input:text] ",
+      "Did AI complete this application?* | Did AI complete this ap [input:text] question_37951349002",
+      "Select... [input:text] ",
+      "Gender | Gender [input:text] gender",
+      "Are you Hispanic/Latino? | Are you Hispanic/Latino? [input:text] hispanic_ethnicity",
+      "Veteran Status | Veteran Status [input:text] veteran_status"
+    ]
+  },
+  {
+    "site": "https://job-boards.greenhouse.io/pubgcorporation",
+    "url": "https://job-boards.greenhouse.io/pubgcorporation/jobs/8611450002",
+    "status": "진단",
+    "title": "PUBG Studios의 [BATTLEGROUNDS] 캐릭터/무기 컨셉 아티스트 (5년 이상) 직무 입사 지원서",
+    "files": [
+      "[ ] 파일 첨부 파일 첨부 Dropbox Google 드라이브 수동으로 입력  {.pdf,.doc,.docx,.txt,.rtf}",
+      "[ ] 파일 첨부 파일 첨부 Dropbox Google 드라이브 수동으로 입력  {.pdf,.doc,.docx,.txt,.rtf}",
+      "[ ] 파일 첨부 파일 첨부 Dropbox Google 드라이브 허용되는 파일  {.pdf,.doc,.docx,.txt,.rtf}"
+    ],
+    "photo": 0,
+    "filled": 7,
+    "check": 11,
+    "total": 21,
+    "recognized": 11,
+    "excluded": 0,
+    "unknown": [
+      "국가* [input:text] ",
+      "【 이력서 제출 시 유의 사항 / Precautions for submitting a resume. 】* | [input:text] question_37115416002",
+      "선택... [input:text] ",
+      "선택... [input:text] ",
+      "【 개인정보 수집 및 이용에 대한 안내 / Notice on the Collection and Use of  [input:text] question_37115420002",
+      "선택... [input:text] ",
+      "【 민감정보 수집 및 이용 안내 / Notice on the Collection and Use of Sens [input:text] question_37115421002",
+      "선택... [input:text] ",
+      "선택... [input:text] ",
+      "선택... [input:text] "
+    ]
+  },
+  {
+    "site": "https://job-boards.greenhouse.io/figma",
+    "url": "https://boards.greenhouse.io/figma/jobs/6225172004",
+    "status": "진단",
+    "title": "Job Application for Senior Solutions Consultant (Seoul, South Korea) at Figma",
+    "files": [
+      "[ ] Attach Attach Dropbox Google Drive Enter {.pdf,.doc,.docx,.txt,.rtf}"
+    ],
+    "photo": 0,
+    "filled": 8,
+    "check": 9,
+    "total": 19,
+    "recognized": 12,
+    "excluded": 0,
+    "unknown": [
+      "Pronouns | Pronouns [input:text] question_20293997004",
+      "From where do you intend to work? * | From where do you inte [input:text] question_20294002004",
+      "Select... [input:text] ",
+      "Have you ever worked for Figma before, as an employee or a c [input:text] question_20294004004",
+      "Select... [input:text] "
+    ]
+  },
+  {
+    "site": "https://job-boards.greenhouse.io/discord",
+    "url": "https://job-boards.greenhouse.io/discord/jobs/8299493002",
+    "status": "진단",
+    "title": "Job Application for Senior Data Engineer, Ads at Discord",
+    "files": [
+      "[ ] Attach Attach Dropbox Google Drive Enter {.pdf,.doc,.docx,.txt,.rtf}",
+      "[ ] Attach Attach Dropbox Google Drive Enter {.pdf,.doc,.docx,.txt,.rtf}"
+    ],
+    "photo": 0,
+    "filled": 9,
+    "check": 17,
+    "total": 29,
+    "recognized": 13,
+    "excluded": 0,
+    "unknown": [
+      "Are you legally authorized to work in the United States for  [input:text] question_34308088002",
+      "Select... [input:text] ",
+      "Select... [input:text] ",
+      "Gender* | Gender* [input:text] 4033064002",
+      "Select... [input:text] ",
+      "Race and Ethnicity* | Race and Ethnicity* [input:text] 4033065002",
+      "Select... [input:text] ",
+      "Veteran Status* | Veteran Status* [input:text] 4033066002",
+      "Select... [input:text] ",
+      "Disability Status* | Disability Status* [input:text] 4033067002",
+      "Select... [input:text] ",
+      "Gender Identity (optional) | Gender Identity (optional) [input:text] 4033068002",
+      "Race or Ethnicity (optional) | Race or Ethnicity (optional) [input:text] 4033069002",
+      "I consider myself a member of the LGBTQ+ community. (optiona [input:text] 4033070002"
+    ]
+  }
+]

@@ -3,7 +3,7 @@
 // 사용: window.__pubFill(profile, { overwrite:false })  /  window.__pubScan()
 (function () {
   // 버전이 같을 때만 다시 불러오지 않음 (확장을 고친 뒤에는 페이지 새로고침 없이도 새 엔진 사용)
-  const ENGINE = '0.5.102';
+  const ENGINE = '0.5.103';
   if (window.__pubFillLoaded === ENGINE) return;
   window.__pubFillLoaded = ENGINE;
   const { SCALAR, LISTS } = window.PUBFILL_SCHEMA;

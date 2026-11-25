@@ -4,7 +4,11 @@ set -e
 cd "$(dirname "$0")"
 VER=$(python3 -c "import json;print(json.load(open('manifest.json'))['version'])")
 OUT="dist/지원서자동입력_v$VER"
-rm -rf dist && mkdir -p "$OUT"
+PKG="dist/지원서자동입력_배포_v$VER"
+mkdir -p dist
+# 새 버전 묶음을 다시 만들 때만 그 버전의 기존 산출물을 지우고, 다른 버전은 보존합니다.
+rm -rf "$OUT" "$PKG" "$PKG.zip"
+mkdir -p "$OUT"
 rsync -a --exclude 'test/' --exclude 'native/' --exclude 'dist/' --exclude 'guide/' --exclude 'touchid-test.*' --exclude 'build-dist.sh' --exclude '.DS_Store' --exclude '.gitignore' --exclude '.github/' --exclude 'MAINTAINING.md' --exclude 'README.md' --exclude '인수인계.md' --exclude '작업기록.md' --exclude 'AGENTS.md' --exclude 'AGENTS.local.md' --exclude 'CLAUDE.md' --exclude '발표자료/' --exclude 'demo/' ./ "$OUT/"
 python3 - "$OUT/manifest.json" <<'PY'
 import json,sys
@@ -13,7 +17,6 @@ m['permissions']=[x for x in m['permissions'] if x!='nativeMessaging']
 json.dump(m,open(p,'w'),ensure_ascii=False,indent=2)
 PY
 # 안내서(md·pdf·그림) 함께 묶기
-PKG="dist/지원서자동입력_배포_v$VER"
 mkdir -p "$PKG"
 mv "$OUT" "$PKG/"
 cp guide/안내서.md guide/안내서.pdf "$PKG/"

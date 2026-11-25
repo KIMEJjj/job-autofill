@@ -30,7 +30,8 @@ const r = await ev(`(async () => {
   const sel = { off: new Set(['skills']), offItems: new Set(['certificates:시험자격B · 2022.02.02']) };
   const en = await PubResume.toDocx(collect(), { lang: 'en' }); const u8e = new Uint8Array(await en.blob.arrayBuffer()); let be = ''; for (let i = 0; i < u8e.length; i += 0x8000) be += String.fromCharCode(...u8e.subarray(i, i + 0x8000));
   window.__en = { name: en.name, b64: btoa(be), html: PubResume.toHtml(collect(), { lang: 'en' }) };
-  return { en: window.__en, name, b64: btoa(b), html: PubResume.toHtml(collect(), sel), status: document.getElementById('cvStatus').textContent, pick: window.__pick };
+  const tw = m => (m.personal.find(x => x[0] === 'Twitter / X') || [])[1] || '';
+  return { en: window.__en, name, b64: btoa(b), html: PubResume.toHtml(collect(), sel), status: document.getElementById('cvStatus').textContent, pick: window.__pick, twitter: tw(PubResume.model(P, {})), twitterEn: tw(PubResume.model(P, { lang: 'en' })) };
 })()`);
 if (r.error) { console.log(r.error); process.exit(1); }
 fs.writeFileSync(out + '/cv.docx', Buffer.from(r.b64, 'base64')); fs.writeFileSync(out + '/cv.html', r.html);
@@ -40,6 +41,6 @@ for (const f of ['cv', 'cv_en']) {
   const pdf = await send('Page.printToPDF', { preferCSSPageSize: true, printBackground: true });
   fs.writeFileSync(`${out}/${f}.pdf`, Buffer.from(pdf.result.data, 'base64'));
 }
-console.log(JSON.stringify({ name: r.name, enName: r.en.name, status: r.status, pick: r.pick }));
+console.log(JSON.stringify({ name: r.name, enName: r.en.name, status: r.status, pick: r.pick, twitter: r.twitter, twitterEn: r.twitterEn }));
 if (process.env.SHOT) { await send('Page.navigate', { url: 'http://127.0.0.1:8765/options.html' }); }
 ws.close(); chrome.kill(); process.exit(0);
